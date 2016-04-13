@@ -1,0 +1,10 @@
+
+.primarySection {
+    width:100%;
+}
+
+#loginSection {
+    background:url("images/login.jpg");
+    height:100vh;
+}
+
