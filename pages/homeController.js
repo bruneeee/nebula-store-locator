@@ -1,5 +1,5 @@
 angular.module('routerApp')
-    .controller('homeController', function($scope){
+    .controller('homeController', function($scope, StoresFactory, $stateParams){
          
         $(document).ready(
 
@@ -44,5 +44,6 @@ angular.module('routerApp')
             })
         };
 
+        //$scope.getStores();
 
     });
