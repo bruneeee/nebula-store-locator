@@ -1,11 +1,32 @@
 
 <section class="primarySection" id="loginSection">
 
-
-<form class="container" method="post">
-    <input type="text" class="col-md-6 col-xs-12" placeholder="E-mail"/>
-    <input type="text" class="col-md-6 col-xs-12" placeholder="Password"/>
-    <input type="submit" class="col-md-12 col-xs-12" value="Accedi" />
+    <div class="container">
+    
+<form class="formLogin" method="post">
+    <input type="email" class="col-md-12 col-xs-12 inputLogin" placeholder="E-mail"/>
+    <input type="password" class="col-md-12 col-xs-12 inputLogin" placeholder="Password"/>
+    <button type="submit" class="col-md-12 col-xs-12 submitLogin">
+        <i class='fa fa-angle-double-right linkTSymbol' style='display:none;'></i>
+        Accedi
+        <i class='fa fa-angle-double-left linkTSymbol' style='display:none;'></i>
+    </button>
 </form>
 
+    </div>
+
+    <script>
+        $(document).ready(
+
+    function () {
+                  
+        $('.submitLogin').hover(
+            function () {
+                alert("a");
+                //$('.linkTSymbol').fadeIn(200);
+            }, function () {
+                alert("b");
+            })
+        });
+    </script>
 </section>

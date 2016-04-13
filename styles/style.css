@@ -1,10 +1,42 @@
 
+body {
+    
+}
+
 .primarySection {
-    width:100%;
+    width: 100%;
 }
 
 #loginSection {
-    background:url("../images/login.jpg");
-    height:100vh;
+    background: url("../images/login.jpg");
+    height: 100vh;
 }
 
+.formLogin {
+    margin-top:300px;
+}
+
+.inputLogin, .inputLogin:active, inputLogin:focus {
+    height: 50px;
+    opacity: 0.5;
+    background:#000;
+    font-family:Exo;
+    font-size:20pt;
+    color:white;
+    border:none;
+    margin-top:5px;
+    padding-left:10px;
+    cursor:default;
+}
+
+.submitLogin {
+    background:#e6c603;
+    color:black;
+    font-size:25pt;
+    font-family:Exo;
+    text-align:center;
+    border:solid 1px black;
+}
+.linkTSymbol {
+    font-size:15pt;
+}
