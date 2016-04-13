@@ -27,5 +27,22 @@ angular.module('routerApp')
 
 
                     });
-                  
+
+        $scope.getStores = function(){
+            StoresFactory.getAll($stateParams.session, function(err, result){
+                if (err) return console.log("Errore cosa? ", err);
+                console.log("Uo", result);
+                return result;
+            })
+        };
+
+        $scope.getStore = function(guid){
+            StoresFactory.get($stateParams.session, guid, function(err, result){
+                if (err) return console.log("Errore cosa? ", err);
+                console.log("Uo", result);
+                return result;
+            })
+        };
+
+
     });

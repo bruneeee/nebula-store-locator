@@ -5,7 +5,7 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
 
     $stateProvider
         .state('home', {
-            url: '/home',
+            url: '/home:session',
             templateUrl: 'pages/homeView.html',
             controller: 'homeController'
         })
@@ -26,6 +26,3 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
         })
     ;
 });
-
-
-
