@@ -14,6 +14,9 @@ body {
 .centered{
     text-align: center;
 }
+.centered-top{
+    margin-top: 15px;
+}
 #loginBox{
     width: 35%;
     border-radius: 20px;
