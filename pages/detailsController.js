@@ -1,8 +1,4 @@
 angular.module('routerApp')
-    .controller('detailsController', function($scope, $state, $stateParams){
-        $scope.id = $stateParams.id;
-        var currentObj = data().getById($stateParams.id);
-
-        $scope.name = currentObj.name;
-
+    .controller('detailsController', function($scope){
+        $scope.message = 'Ti trovi nella pagina dettagli.';
     });
