@@ -1,7 +1,7 @@
 var routerApp = angular.module('routerApp', ['ui.router']);
 
 routerApp.config(function($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.otherwise('/home');
 
     $stateProvider
         .state('home', {
@@ -23,11 +23,6 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
             url: '/edit/:id',
             templateUrl: 'pages/editView.html',
             controller: 'editController'
-        })
-        .state('login',{
-            url: '/login/:id',
-            templateUrl: 'pages/loginView.html',
-            controller: 'loginController'
         })
     ;
 });
