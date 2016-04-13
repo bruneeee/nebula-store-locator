@@ -3,7 +3,12 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
-.primarySection {
+#homeSection {
+    background:black;
+    height:100vh;
+}
+
+.primarySection. #homeSection {
     width: 100%;
 }
 
@@ -36,4 +41,8 @@ body {
 }
 .linkTSymbol {
     font-size:15pt;
+}
+#logoHome {
+    width:700px; 
+    opacity:0;
 }
