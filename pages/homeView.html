@@ -1,0 +1,16 @@
+<h1>Home</h1>
+
+{{message}}
+
+<br />
+
+<button
+        type="button"
+        ng-click="goToContact()">Vai ai contatti</button>
+
+<br />
+
+<div ng-repeat="n in list">
+    {{n.name}}<br />
+    <a ui-sref="details({id:n.id})">dettaglio</a>
+</div>

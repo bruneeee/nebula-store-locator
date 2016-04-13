@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script type="text/javascript"
+            src="bower_components/angular/angular.js"></script>
+    <script type="text/javascript"
+            src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+
+    <script type="text/javascript"
+            src="scripts/app.js"></script>
+
+    <script type="text/javascript"
+            src="pages/homeController.js"></script>
+    <script type="text/javascript"
+            src="pages/contactController.js"></script>
+    <script type="text/javascript"
+            src="pages/detailsController.js"></script>
+</head>
+<body ng-app="routerApp">
+
+    <ul>
+        <li><a ui-sref="home">Home</a></li>
+        <li><a ui-sref="contact">Contatti</a></li>
+    </ul>
+
+    <div ui-view></div>
+
+
+</body>
+</html>
