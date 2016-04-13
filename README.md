@@ -1,2 +1,2 @@
 # nebula-store-locator
-## chi pusha nel master è omosessuale
+## pushare nel master nuoce gravemente alla salute
