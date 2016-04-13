@@ -1,19 +1,44 @@
 
 <section class="primarySection" id="loginSection">
-
-    <div class="container">
-    
-<form class="formLogin" method="post">
-    <input type="email" class="col-md-12 col-xs-12 inputLogin" placeholder="E-mail"/>
-    <input type="password" class="col-md-12 col-xs-12 inputLogin" placeholder="Password"/>
-    <button type="submit" class="col-md-12 col-xs-12 submitLogin">
-        <i class='fa fa-angle-double-right linkTSymbol' style='display:none;'></i>
-        Accedi
-        <i class='fa fa-angle-double-left linkTSymbol' style='display:none;'></i>
-    </button>
-</form>
-
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 centered">
+            <img src="images/logo.svg">
+        </div>
     </div>
+    <div class="row">
+        <div class="col-xs-12 centered">
+            <form class="form-horizontal" id="loginBox" method="post">
+                <div class="form-group">
+                    <div class="col-xs-10 col-xs-offset-1">
+                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-10 col-xs-offset-1">
+                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-10 col-xs-offset-1">
+                        <button type="submit" class="btn btn-default" id="submitButtonLogin">Accedi</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 centered">
+            <div id="socialLogin">
+                <a href="https://www.facebook.com/Jesse-SpA-155371874485429/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a href="https://twitter.com/jesse_design" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                <a href="https://www.youtube.com/channel/UCOJzWRudKM_VFT4RQ18KZuw" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                <a href="https://www.pinterest.com/jessedesign/" target="_blank"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
 
     <script>
         $(document).ready(

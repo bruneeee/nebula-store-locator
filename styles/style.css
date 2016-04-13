@@ -1,6 +1,6 @@
 
 body {
-    
+    font-family: 'Open Sans', sans-serif;
 }
 
 .primarySection {
@@ -11,31 +11,25 @@ body {
     background: url("../images/login.jpg");
     height: 100vh;
 }
-
-.formLogin {
-    margin-top:300px;
+.centered{
+    text-align: center;
 }
-
-.inputLogin, .inputLogin:active, inputLogin:focus {
-    height: 50px;
-    opacity: 0.5;
-    background:#000;
-    font-family:Exo;
-    font-size:20pt;
-    color:white;
-    border:none;
-    margin-top:5px;
-    padding-left:10px;
-    cursor:default;
+#loginBox{
+    width: 35%;
+    border-radius: 20px;
+    padding-top: 16px;
+    padding-bottom: 1px;
+    position: relative;
+    background-color: rgba(221, 221, 221, 0.53);
+    left: 33%;
+    margin-top: 8%;
 }
-
-.submitLogin {
-    background:#e6c603;
-    color:black;
-    font-size:25pt;
-    font-family:Exo;
-    text-align:center;
-    border:solid 1px black;
+#socialLogin{
+    margin-top: 17px;
+    font-size: 50px;
+}
+#socialLogin a{
+    color: rgb(65,65,65);
 }
 .linkTSymbol {
     font-size:15pt;
