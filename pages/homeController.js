@@ -30,7 +30,12 @@ angular.module('routerApp')
                             $('.navBarSpan').fadeIn(500);
                         }, 2000);
 
+                        setInterval(function () {
+                            $(".divNegozi").stop().fadeIn(600);
+                        }, 2800);
+
                     });
+
         $(document).ready(
 
         $(".navBarSpan").hover(
@@ -57,19 +62,33 @@ angular.module('routerApp')
      })
                    );
 
-        $(document).ready(
+       $(document).ready(
 
        $("#negozi").hover(
 
      function () {
+         $("#gmap01").stop().hide();
          $(".divNegozi").stop().fadeIn(800);
-
-         
+ 
      },
      function () {
          
      })
                    );
+
+       $(document).ready(
+
+       $("#mappa").hover(
+
+     function () {
+         $(".divNegozi").hide();
+         $("#gmap01").stop().fadeIn(800);
+     },
+     function () {
+        
+     })
+                   );
+
 
         //Gesu' cristo
 

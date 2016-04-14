@@ -13,8 +13,9 @@ body {
 }
 
 #loginSection {
-    background: url("../images/login.jpg");
-    height: 100vh;
+    background: url("../images/login.jpg") no-repeat;
+    height:100vh;
+    background-size:cover;
 }
 
 .centered {
@@ -87,15 +88,14 @@ body {
     cursor: pointer;
 }
 
-.divNegozi {
+.divNegozi, #gmap01 {
     background: rgba(218, 165, 32,0.8);
     color: black;
-    font-family: Abel;
-    font-size: 18pt;
+    font-size: 13pt;
     
 }
 
-    .divNegozi p {
+    p {
         margin-top:2%;
         text-align:center;
         font-family:Jura;
