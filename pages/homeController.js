@@ -1,6 +1,8 @@
 angular.module('routerApp')
     .controller('homeController', function($scope, StoresFactory, $stateParams){
-         
+
+        //Tamarrate di raggio
+
         $(document).ready(
 
                     function () {
@@ -68,7 +70,9 @@ angular.module('routerApp')
      })
                    );
 
-                  
+        //Gesu' cristo
+
+        $scope.stores;
 
         $scope.getStores = function(){
             StoresFactory.getAll($stateParams.session, function(err, result){
@@ -85,6 +89,9 @@ angular.module('routerApp')
                 return result;
             })
         };
+
+        $scope.stores = $scope.getStores();
+        console.log($scope.stores);
 
         //$scope.getStores();
 
