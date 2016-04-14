@@ -46,3 +46,16 @@ body {
     width:700px; 
     opacity:0;
 }
+.navBarSpan {
+    -webkit-transition:all 0.5s ease-in-out;
+    font-size:25pt;
+    font-family:Abel;
+    text-align:center;
+    display:none;
+    cursor:pointer;
+}
+   /* .navBarSpan:hover {
+        -webkit-transition:all 0.5s ease-in-out;
+        background:black;
+        color:white;
+    }*/

@@ -10,7 +10,7 @@ angular.module('routerApp')
                         }, {
                             step: function (now, fx) {
                                 $('#logoHome').css("-webkit-transition", "all 2s ease-in-out");
-                                $('#logoHome').css("opacity", "1");  
+                                $('#logoHome').css("opacity", "1");
                             },
                             duration: 2000
                         }, 'linear');
@@ -24,9 +24,24 @@ angular.module('routerApp')
                             $('#homeSection').css("background", "white")
                         }, 1600);
 
-
+                        setInterval(function () {
+                            $('.navBarSpan').fadeIn(500);
+                        }, 2000);
 
                     });
+        $(document).ready(
+
+        $(".navBarSpan").hover(
+
+      function () {
+          $(this).addClass("hvr-underline-from-center");
+      },
+      function () {
+          $(this).addClass("hvr-underline-from-center");
+      })
+                    );
+
+                  
 
         $scope.getStores = function(){
             StoresFactory.getAll($stateParams.session, function(err, result){
