@@ -96,9 +96,12 @@ angular.module('routerApp')
         //$scope.stores = $scope.getStores();
 
         function fillArrays(data){
-            $scope.stores1 = data.slice(0, 9);
-            $scope.stores2 = data.slice(10, 19);
-            $scope.stores3 = data.slice(20, 29);
+            data = data.sort(function (a, b){
+                return a.name > b.name ? 1 : a.name < b.name ? -1 : 0;
+            });
+            $scope.stores1 = data.slice(0, 10);
+            $scope.stores2 = data.slice(10, 20);
+            $scope.stores3 = data.slice(20, 30);
             console.log($scope.stores1);
             console.log($scope.stores2);
             console.log($scope.stores3);
