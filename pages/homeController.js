@@ -1,5 +1,5 @@
 angular.module('routerApp')
-    .controller('homeController', function($scope, StoresFactory, $stateParams){
+    .controller('homeController', function($scope, StoresFactory, $stateParams, $state){
 
         //Tamarrate di raggio
 
