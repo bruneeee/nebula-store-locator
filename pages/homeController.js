@@ -1,5 +1,5 @@
 angular.module('routerApp')
-    .controller('homeController', function($scope, StoresFactory, $stateParams){
+    .controller('homeController', function($scope, StoresFactory, $stateParams, $state){
 
         //Tamarrate di raggio
 
@@ -97,6 +97,11 @@ angular.module('routerApp')
             return storeObj.address.split(",")[2];
         }
 
+        $scope.goToDetails = function(storeObj){//<---- usare questo per passare ai dettagli
+            var id = storeObj.guid;
+            $state.go('details', {guid : id, session: $stateParams.session});
+        }
+
         //$scope.stores = $scope.getStores();
 
         $scope.sortMode = 2; //0 niente, 1 alfabetico (dei nomi?), 2 per stato alfabetico
@@ -121,7 +126,6 @@ angular.module('routerApp')
 
         function getLocationString(storeObj){
             var s = storeObj.address.split(",");
-            console.log(s);
             var sortedAdress = s[0].split(" ").slice((1)).toString().replace(",", " ") + " " + s[0].split(" ")[0];
             return (s[2] + s[1] + " " + sortedAdress).slice(1);
         }
