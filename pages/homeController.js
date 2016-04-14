@@ -184,7 +184,7 @@ angular.module('routerApp')
                         rotateControl: true,
                         fullscreenControl: true
                     });
-                    var marker  = new google.maps.Marker({map:map});
+                    var marker = new google.maps.Marker({map:map});
 
                     if (navigator.geolocation) {
                         navigator.geolocation.getCurrentPosition(function(position) {
@@ -198,6 +198,7 @@ angular.module('routerApp')
                         }, function() {
                             alert("something went wrong please contact Gesù cristo on person")
                         });
+                        $scope.caricaMarker();
                     }
                 };
                 $("head").append(s);
