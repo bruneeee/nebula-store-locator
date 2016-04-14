@@ -1,5 +1,5 @@
 angular.module('routerApp')
-    .controller('homeController', function($scope, StoresFactory, $stateParams, $state){
+    .controller('homeController', function($scope, StoresFactory, $stateParams){
 
         //Tamarrate di raggio
 
@@ -100,11 +100,6 @@ angular.module('routerApp')
         //$scope.stores = $scope.getStores();
 
         $scope.sortMode = 2; //0 niente, 1 alfabetico (dei nomi?), 2 per stato alfabetico
-
-        $scope.logout = function(){
-            $stateParams.session = -1;
-            $state.go('login');
-        }
 
         function fillArrays(data){
             data = data.sort(function (a, b){
