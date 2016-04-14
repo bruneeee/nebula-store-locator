@@ -15,6 +15,8 @@ angular.module('routerApp')
                         error();
                         return console.log("Errore cosa? ", err);
                     }
+                    console.log("Uo", result);
+                    console.log(result.session);
                     $state.go('home', {session: result.session});
                 });
         };
