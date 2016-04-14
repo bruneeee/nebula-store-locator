@@ -72,13 +72,16 @@ angular.module('routerApp')
 
         //Gesu' cristo
 
-        $scope.stores;
+        $scope.stores1 = [];
+        $scope.stores2 = [];
+        $scope.stores3 = [];
 
         $scope.getStores = function(){
             StoresFactory.getAll($stateParams.session, function(err, result){
                 if (err) return console.log("Errore cosa? ", err);
                 console.log("Uo", result);
-                return result;
+                fillArrays(result);
+                return true;
             })
         };
 
@@ -90,9 +93,18 @@ angular.module('routerApp')
             })
         };
 
-        $scope.stores = $scope.getStores();
-        console.log($scope.stores);
+        //$scope.stores = $scope.getStores();
 
-        //$scope.getStores();
+        function fillArrays(data){
+            $scope.stores1 = data.slice(0, 9);
+            $scope.stores2 = data.slice(10, 19);
+            $scope.stores3 = data.slice(20, 29);
+            console.log($scope.stores1);
+            console.log($scope.stores2);
+            console.log($scope.stores3);
+        }
+
+        $scope.getStores();
+        //console.log($scope.stores);
 
     });
