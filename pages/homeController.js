@@ -101,6 +101,11 @@ angular.module('routerApp')
 
         $scope.sortMode = 2; //0 niente, 1 alfabetico (dei nomi?), 2 per stato alfabetico
 
+        $scope.logout = function(){
+            $stateParams.session = -1;
+            $state.go('login');
+        }
+
         function fillArrays(data){
             data = data.sort(function (a, b){
                 if ($scope.sortMode == 1) return a.name > b.name ? 1 : a.name < b.name ? -1 : 0;
