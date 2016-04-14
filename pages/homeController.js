@@ -168,7 +168,7 @@ angular.module('routerApp')
 
         $scope.getStores();
         //console.log($scope.stores);
-        
+
 
                 var s = document.createElement("script");
                 s.type = "text/javascript";
@@ -198,7 +198,6 @@ angular.module('routerApp')
                         }, function() {
                             alert("something went wrong please contact Gesù cristo on person")
                         });
-                        $scope.caricaMarker();
                     }
                 };
                 $("head").append(s);
