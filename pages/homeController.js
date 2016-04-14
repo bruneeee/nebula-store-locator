@@ -63,6 +63,7 @@ angular.module('routerApp')
 
      function () {
          $(".divNegozi").stop().fadeIn(800);
+
          
      },
      function () {
