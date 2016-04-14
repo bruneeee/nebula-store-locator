@@ -4,8 +4,8 @@ body {
 }
 
 #homeSection {
-    background:black;
-    height:100vh;
+    background: black;
+    height: 100vh;
 }
 
 .primarySection. #homeSection {
@@ -16,13 +16,16 @@ body {
     background: url("../images/login.jpg");
     height: 100vh;
 }
-.centered{
+
+.centered {
     text-align: center;
 }
-.centered-top{
+
+.centered-top {
     margin-top: 15px;
 }
-#loginBox{
+
+#loginBox {
     width: 35%;
     border-radius: 20px;
     padding-top: 16px;
@@ -32,30 +35,54 @@ body {
     left: 33%;
     margin-top: 8%;
 }
-#socialLogin{
+
+#socialLogin {
     margin-top: 17px;
     font-size: 50px;
 }
-#socialLogin a{
-    color: rgb(65,65,65);
+
+    #socialLogin a {
+        color: rgb(65,65,65);
+    }
+
+.fb:hover {
+    color: #3B5998;
 }
-.linkTSymbol {
-    font-size:15pt;
+
+.twitter:hover {
+    color: #00aced;
 }
-#logoHome {
-    width:700px; 
-    opacity:0;
+
+.yt:hover {
+    color: #c4302b;
 }
-.navBarSpan {
-    -webkit-transition:all 0.5s ease-in-out;
-    font-size:25pt;
-    font-family:Abel;
-    text-align:center;
-    display:none;
+
+.pinterest:hover {
+    color: #C92228;
+}
+
+#returnHomeLogin {
     cursor:pointer;
 }
-   /* .navBarSpan:hover {
-        -webkit-transition:all 0.5s ease-in-out;
-        background:black;
-        color:white;
-    }*/
+
+#returnHomeLogin:hover {
+    text-decoration:underline;
+}
+
+.linkTSymbol {
+    font-size: 15pt;
+}
+
+#logoHome {
+    width: 700px;
+    opacity: 0;
+}
+
+.navBarSpan {
+    -webkit-transition: all 0.5s ease-in-out;
+    font-size: 25pt;
+    font-family: Abel;
+    text-align: center;
+    display: none;
+    cursor: pointer;
+}
