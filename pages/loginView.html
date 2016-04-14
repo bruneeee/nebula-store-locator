@@ -14,17 +14,17 @@
                 </div>
                 <div class="form-group">
                     <div class="col-xs-10 col-xs-offset-1">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="E-mail">
+                        <input type="email" class="form-control" id="inputEmail3" placeholder="E-mail" ng-model="email">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-xs-10 col-xs-offset-1">
-                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password" ng-model="password">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-xs-10 col-xs-offset-1">
-                        <button type="submit" class="btn btn-default" id="submitButtonLogin">Accedi</button>
+                        <button type="submit" class="btn btn-default" id="submitButtonLogin" ng-click="login()">Accedi</button>
                     </div>
                 </div>
             </form>
