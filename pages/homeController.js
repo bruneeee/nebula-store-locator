@@ -62,32 +62,39 @@ angular.module('routerApp')
      })
                    );
 
-       $(document).ready(
+        $(document).ready(
 
-       $("#negozi").hover(
+      $("#negozi").hover(
 
-     function () {
-         $("#gmap01").stop().hide();
-         $(".divNegozi").stop().fadeIn(800);
- 
-     },
-     function () {
-         
-     })
-                   );
+          function () {
+              $("#gmap01").addClass("animated fadeOut");
+              setInterval(function () {
+                  $(".divNegozi").addClass("animated fadeIn");
+              }, 800);
+          },
+       function () {
+           $("#gmap01").addClass("animated fadeOut");
+           setInterval(function () {
+               $(".divNegozi").stop().fadeIn(600);
+           }, 800);
+       }));
 
-       $(document).ready(
+        $(document).ready(
 
-       $("#mappa").hover(
+        $("#mappa").hover(
 
-     function () {
-         $(".divNegozi").hide();
-         $("#gmap01").stop().fadeIn(800);
-     },
-     function () {
-        
-     })
-                   );
+         function () {
+             $(".divNegozi").addClass("animated fadeOut");
+             setInterval(function () {
+                 $("#gmap01").stop().fadeIn(600);
+             }, 800);
+         },
+         function () {
+             $(".divNegozi").addClass("animated fadeOut");
+             setInterval(function () {
+                 $("#gmap01").stop().fadeIn(600);
+             }, 800);
+         }));
 
 
         //Gesu' cristo
