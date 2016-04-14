@@ -2,7 +2,7 @@ angular.module('routerApp')
     .controller('homeController', function($scope, StoresFactory, $stateParams, $state){
         
         //Tamarrate di raggio
-
+        
         $(document).ready(
 
                     function () {
@@ -16,23 +16,24 @@ angular.module('routerApp')
                             },
                             duration: 2000
                         }, 'linear');
-                        setInterval(function () {
+                        setTimeout(function () {
                             $('#logoHome').css("-webkit-transition", "all 2s ease-in-out");
                             $('#logoHome').css('width', '100px');
                         }, 1000);
 
-                        setInterval(function () {
+                        setTimeout(function () {
                             $('#homeSection').css("-webkit-transition", "all 2s ease-in-out");
                             $('#homeSection').css("background", "white")
                         }, 1600);
 
-                        setInterval(function () {
+                        setTimeout(function () {
                             $('.navBarSpan').fadeIn(500);
                         }, 2000);
 
-                        setInterval(function () {
-                            $(".divNegozi").stop().fadeIn(600);
-                        }, 2800);
+                        setTimeout(function () {
+                                $(".divNegozi").fadeIn(600);
+                            }, 2800);
+                        
 
                     });
 
@@ -62,33 +63,46 @@ angular.module('routerApp')
      })
                    );
 
-       $(document).ready(
+
+        $(document).ready(
+
+        $("#mappa").hover(
+
+         function () {
+             
+             $(".divNegozi").stop().fadeOut(500);
+             setTimeout(function () {
+                 $("#gmap01").stop().fadeIn(500);
+             }, 700);
+         },
+
+         function () {
+             $(".divNegozi").stop().fadeOut(500);
+             setTimeout(function () {
+                 $("#gmap01").stop().fadeIn(500);
+             }, 700);
+         }));
+
+        $(document).ready(
 
        $("#negozi").hover(
 
-     function () {
-         $("#gmap01").stop().hide();
-         $(".divNegozi").stop().fadeIn(800);
- 
-     },
-     function () {
-         
-     })
-                   );
+        function () {
 
-       $(document).ready(
+            $("#gmap01").stop().fadeOut(500);
+            setTimeout(function () {
+                $(".divNegozi").stop().fadeIn(500);
+            }, 700);
+        },
 
-       $("#mappa").hover(
+        function () {
+            $("#gmap01").stop().fadeOut(500);
+            setTimeout(function () {
+                $(".divNegozi").stop().fadeIn(500);
+            }, 700);
+        }));
 
-     function () {
-         $(".divNegozi").hide();
-         $("#gmap01").stop().fadeIn(800);
-     },
-     function () {
-        
-     })
-                   );
-
+       
 
         //Gesu' cristo
 
