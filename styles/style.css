@@ -112,11 +112,10 @@ body {
         cursor: pointer;
     }
 
-.imgStores {
-    margin-top:2%;
-    background:url("../images/login.jpg");
-    height:60vh;
-}
 .preSpanStoreLink {
     font-size:10pt;
+}
+.imgStore {
+    height:30vh;
+    width:75%;
 }
