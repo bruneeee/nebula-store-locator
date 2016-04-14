@@ -25,28 +25,27 @@
         </nav>
     <div class="row divNegozi" style="display:none;">
         <div class="col-xs-12">
-            <p>Scopri i nostri negozi in giro per l'Italia !</p>
-            <img src="http://jesse.it/wp-content/uploads/2015/02/showroom-8-jesse.jpg" class="center-block imgStore"/>
+            <p>Scopri i nostri negozi in giro per il mondo !</p>
+            <img src="../images/showroom.jpg" class="center-block imgStore"/>
             <div class="row" style="margin-left:100px;">
                     <div class="col-xs-3 leftStores">
-                        <span ng-repeat="x in stores">
+                        <span ng-repeat="store in stores1">
                             <i class="fa fa-angle-double-right preSpanStoreLink" aria-hidden="true" style="display:none"></i> 
-                        {{x.name}}
-                            
-                        </span><br />       
+                        {{store.name}}<br />               
+                        </span>       
                     </div>
-                    <!-- DO NOT DELETE THIS <div class="col-xs-3 middleStores">
-                        <span ng-repeat="store in stores">
-                            <i class="fa fa-angle-double-right preSpanStoreLink" aria-hidden="true" style="display:none"></i> {{store.name}}
-
+                    <div class="col-xs-3 middleStores">
+                        <span ng-repeat="store in stores2">
+                            <i class="fa fa-angle-double-right preSpanStoreLink" aria-hidden="true" style="display:none"></i> 
+                            {{store.name}}<br /> 
                         </span><br /> 
                     </div>
                 <div class="col-xs-3 rightStores">
-                       <span ng-repeat="store in stores">
-                           <i class="fa fa-angle-double-right preSpanStoreLink" aria-hidden="true" style="display:none"></i> {{store.name}}
-
-                       </span><br /> 
-                    </div> DO NOT DELETE THIS-->
+                       <span ng-repeat="store in stores3">
+                           <i class="fa fa-angle-double-right preSpanStoreLink" aria-hidden="true" style="display:none"></i> 
+                           {{store.name}}<br /> 
+                       </span>
+                    </div>
             </div>
         </div>
     </div>
@@ -54,4 +53,5 @@
 <!-- TODO LIST 
     
     buttargli 10 store per colonna in ordine alfabetico
+
     -->
