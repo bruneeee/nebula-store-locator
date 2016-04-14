@@ -8,7 +8,7 @@ angular.module('routerApp')
         $scope.password = "";
 
         $scope.login = function(){
-            alert("Login con " + $scope.email + " " + $scope.password);
+            
             LoginFactory.login($scope.email, $scope.password,
                 function(err, result) {
                     if (err) {
