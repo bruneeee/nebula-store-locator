@@ -26,30 +26,38 @@
     <div class="row divNegozi" style="display:none;">
         <div class="col-xs-12">
             <p>Scopri i nostri negozi in giro per il mondo !</p>
+            </div>
+         <div class="col-xs-6">
             <img src="images/showroom.jpg" class="center-block imgStore"/>
-            <div class="row">
+             </div>
+        <div class="col-xs-6">
+            <img src="http://jesse.it/wp-content/uploads/2015/11/chelsea-tavolini-jesse-1.jpg" class="center-block imgStore"/>
+             </div>
+            <div class="row">      
+                <div class="col-xs-2">
+                    </div>         
                     <div class="col-xs-3 leftStores">
                         <span ng-repeat="store in stores1">
                             <i class="fa fa-angle-double-right preSpanStoreLink" aria-hidden="true" style="display:none"></i> 
-                        {{getState(store)}} ({{store.name}})<br />               
+                        {{getState(store)}} ~ <b>{{store.name}}</b><br />               
                         </span>       
                     </div>
                     <div class="col-xs-3 middleStores">
                         <span ng-repeat="store in stores2">
                             <i class="fa fa-angle-double-right preSpanStoreLink" aria-hidden="true" style="display:none"></i> 
-                            {{getState(store)}} ({{store.name}})<br /> 
+                            {{getState(store)}} ~ <b>{{store.name}}</b><br />  
                         </span><br /> 
                     </div>
                 <div class="col-xs-3 rightStores">
                        <span ng-repeat="store in stores3">
                            <i class="fa fa-angle-double-right preSpanStoreLink" aria-hidden="true" style="display:none"></i> 
-                           {{getState(store)}} ({{store.name}})<br /> 
+                           {{getState(store)}} ~ <b>{{store.name}}</b><br />  
                        </span>
                     </div>
             </div>
         </div>
     </div>
-</div>
+
 <!-- TODO LIST 
     
     buttargli 10 store per colonna in ordine alfabetico

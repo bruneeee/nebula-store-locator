@@ -92,6 +92,7 @@ body {
     color: black;
     font-family: Abel;
     font-size: 18pt;
+    
 }
 
     .divNegozi p {
@@ -103,7 +104,7 @@ body {
 
 .leftStores, .rightStores, .middleStores {
     margin-top: 2%;
-    text-align: right;
+    text-align: left;
     letter-spacing: 1px;
 }
 
