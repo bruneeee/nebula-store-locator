@@ -1,15 +1,31 @@
 /**
- * Created by Mattia on 14/04/2016.
- */
-var map;
-
+* Created by Mattia on 14/04/2016.
+*/
 function initMap() {
-    var latlng = new google.maps.LatLng(-34.397, 150.644);
-    var myOptions = {
-        zoom: 8,
-        center: latlng,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    map = new google.maps.Map(document.getElementById("gmap02"),
-        myOptions);
+    var map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: -34.397, lng: 150.644},
+        zoom: 3,
+        zoomControl: true,
+        mapTypeControl: true,
+        scaleControl: true,
+        streetViewControl: true,
+        rotateControl: true,
+        fullscreenControl: true
+    });
+    var marker  = new google.maps.Marker({map:map});
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+            marker.setPosition(pos);
+            marker.setTitle("Tu sei qui");
+            map.setCenter(pos);
+        }, function() {
+            alert("something went wrong please contact Gesù cristo on person")
+        });
+    }
 }
+
