@@ -95,13 +95,31 @@ angular.module('routerApp')
 
         //$scope.stores = $scope.getStores();
 
+        $scope.sortMode = 2; //0 niente, 1 alfabetico (dei nomi?), 2 per stato alfabetico
+
         function fillArrays(data){
-            $scope.stores1 = data.slice(0, 9);
-            $scope.stores2 = data.slice(10, 19);
-            $scope.stores3 = data.slice(20, 29);
+            data = data.sort(function (a, b){
+                if ($scope.sortMode == 1) return a.name > b.name ? 1 : a.name < b.name ? -1 : 0;
+                if ($scope.sortMode == 2) {
+                    var ad1 = getLocationString(a);
+                    var ad2 = getLocationString(b);
+                    return ad1 > ad2 ? 1 : ad1 < ad2 ? -1 : 0;
+                }
+            });
+            $scope.stores1 = data.slice(0, 10);
+            $scope.stores2 = data.slice(10, 20);
+            $scope.stores3 = data.slice(20, 30);
             console.log($scope.stores1);
             console.log($scope.stores2);
             console.log($scope.stores3);
+            console.log(getLocationString(data[0]));
+        }
+
+        function getLocationString(storeObj){
+            var s = storeObj.address.split(",");
+            console.log(s);
+            var sortedAdress = s[0].split(" ").slice((1)).toString().replace(",", " ") + " " + s[0].split(" ")[0];
+            return (s[2] + s[1] + " " + sortedAdress).slice(1);
         }
 
         $scope.getStores();
