@@ -34,12 +34,39 @@ angular.module('routerApp')
         $(".navBarSpan").hover(
 
       function () {
+          $(".preLinkNavBar", this).stop().fadeIn(250);
           $(this).addClass("hvr-underline-from-center");
       },
       function () {
+          $(".preLinkNavBar", this).stop().fadeOut(250);
           $(this).addClass("hvr-underline-from-center");
       })
                     );
+
+        $(document).ready(
+
+     $(".leftStores span, .rightStores span, .middleStores span").hover(
+
+     function () {
+         $(".preSpanStoreLink", this).stop().fadeIn(300);
+     },
+     function () {
+         $(".preSpanStoreLink",this).stop().fadeOut(300);
+     })
+                   );
+
+        $(document).ready(
+
+       $("#negozi").hover(
+
+     function () {
+         $(".divNegozi").stop().fadeIn(800);
+         
+     },
+     function () {
+         
+     })
+                   );
 
                   
 

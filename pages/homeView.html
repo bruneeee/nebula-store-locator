@@ -7,19 +7,53 @@
     </div>
 
     <nav class="row">
-            <span class="col-xs-4 navBarSpan" ui-sref="login">AREA RISERVATA</span>
-            <span class="col-xs-4 navBarSpan">NEGOZI</span>
-            <span class="col-xs-4 navBarSpan">CHI SIAMO</span>
+            <span class="col-xs-4 navBarSpan" ui-sref="login">
+                <span class="preLinkNavBar" style="display:none;">- </span>
+                AREA RISERVATA
+                <span class="preLinkNavBar" style="display:none;"> -</span>
+            </span>
+            <span class="col-xs-4 navBarSpan" id="negozi">
+                <span class="preLinkNavBar" style="display:none;">- </span>
+                NEGOZI
+                <span class="preLinkNavBar" style="display:none;"> -</span>
+            </span>
+            <span class="col-xs-4 navBarSpan">
+                <span class="preLinkNavBar" style="display:none;">- </span>
+                CHI SIAMO
+                <span class="preLinkNavBar" style="display:none;"> -</span>
+            </span>
         </nav>
-    <div class="row">
-        <div class="col-xs-6">
-            <!-- add half stores -->
-        </div>
-        <div class="col-xs-6">
-            <!-- add half stores -->
+    <div class="row divNegozi" style="display:none;">
+        <div class="col-xs-12">
+            <p>Scopri i nostri negozi in giro per l'Italia !</p>
+            <div class="row" style="margin-left:100px;">
+                    <div class="col-xs-3 leftStores">
+                        <span><i class="fa fa-angle-double-right preSpanStoreLink" aria-hidden="true" style="display:none"></i> Milano</span><br />
+                        <span><i class="fa fa-angle-double-right preSpanStoreLink" aria-hidden="true" style="display:none"></i> Milano</span><br />
+                        <span>Milano</span><br />
+                        <span>Milano</span><br />
+                    </div>
+                    <div class="col-xs-3 middleStores">
+                        <span><i class="fa fa-angle-double-right preSpanStoreLink" aria-hidden="true" style="display:none"></i> Ancona</span><br />
+                        <span><i class="fa fa-angle-double-right preSpanStoreLink" aria-hidden="true" style="display:none"></i> Ancona</span><br />
+                        <span>Ancona</span><br />
+                        <span>Ancona</span><br />
+                    </div>
+                <div class="col-xs-3 rightStores">
+                        <span><i class="fa fa-angle-double-right preSpanStoreLink" aria-hidden="true" style="display:none"></i> Ancona</span><br />
+                        <span><i class="fa fa-angle-double-right preSpanStoreLink" aria-hidden="true" style="display:none"></i> Ancona</span><br />
+                        <span>Ancona</span><br />
+                        <span>Ancona</span><br />
+                    </div>
+            </div>
         </div>
     </div>
-    </div>
-<!-- TODO LIST
-    Add gold div with store links, appearing hovering 'negozi' span
-     -->
+</div>
+<!-- TODO LIST 
+    
+    Put store links into a gold dive , hovering the Negozi Span and keep visible while hovering the div too.
+    Make xs-4 to display all the stores and then in the last xs-4 the image of the store while hovering the store span.
+    Near the span will appear linkTSymbols and flash hover effect - font-weight     
+    The span are order by Alphaphetical mode, fanculo come si dice
+    P con scritto scopri i nostri negozi in giro per l'italia
+    -->
