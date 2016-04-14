@@ -1,6 +1,5 @@
 angular.module('routerApp')
     .controller('detailsController', function($scope, $stateParams, StoresFactory){
-        $scope.message = 'Ti trovi nella pagina dettagli.';
 
         $scope.store = {};
 
