@@ -214,7 +214,7 @@ angular.module('routerApp')
 
         var s = document.createElement("script");
         s.type = "text/javascript";
-        s.src = "http://maps.google.com/maps/api/js?v=3&sensor=false&callback=initMap";
+        s.src = "http://maps.google.com/maps/api/js?v=3&sensor=false&libraries=geometry&callback=initMap";
         window.initMap = function () {
             map = new google.maps.Map(document.getElementById('map'), {
                 center: { lat: -34.397, lng: 150.644 },
@@ -233,7 +233,6 @@ angular.module('routerApp')
                     map.panTo(marker.position);
                 }
             })(marker));
-            centerMarker = marker;
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) {
                     var pos = {
@@ -242,9 +241,9 @@ angular.module('routerApp')
                     };
                     marker.setPosition(pos);
                     marker.setTitle("Tu sei qui");
-                    google.maps.event.trigger(map, 'resize');
                     map.setCenter(pos);
-                    map.panTo(pos);
+                    centerMarker = marker;
+                    //map.panTo(pos);
                 }, function () {
                     alert("something went wrong please contact Gesù cristo on person")
                 });
@@ -254,7 +253,7 @@ angular.module('routerApp')
             console.log(map);
 
             mapLoaded = true;
-            map.panTo(marker.position);
+            //map.panTo(marker.position);
             addStoreMarkers();
         };
         $("head").append(s);
@@ -263,7 +262,7 @@ angular.module('routerApp')
             if (!mapLoaded || !storesLoaded) return;
             console.log("Cristo!");
             var bounds = new google.maps.LatLngBounds();
-            map.setTilt(45);
+            //map.setTilt(45);
             var markers = obtainMarkersArray();
             var infoWindowsContent = obtainWindowInfoArray();
             var infoWindow = new google.maps.InfoWindow(), marker;
@@ -284,13 +283,14 @@ angular.module('routerApp')
                 })(marker, i));
                 //map.fitBounds(bounds);
             }
-            map.panTo(centerMarker.position);
+            //map.panTo(centerMarker.position);
 
 
             /*var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
                 this.setZoom(14);
                 google.maps.event.removeListener(boundsListener);
             });*/
+            //$scope.findNearestStore();
         }
 
         function obtainMarkersArray() {
@@ -328,5 +328,31 @@ angular.module('routerApp')
                 }
             });
         }
+
+        $scope.findNearestStore = function(){
+            var markers = obtainMarkersArray();
+            var lowerMarker;
+            var lowerDistance;
+            var distance;
+            for (var i = 0; i < markers.length; i++){
+                if (i == 0){
+                    lowerMarker = markers[0];
+                    lowerDistance = getDistanceBetweenMarkers(centerMarker, markers[0]);
+                }
+                else {
+                    distance = getDistanceBetweenMarkers(centerMarker, markers[i]);
+                    if (distance < lowerDistance){
+                        lowerMarker = markers[i];
+                        lowerDistance = distance;
+                    }
+                }
+            }
+            map.panTo(lowerMarker.position);
+        }
+
+        function getDistanceBetweenMarkers(a, b){
+            return google.maps.geometry.spherical.computeDistanceBetween(a.position, b.position);
+        }
+
 
     });
