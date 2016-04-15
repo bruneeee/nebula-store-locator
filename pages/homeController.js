@@ -208,6 +208,7 @@ angular.module('routerApp')
         //console.log($scope.stores);
 
         var map = {};
+        var centerMarker;
         var mapLoaded = false;
         var storesLoaded = false;
 
@@ -217,7 +218,7 @@ angular.module('routerApp')
         window.initMap = function () {
             map = new google.maps.Map(document.getElementById('map'), {
                 center: { lat: -34.397, lng: 150.644 },
-                zoom: 15,
+                zoom: 10,
                 zoomControl: true,
                 mapTypeControl: true,
                 scaleControl: true,
@@ -227,6 +228,12 @@ angular.module('routerApp')
                 mapTypeId: 'roadmap'
             });
             var marker = new google.maps.Marker({ map: map });
+            google.maps.event.addListener(marker, 'click', (function (marker) {
+                return function () {
+                    map.panTo(marker.position);
+                }
+            })(marker));
+            centerMarker = marker;
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) {
                     var pos = {
@@ -235,7 +242,9 @@ angular.module('routerApp')
                     };
                     marker.setPosition(pos);
                     marker.setTitle("Tu sei qui");
+                    google.maps.event.trigger(map, 'resize');
                     map.setCenter(pos);
+                    map.panTo(pos);
                 }, function () {
                     alert("something went wrong please contact Gesù cristo on person")
                 });
@@ -243,7 +252,9 @@ angular.module('routerApp')
             
             console.log("Mappa caricata:");
             console.log(map);
+
             mapLoaded = true;
+            map.panTo(marker.position);
             addStoreMarkers();
         };
         $("head").append(s);
@@ -268,10 +279,14 @@ angular.module('routerApp')
                     return function () {
                         infoWindow.setContent(infoWindowsContent[i][0]);
                         infoWindow.open(map, marker);
+                        map.panTo(marker.position);
                     }
                 })(marker, i));
-                map.fitBounds(bounds);
+                //map.fitBounds(bounds);
             }
+            map.panTo(centerMarker.position);
+
+
             /*var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
                 this.setZoom(14);
                 google.maps.event.removeListener(boundsListener);
@@ -313,4 +328,5 @@ angular.module('routerApp')
                 }
             });
         }
+
     });

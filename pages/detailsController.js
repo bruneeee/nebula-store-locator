@@ -1,5 +1,5 @@
 angular.module('routerApp')
-    .controller('detailsController', function($scope, $stateParams, StoresFactory){
+    .controller('detailsController', function($scope, $stateParams, StoresFactory, $state){
 
         $scope.store = {};
 
@@ -14,6 +14,10 @@ angular.module('routerApp')
 
         $scope.getState = function (storeObj) {
             return storeObj.address.split(",")[2];
+        }
+
+        $scope.goToHome = function(){   //<---------------- usa questa per tornare alla home
+            $state.go('home', {session: $stateParams.session});
         }
         
         $scope.getStore();
