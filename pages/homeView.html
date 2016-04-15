@@ -52,13 +52,13 @@
                         </span>       
                     </div>
                     <div class="col-xs-3 middleStores">
-                        <span ng-repeat="store in stores2">
+                        <span ng-repeat="store in stores2" ng-click="goToDetails(store)">
                             <i class="fa fa-angle-double-right preSpanStoreLink" aria-hidden="true" style="display:none"></i> 
                             {{getState(store)}} ~ <b>{{store.name}}</b><br />  
                         </span><br /> 
                     </div>
                 <div class="col-xs-3 rightStores">
-                       <span ng-repeat="store in stores3">
+                       <span ng-repeat="store in stores3" ng-click="goToDetails(store)">
                            <i class="fa fa-angle-double-right preSpanStoreLink" aria-hidden="true" style="display:none"></i> 
                            {{getState(store)}} ~ <b>{{store.name}}</b><br />  
                        </span>

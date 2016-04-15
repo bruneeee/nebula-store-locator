@@ -5,7 +5,40 @@
         </div>
     </div>
     <div class="row">
-        <h1 class="col-xs-12">{{getState(store)}} Store</h1>
-        <span>{{store.name}} - {{store.address}}</span>
+         <span class="col-xs-12 backHome">
+                Torna indietro <i class="fa fa-home" aria-hidden="true"></i>
+            </span>
+        <h1 class="col-xs-12 storeNameDetail">
+            {{getState(store)}} Store
+            </h1>
+           
     </div>
+    <div class="row">
+        <span><b>{{store.name}}</b> - {{store.address}}</span>
+        <img src="{{store.thumbnail}}" />
     </div>
+
+    <div class="row">
+        <article class="col-xs-6 articleDetail">
+            {{store.description}}
+            <hr />
+            <div class="infoElement">
+
+            <b>Apertura : </b> <span>{{store.open_date}}</span><br />
+            <b>Telefono : </b> <span>{{store.phone}}</span><br />
+            <b>Sales Person : </b> <span>{{store.sales_person.first}} {{store.sales_person.last}}</span> |  
+            <b>E-mail : </b> <span>{{store.sales_person.email}}</span> <br />  
+            <b>Prodotti :</b> <span ng-repeat="p in store.products">-{{p.name}} </span> <br />
+            <b>Tags : </b> <i ng-repeat="t in store.tags">{{t}} | </i>
+            </div>
+        </article>
+        <img src="{{store.featured_image}}"
+            class="col-xs-6" style="margin-top:1%" />
+    </div>
+</div>
+
+<!--TODO LIST 
+    Luca fammi il return home funzionante con la session
+    Infine fare il logout e GG
+    E la mappa -.-
+    -->
