@@ -9,7 +9,7 @@ body {
 }
 
 #detailSection {
-    background:white;
+    background: white;
 }
 
 .primarySection. #homeSection, #detailSection {
@@ -18,8 +18,8 @@ body {
 
 #loginSection {
     background: url("../images/login.jpg") no-repeat;
-    height:100vh;
-    background-size:cover;
+    height: 100vh;
+    background-size: cover;
 }
 
 .centered {
@@ -78,6 +78,10 @@ body {
     font-size: 15pt;
 }
 
+.logo {
+    cursor: pointer;
+}
+
 #logoHome {
     width: 50%;
     opacity: 0;
@@ -98,12 +102,12 @@ body {
     font-size: 13pt;
 }
 
-    p {
-        margin-top:2%;
-        text-align:center;
-        font-family:Jura;
-        font-size:50pt;
-    }
+p {
+    margin-top: 2%;
+    text-align: center;
+    font-family: Jura;
+    font-size: 50pt;
+}
 
 .leftStores, .rightStores, .middleStores {
     margin-top: 2%;
@@ -117,52 +121,65 @@ body {
     }
 
 .preSpanStoreLink {
-    font-size:10pt;
-}
-.imgStore {
-    height:30vh;
-    width:75%;
+    font-size: 10pt;
 }
 
-.no_padding{
+.imgStore {
+    height: 30vh;
+    width: 75%;
+}
+
+.no_padding {
     padding: 0 !important;
 }
-.no_margin{
+
+.no_margin {
     margin: 0 !important;
 }
-.row{
+
+.row {
     margin-right: 0 !important;
 }
 
 #map {
-    height:55vh;
-    margin-left:15px;
-    width:100%;
+    height: 55vh;
+    margin-left: 5px;
+    width: 100%;
 }
 
 .storeNameDetail {
-    border-bottom:solid 1px black;
-    
+    border-bottom: solid 1px black;
 }
 
 .articleDetail {
-    margin-top:1%;
-    font-size:15pt;
-    background:rgba(218, 165, 32,0.8);
-    min-height:547px;
-    padding-top:15px;
+    margin-top: 1%;
+    font-size: 15pt;
+    background: rgba(218, 165, 32, 0.8);
+    min-height: 547px;
+    padding-top: 15px;
 }
 
 hr {
-    border:solid 1px black;
+    border: solid 1px black;
 }
 
 .backHome {
-    text-align:right;
-    cursor:pointer;
+    text-align: right;
+    cursor: pointer;
 }
 
 .articleDetail .infoElement {
-    font-size:13pt;
-    margin-top:1%;
+    font-size: 13pt;
+    margin-top: 1%;
+}
+
+.infoElement div:nth-child(odd) {
+    background: rgb(238,232,170);
+}
+
+.contactInfo {
+    border-top: solid 1px black;
+    text-align: center;
+    font-size: 10pt;
+    font-weight: bold;
 }
