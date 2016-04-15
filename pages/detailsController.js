@@ -15,5 +15,6 @@ angular.module('routerApp')
         $scope.getState = function (storeObj) {
             return storeObj.address.split(",")[2];
         }
+
         $scope.getStore();
     });

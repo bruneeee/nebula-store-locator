@@ -27,7 +27,9 @@
      <div class="row" id="gmap01" style="display:none;"> <!-- DIV DELLA MAPPA PER LA GEOLOCALIZZAZIONE -->
         <div class="col-xs-12">
             <p>Scopri i nostri negozi in giro per il mondo !</p>
-            <div id="map" ></div>
+            
+                <div id="map"></div>
+              
         </div>
      </div>
     <div class="row divNegozi" style="display:none;"> <!-- DIV NEGOZI NEL MONDO -->
@@ -44,7 +46,7 @@
                 <div class="col-xs-2">
                     </div>         
                     <div class="col-xs-3 leftStores">
-                        <span ng-repeat="store in stores1">
+                        <span ng-repeat="store in stores1" ng-click="{{goToDetails(store)}}">
                             <i class="fa fa-angle-double-right preSpanStoreLink" aria-hidden="true" style="display:none"></i> 
                         {{getState(store)}} ~ <b>{{store.name}}</b><br />               
                         </span>       
