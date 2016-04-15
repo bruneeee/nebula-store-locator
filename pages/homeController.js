@@ -178,7 +178,6 @@ angular.module('routerApp')
         s.type = "text/javascript";
         s.src  = "http://maps.google.com/maps/api/js?v=3&sensor=false&callback=initMap";
         window.initMap = function () {
-
             map = new google.maps.Map(document.getElementById('map'), {
                 center: {lat: -34.397, lng: 150.644},
                 zoom: 5,
@@ -204,6 +203,7 @@ angular.module('routerApp')
                     alert("something went wrong please contact Gesù cristo on person")
                 });
             }
+            google.maps.event.trigger(map, "resize");
             console.log("Mappa caricata:");
             console.log(map);
             mapLoaded = true;
@@ -218,7 +218,7 @@ angular.module('routerApp')
             map.setTilt(45);
             var markers = obtainMarkersArray();
             var infoWindowsContent = obtainWindowInfoArray();
-            var infoWindow = new google.maps.InfoWindow(), marker, i;
+            var infoWindow = new google.maps.InfoWindow(), marker;
             for (var i = 0; i < markers.length; i++){
                 var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
                 bounds.extend(position);
@@ -246,6 +246,8 @@ angular.module('routerApp')
             $scope.stores1.concat($scope.stores2).concat($scope.stores3).forEach(function(x){
                 var m = [];
                 m.push(x.address);
+                console.log(x.address);
+                console.log(getLanLongByAddress(x.address));
                 m.push(x.latitude);
                 m.push(x.longitude);
                 array.push(m);
@@ -260,5 +262,18 @@ angular.module('routerApp')
                 array.push(m);
             })
             return array;
+        }
+
+        function getLanLongByAddress(add){
+            var geocoder = new google.maps.Geocoder();
+            geocoder.geocode({'address': add}, function(results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    console.log("Ma scusa eh " + add);
+                    return results[0].geometry.location;
+                }
+                else {
+                    console.log("Errore cosa? " + status + " " + add);
+                }
+            });
         }
     });
