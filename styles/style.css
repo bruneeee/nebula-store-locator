@@ -74,6 +74,14 @@ body {
             color: white;
         }
 
+.footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    
+}
+
 #returnHomeLogin {
     cursor: pointer;
 }
@@ -150,7 +158,7 @@ p {
 }
 
 #map {
-    height: 55vh;
+    height: 56vh;
     width: 99%;
     margin-left: 1%;
 }
