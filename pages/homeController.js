@@ -178,6 +178,7 @@ angular.module('routerApp')
         s.type = "text/javascript";
         s.src  = "http://maps.google.com/maps/api/js?v=3&sensor=false&callback=initMap";
         window.initMap = function () {
+
             map = new google.maps.Map(document.getElementById('map'), {
                 center: {lat: -34.397, lng: 150.644},
                 zoom: 5,
@@ -186,7 +187,8 @@ angular.module('routerApp')
                 scaleControl: true,
                 streetViewControl: true,
                 rotateControl: true,
-                fullscreenControl: true
+                fullscreenControl: true,
+                mapTypeId: 'roadmap'
             });
             var marker = new google.maps.Marker({map:map});
             if (navigator.geolocation) {
