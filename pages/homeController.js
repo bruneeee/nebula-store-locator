@@ -215,7 +215,7 @@ angular.module('routerApp')
             var bounds = new google.maps.LatLngBounds();
             map.setTilt(45);
             var markers = obtainMarkersArray();
-            var infoWindows = obtainWindowInfoArray();
+            var infoWindowsContent = obtainWindowInfoArray();
             var infoWindow = new google.maps.InfoWindow(), marker, i;
             for (var i = 0; i < markers.length; i++){
                 var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
@@ -227,16 +227,16 @@ angular.module('routerApp')
                 });
                 google.maps.event.addListener(marker, 'click', (function(marker, i) {
                     return function() {
-                        infoWindow.setContent(infoWindowContent[i][0]);
+                        infoWindow.setContent(infoWindowsContent[i][0]);
                         infoWindow.open(map, marker);
                     }
                 })(marker, i));
                 map.fitBounds(bounds);
             }
-            var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
+            /*var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
                 this.setZoom(14);
                 google.maps.event.removeListener(boundsListener);
-            });
+            });*/
         }
 
         function obtainMarkersArray(){
