@@ -28,9 +28,9 @@
             <div><b>Apertura : </b> <span>{{store.open_date}}</span><br /></div>
             <div><b>Telefono : </b> <span>{{store.phone}}</span><br /></div>
             <div><b>Sales Person : </b> <span>{{store.sales_person.first}} {{store.sales_person.last}}</span> |  
-            <b>E-mail : </b> <span>{{store.sales_person.email}}</span> <br />  </div>
-            <div><b>Prodotti :</b> <span ng-repeat="p in store.products">{{p.name}} | </span> </div>
+            <b><i class="fa fa-envelope" aria-hidden="true"></i> </b> <span>{{store.sales_person.email}}</span> <br />  </div>
             <div><b>Tags : </b> <i ng-repeat="t in store.tags">+{{t}} </i> </div>
+            <div><b>Prodotti :</b><ul> <li ng-repeat="p in store.products">{{p.name}} <b class="priceElement">{{p.price}}$</b></li> </ul></div>
             </div>
         </article>
         <img src="{{store.featured_image}}"

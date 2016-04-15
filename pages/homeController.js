@@ -35,8 +35,29 @@ angular.module('routerApp')
                            
                         }, 2800);
 
+                        setInterval(function () {
+                            $(".divSocial").fadeIn(600);
+
+                        }, 3200);
+
 
                     });
+
+       $(document).ready(
+
+       $(".divSocial a:nth-child(1), .divSocial a:nth-child(2), .divSocial a:nth-child(3), .divSocial a:nth-child(4)").hover(
+
+     function () {
+         $("i", this).css("color", "white");
+         $("i", this).css("-webkit-transition", "all 0.5s ease-in-out");
+         $("i", this).css("transform","translate(0,+50px)");
+     },
+     function () {
+         $("i", this).css("color", "initial");
+         $("i", this).css("-webkit-transition", "all 0.5s ease-in-out");
+         $("i", this).css("transform", "translate(0,0px)");
+     })
+                   );
 
         $(document).ready(
 
@@ -64,12 +85,12 @@ angular.module('routerApp')
      })
                    );
 
-
         $(document).ready(
 
         $("#mappa").hover(
 
          function () {
+             
              google.maps.event.trigger(map, 'resize');
              $(".divNegozi").stop().fadeOut(500);
              setTimeout(function () {
@@ -90,7 +111,7 @@ angular.module('routerApp')
        $("#negozi").hover(
 
         function () {
-
+            
             $("#gmap01").stop().fadeOut(500);
             setTimeout(function () {
                 $(".divNegozi").stop().fadeIn(500);
@@ -103,6 +124,20 @@ angular.module('routerApp')
                 $(".divNegozi").stop().fadeIn(500);
             }, 700);
         }));
+
+        $(document).ready(
+
+      $("#gmap01").hover(
+
+       function () {
+           google.maps.event.trigger(map, 'resize');
+           
+       },
+
+       function () {
+           google.maps.event.trigger(map, 'resize');
+
+       }));
 
 
 
@@ -182,7 +217,7 @@ angular.module('routerApp')
         window.initMap = function () {
             map = new google.maps.Map(document.getElementById('map'), {
                 center: { lat: -34.397, lng: 150.644 },
-                zoom: 9,
+                zoom: 15,
                 zoomControl: true,
                 mapTypeControl: true,
                 scaleControl: true,
