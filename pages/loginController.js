@@ -1,5 +1,5 @@
 angular.module('routerApp')
-    .controller('loginController', function(LoginFactory, $scope, $state){
+    .controller('loginController', function(LoginFactory, $scope, $state, $sessionStorage){
 
         //$scope.email = "tsac-2015@tecnicosuperiorekennedy.it";
         //$scope.password = "tsac";
@@ -17,6 +17,7 @@ angular.module('routerApp')
                     }
                     console.log("Uo", result);
                     console.log(result.session);
+                    $sessionStorage.jesseSession = result.session;
                     $state.go('home', {session: result.session});
                 });
         };

@@ -1,5 +1,5 @@
 angular.module('routerApp')
-    .controller('homeController', function ($scope, StoresFactory, $stateParams, $state) {
+    .controller('homeController', function ($scope, StoresFactory, $stateParams, $state, $sessionStorage) {
 
         //Tamarrate di raggio
 
@@ -150,7 +150,7 @@ angular.module('routerApp')
         $scope.getStores = function () {
             StoresFactory.getAll($stateParams.session, function (err, result) {
                 if (err) return console.log("Errore cosa? ", err);
-                console.log("Uo", result);
+                //console.log("Uo", result);
                 fillArrays(result);
                 return true;
             })
@@ -159,7 +159,7 @@ angular.module('routerApp')
         $scope.getStore = function (guid) {
             StoresFactory.get($stateParams.session, guid, function (err, result) {
                 if (err) return console.log("Errore cosa? ", err);
-                console.log("Uo", result);
+                //console.log("Uo", result);
                 return result;
             })
         };
@@ -171,6 +171,11 @@ angular.module('routerApp')
         $scope.goToDetails = function (storeObj) {//<---- usare questo per passare ai dettagli
             var id = storeObj.guid;
             $state.go('details', { guid: id, session: $stateParams.session });
+        }
+
+        $scope.logout = function(){//<---- usare questo per il logout
+            $sessionStorage.jesseSession = -1;
+            $state.go('login');
         }
 
         //$scope.stores = $scope.getStores();
@@ -189,9 +194,9 @@ angular.module('routerApp')
             $scope.stores1 = data.slice(0, 10);
             $scope.stores2 = data.slice(10, 20);
             $scope.stores3 = data.slice(20, 30);
-            console.log($scope.stores1);
-            console.log($scope.stores2);
-            console.log($scope.stores3);
+            //console.log($scope.stores1);
+            //console.log($scope.stores2);
+            //console.log($scope.stores3);
             storesLoaded = true;
             addStoreMarkers();
         }
@@ -211,10 +216,11 @@ angular.module('routerApp')
         var centerMarker;
         var mapLoaded = false;
         var storesLoaded = false;
+        var storeMarkers;
 
-        var s = document.createElement("script");
+        var s = document.createElement("script");   //TODO sapete cosa questo sarebbe da caricare una sola volta, sclera ma sembra fungere lo stesso
         s.type = "text/javascript";
-        s.src = "http://maps.google.com/maps/api/js?v=3&sensor=false&libraries=geometry&callback=initMap";
+        s.src = "http://maps.google.com/maps/api/js?sensor=false&v=3&libraries=geometry&&callback=initMap";
         window.initMap = function () {
             map = new google.maps.Map(document.getElementById('map'), {
                 center: { lat: -34.397, lng: 150.644 },
@@ -243,29 +249,30 @@ angular.module('routerApp')
                     marker.setTitle("Tu sei qui");
                     map.setCenter(pos);
                     centerMarker = marker;
+                    map.panBy(-600, -400);
                     //map.panTo(pos);
                 }, function () {
                     alert("something went wrong please contact Gesù cristo on person")
                 });
             }
-            
             console.log("Mappa caricata:");
-            console.log(map);
-
+            //console.log(map);
             mapLoaded = true;
             //map.panTo(marker.position);
+
             addStoreMarkers();
         };
         $("head").append(s);
 
         function addStoreMarkers() {
             if (!mapLoaded || !storesLoaded) return;
-            console.log("Cristo!");
+            //console.log("Cristo!");
             var bounds = new google.maps.LatLngBounds();
             //map.setTilt(45);
             var markers = obtainMarkersArray();
             var infoWindowsContent = obtainWindowInfoArray();
             var infoWindow = new google.maps.InfoWindow(), marker;
+            storeMarkers = [];
             for (var i = 0; i < markers.length; i++) {
                 var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
                 bounds.extend(position);
@@ -274,6 +281,7 @@ angular.module('routerApp')
                     map: map,
                     title: markers[i][0]
                 });
+                storeMarkers.push(marker);
                 google.maps.event.addListener(marker, 'click', (function (marker, i) {
                     return function () {
                         infoWindow.setContent(infoWindowsContent[i][0]);
@@ -291,6 +299,7 @@ angular.module('routerApp')
                 google.maps.event.removeListener(boundsListener);
             });*/
             //$scope.findNearestStore();
+
         }
 
         function obtainMarkersArray() {
@@ -298,8 +307,8 @@ angular.module('routerApp')
             $scope.stores1.concat($scope.stores2).concat($scope.stores3).forEach(function (x) {
                 var m = [];
                 m.push(x.address);
-                console.log(x.address);
-                console.log(getLanLongByAddress(x.address));
+                //console.log(x.address);
+                //console.log(getLanLongByAddress(x.address));
                 m.push(x.latitude);
                 m.push(x.longitude);
                 array.push(m);
@@ -307,7 +316,7 @@ angular.module('routerApp')
             return array;
         }
 
-        function obtainWindowInfoArray() {
+        function obtainWindowInfoArray() {//TODO qui la descrizione con il bottone per andare ai dettagli
             var array = [];
             $scope.stores1.concat($scope.stores2).concat($scope.stores3).forEach(function (x) {
                 var m = [x.name];
@@ -316,33 +325,33 @@ angular.module('routerApp')
             return array;
         }
 
-        function getLanLongByAddress(add) {
+        function getLanLongByAddress(add) {//TODO delay tra le richieste o da OVER_QUERY_LIMIT ma che poi sta roba neanche serve
             var geocoder = new google.maps.Geocoder();
             geocoder.geocode({ 'address': add }, function (results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
-                    console.log("Ma scusa eh " + add);
+                    //console.log("Ma scusa eh " + add);
                     return results[0].geometry.location;
                 }
                 else {
-                    console.log("Errore cosa? " + status + " " + add);
+                    //console.log("Errore cosa? " + status + " " + add);
                 }
             });
         }
 
         $scope.findNearestStore = function(){
-            var markers = obtainMarkersArray();
             var lowerMarker;
             var lowerDistance;
             var distance;
-            for (var i = 0; i < markers.length; i++){
+            console.log(storeMarkers);
+            for (var i = 0; i < storeMarkers.length; i++){
                 if (i == 0){
-                    lowerMarker = markers[0];
-                    lowerDistance = getDistanceBetweenMarkers(centerMarker, markers[0]);
+                    lowerMarker = storeMarkers[0];
+                    lowerDistance = getDistanceBetweenMarkers(centerMarker, storeMarkers[0]);
                 }
                 else {
-                    distance = getDistanceBetweenMarkers(centerMarker, markers[i]);
+                    distance = getDistanceBetweenMarkers(centerMarker, storeMarkers[i]);
                     if (distance < lowerDistance){
-                        lowerMarker = markers[i];
+                        lowerMarker = storeMarkers[i];
                         lowerDistance = distance;
                     }
                 }
@@ -354,5 +363,18 @@ angular.module('routerApp')
             return google.maps.geometry.spherical.computeDistanceBetween(a.position, b.position);
         }
 
+        function checkValidSession(){
+            return $sessionStorage.jesseSession == $stateParams.session;
+        }
 
+        function allowSession(){
+            console.log("Check sessione" + " " + $sessionStorage.jesseSession + " " + $stateParams.session);
+            if (!checkValidSession()){
+                alert("Sessione scaduta, ritornerai alla pagina di login");
+                //TODO scrivere modali ultratamarri o non so cosa
+                $state.go('login');
+            }
+        }
+
+        allowSession();
     });
