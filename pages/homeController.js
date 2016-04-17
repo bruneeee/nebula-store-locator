@@ -252,7 +252,7 @@ angular.module('routerApp')
                     map.panBy(-600, -400);
                     //map.panTo(pos);
                 }, function () {
-                    alert("something went wrong please contact Gesù cristo on person")
+                    alert("mappa non caricata")
                 });
             }
             console.log("Mappa caricata:");
@@ -370,7 +370,7 @@ angular.module('routerApp')
         function allowSession(){
             console.log("Check sessione" + " " + $sessionStorage.jesseSession + " " + $stateParams.session);
             if (!checkValidSession()){
-                alert("Sessione scaduta, ritornerai alla pagina di login");
+                
                 //TODO scrivere modali ultratamarri o non so cosa
                 $state.go('login');
             }

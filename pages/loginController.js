@@ -7,7 +7,28 @@ angular.module('routerApp')
         $scope.email = "";
         $scope.password = "";
 
-        $scope.login = function(){
+        $(document).ready(
+
+                  function () {
+
+                      $("#submitButtonLogin").click(function () {
+                          $("#loader").fadeIn(500);
+
+                      })
+                  });
+
+
+        $scope.login = function () {
+
+            $(document).ready(
+
+                 function () {
+
+                     $("#submitButtonLogin").click(function () {
+                         $("#loader").fadeIn(500);
+                         $("#alertHumanError").hide(10);
+                     })
+                 });
             
             LoginFactory.login($scope.email, $scope.password,
                 function(err, result) {
@@ -18,13 +39,18 @@ angular.module('routerApp')
                     console.log("Uo", result);
                     console.log(result.session);
                     $sessionStorage.jesseSession = result.session;
+                    
                     $state.go('home', {session: result.session});
                 });
         };
 
         function error(){
             //TODO scrivere modali ultratamarri o non so cosa
-            alert("Email o password errati");
+            setTimeout(function () {
+                $("#alertHumanError").fadeIn(500)
+            }, 500);
+
+            $("#loader").fadeOut(500);
         }
         //$scope.login();
     });

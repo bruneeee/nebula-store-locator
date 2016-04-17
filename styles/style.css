@@ -216,3 +216,8 @@ ul {
 .trovaNegozio {
     margin-top: -1%;
 }
+
+#alertHumanError {
+    color:red;
+    margin-bottom:3%;
+}

@@ -3,6 +3,17 @@ angular.module('routerApp')
 
         $scope.store = {};
 
+        $(document).ready(
+
+                   function () {
+
+                       setTimeout(function () {
+                           $("#detailSection").fadeIn(600);
+
+                       }, 500);
+
+                   });
+
         $scope.getStore = function(){
             StoresFactory.get($stateParams.session, $stateParams.guid, function(err, result){
                 if (err) return console.log("Errore cosa? ", err);
