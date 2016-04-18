@@ -25,7 +25,8 @@ storeLocator.config(function($stateProvider, $urlRouterProvider) {
   })
   .state('login', {
     url: '/login',
-    templateUrl: 'pages/loginView.html',
+    templateUrl: 'view/loginView.html',
     controller: 'loginController'
-  })
+  });
+
 });
