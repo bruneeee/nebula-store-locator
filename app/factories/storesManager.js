@@ -62,18 +62,21 @@ storeLocator.factory("storesManager", function($http,sessionManager,RequestURL) 
             })
         },
 
-        get : function(guid,completionHandler){
+        get : function(guid,completionHandler) {
             $http({
-                url: RequestURL.datasource.protocol+"://"+RequestURL.datasource.host + "/api/v2/stores/" + guid,
+                url: RequestURL.datasource.protocol + "://" + RequestURL.datasource.host + "/api/v2/stores/" + guid,
                 method: "GET",
                 headers: {"x-bitrace-session": session}
-            }).success(function (result) {
-
-                if (result.success == false)
+            })
+            .success(function (result) {
+                if (result.success == false) {
                     completionHandler(undefined);
-                else
+                }
+                else {
                     completionHandler(result.data);
-            }).error(function () {
+                }
+            })
+            .error(function () {
                 completionHandler(undefined);
             })
         }
