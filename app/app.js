@@ -38,4 +38,9 @@ storeLocator.config(function($stateProvider, $urlRouterProvider) {
           templateUrl: 'view/detailsView.html',
           controller: 'detailsController'
       })
+      .state('map', {
+          url: '/map',
+          templateUrl: 'view/mapView.html',
+          controller: 'mapController'
+      })
 });
