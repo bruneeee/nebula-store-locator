@@ -1,3 +1,3 @@
-storeLocator.controller("homeController", function($scope, $cookies) {
-    console.log($cookies.get('session'));
+storeLocator.controller("homeController", function($scope, sessionManager) {
+    console.log(sessionManager.get());
 });

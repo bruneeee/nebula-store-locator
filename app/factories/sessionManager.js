@@ -1,8 +1,11 @@
-storeLocator.factory("sessionManager", function($http) {
+storeLocator.factory("sessionManager", function($cookies) {
+
     return {
-        get:function(){
-            return"89fea14c-9aaf-406a-8803-2223457169bd"
+        put: function(data, expireDate) {
+            $cookies.put('session', data, {'expires': new Date(expireDate*1000)});
+        },
+        get: function() {
+            return $cookies.get('session');
         }
-    };
-    //TODO lettura cookies e menate varie;
+    }
 });

@@ -1,4 +1,4 @@
-storeLocator.controller("loginController", function($scope, $state, $cookies, loginManager) {
+storeLocator.controller("loginController", function($scope, $state, sessionManager, loginManager) {
 
     $scope.submit = function() {
         loginManager.login({
@@ -7,9 +7,7 @@ storeLocator.controller("loginController", function($scope, $state, $cookies, lo
         },
         function(result) {
             if(result) {
-                var expireDate = new Date();
-                expireDate.setDate(expireDate.getDate() + 1);
-                $cookies.put('session', result.session, {'expires': expireDate});
+                sessionManager.put(result.session, result.session_ttl);
                 $state.go('home');
             }
         })
