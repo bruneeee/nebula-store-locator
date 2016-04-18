@@ -95,7 +95,7 @@ angular.module('routerApp')
              $(".divNegozi").stop().fadeOut(500);
              setTimeout(function () {
                  $("#gmap01").stop().fadeIn(500);
-             }, 700);
+             }, 1000);
          },
 
          function () {
