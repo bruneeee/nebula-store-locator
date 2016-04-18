@@ -1,7 +1,7 @@
 var storeLocator = angular.module('storeLocator', [
   "ngCookies",
   "ui.router"
-])
+]);
 
 storeLocator.constant("RequestURL", {
   auth: {
@@ -12,7 +12,7 @@ storeLocator.constant("RequestURL", {
     protocol:   "http",
     host:       "its-bitrace.herokuapp.com"
   }
-})
+});
 
 storeLocator.config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/home');
@@ -20,7 +20,7 @@ storeLocator.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
   .state('home', {
     url: '/home',
-    templateUrl: 'pages/homeView.html',
+    templateUrl: 'view/homeView.html',
     controller: 'homeController'
   })
   .state('login', {
@@ -28,4 +28,4 @@ storeLocator.config(function($stateProvider, $urlRouterProvider) {
     templateUrl: 'pages/loginView.html',
     controller: 'loginController'
   })
-})
+});
