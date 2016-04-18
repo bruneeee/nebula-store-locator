@@ -1,5 +1,5 @@
-storeLocator.service("storesManager", function($http,sessionManager) {
-    var session = new sessionManager();
+storeLocator.factory("storesManager", function($http,sessionManager,RequestURL) {
+    var session =  sessionManager.get();
 
     /*var resStores = {
         "success": true,
@@ -45,36 +45,37 @@ storeLocator.service("storesManager", function($http,sessionManager) {
                 "longitude": "-128.469227"
             }]
     };*/
-    this.gg = function(){return "cane"};
-    this.getAll = function (completionHandler) {
+    return{
+        getAll : function (completionHandler) {
 
-        $http({
-            url: storeLocator.datasource.protocol+"://"+storeLocator.datasource.host + "/api/v2/stores",
-            method: "GET",
-            header: {"x-bitrace-session": session}
-        }).success(function (result) {
-            if (result.success == false)
+            $http({
+                url: RequestURL.datasource.protocol+"://"+RequestURL.datasource.host + "/api/v2/stores",
+                method: "GET",
+                headers: {"x-bitrace-session": session}
+            }).success(function (result) {
+                if (result.success == false)
+                    completionHandler(undefined);
+                else
+                    completionHandler(result.data);
+            }).error(function () {
                 completionHandler(undefined);
-            else
-                completionHandler(result.data);
-        }).error(function () {
-            completionHandler(undefined);
-        })
-};
+            })
+        },
 
-    this.get = function(guid,completionHandler){
-        $http({
-            url: storeLocator.datasource.protocol+"://"+storeLocator.datasource.host + "/api/v2/stores/" + guid,
-            method: "GET",
-            header: {"x-bitrace-session": session}
-        }).success(function (result) {
+        get : function(guid,completionHandler){
+            $http({
+                url: RequestURL.datasource.protocol+"://"+RequestURL.datasource.host + "/api/v2/stores/" + guid,
+                method: "GET",
+                headers: {"x-bitrace-session": session}
+            }).success(function (result) {
 
-            if (result.success == false)
+                if (result.success == false)
+                    completionHandler(undefined);
+                else
+                    completionHandler(result.data);
+            }).error(function () {
                 completionHandler(undefined);
-            else
-                completionHandler(result.data);
-        }).error(function () {
-            completionHandler(undefined);
-        })
-    };
+            })
+        }
+    }
 });
