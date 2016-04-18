@@ -1,6 +1,3 @@
-/**
- * Created by Nicolo on 18/04/2016.
- */
 storeLocator.service("storesManager", function($http,sessionManager) {
     var session = new sessionManager();
 
