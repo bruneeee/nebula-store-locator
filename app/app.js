@@ -33,4 +33,9 @@ storeLocator.config(function($stateProvider, $urlRouterProvider) {
           templateUrl: 'view/storesView.html',
           controller: 'storesController'
       })
+      .state('details', {
+          url: '/details/:id',
+          templateUrl: 'view/detailsView.html',
+          controller: 'detailsController'
+      })
 });
