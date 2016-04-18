@@ -17,16 +17,20 @@ storeLocator.constant("RequestURL", {
 storeLocator.config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/home');
 
-  $stateProvider
-  .state('home', {
-    url: '/home',
-    templateUrl: 'view/homeView.html',
-    controller: 'homeController'
-  })
-  .state('login', {
-    url: '/login',
-    templateUrl: 'view/loginView.html',
-    controller: 'loginController'
-  });
-
+      $stateProvider
+      .state('home', {
+        url: '/home',
+        templateUrl: 'view/homeView.html',
+        controller: 'homeController'
+      })
+      .state('login', {
+        url: '/login',
+        templateUrl: 'view/loginView.html',
+        controller: 'loginController'
+      })
+      .state('stores', {
+          url: '/stores',
+          templateUrl: 'view/storesView.html',
+          controller: 'storesController'
+      })
 });
