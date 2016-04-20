@@ -12,9 +12,18 @@
 </head>
 
 <body ng-app="storeLocator">
-  <div class="container" ui-view>
-      <!-- CONTENT -->
-  </div>
+    <div class="container-fluid">
+        <header class="row">
+            <div class="jesse-logo col-xs-12">
+                <img src="assets/images/jesse-logo-circle.svg">
+            </div>
+        </header>
+        <section class="row">
+            <div class="col-xs-12" ui-view="">
+                <!-- CONTENT -->
+            </div>
+        </section>
+    </div>
 </body>
 
 <!-- EXTERNAL APIs -->

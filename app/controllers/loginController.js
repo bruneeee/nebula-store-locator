@@ -11,6 +11,9 @@ storeLocator.controller("loginController", function($scope, $state, sessionManag
                         sessionManager.putCookie(result.session, result.session_ttl);
                         $state.go('home');
                     }
+                    else {
+
+                    }
                 })
         }
     }

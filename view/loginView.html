@@ -1,11 +1,18 @@
-<form ng-submit="submit()">
-    <div>
-        <input type="email" placeholder="Email" required ng-model="email"/>
+<div class="row">
+    <div class="col-xs-12 login">
+        <h1 class="row">
+            Please, login.
+        </h1>
+        <form ng-submit="submit()" class="row">
+            <div>
+                <input name="email" type="email" placeholder="Email" required ng-model="email"/>
+            </div>
+            <div>
+                <input name="password" type="password" placeholder="Password" required ng-model="password"/>
+            </div>
+            <div>
+                <input type="submit"/>
+            </div>
+        </form>
     </div>
-    <div>
-        <input type="password" placeholder="Password" required ng-model="password"/>
-    </div>
-    <div>
-        <input type="submit"/>
-    </div>
-</form>
+</div>
