@@ -1,4 +1,4 @@
-storeLocator.controller("headerController", function($scope, $state, sessionManager) {
+storeLocator.controller("indexController", function($scope, $state, sessionManager) {
 
     $scope.$on('$stateChangeSuccess', function () {
         $scope.isSessionSet = sessionManager.getCookie() != undefined;

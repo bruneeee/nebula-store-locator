@@ -12,8 +12,8 @@
 </head>
 
 <body ng-app="storeLocator">
-    <div class="container-fluid">
-        <header class="row" ng-controller="headerController">
+    <div class="container-fluid" ng-controller="indexController">
+        <header class="row" >
             <div class="jesse-logo col-xs-offset-2 col-xs-8">
                 <img src="assets/images/jesse-logo-circle.svg">
             </div>
@@ -25,8 +25,8 @@
             <div class="col-xs-12" ui-view>
                 <!-- CONTENT -->
             </div>
-            <div ui-view="stores"></div>
-            <div ui-view="map"></div>
+            <div ui-view="stores" class="col-xs-12 col-md-5 ng-hide" ng-show="isSessionSet"></div>
+            <div ui-view="map" class="col-xs-12 col-md-7 ng-hide" ng-show="isSessionSet"></div>
         </section>
     </div>
 </body>
@@ -44,20 +44,16 @@
 <script type="text/javascript" src="app/app.js"></script>
 
 <!-- CONTROLLERS -->
-<script type="text/javascript" src="app/controllers/headerController.js"></script>
+<script type="text/javascript" src="app/controllers/indexController.js"></script>
 <script type="text/javascript" src="app/controllers/loginController.js"></script>
-<script type="text/javascript" src="app/controllers/homeController.js"></script>
 <script type="text/javascript" src="app/controllers/storesController.js"></script>
 <script type="text/javascript" src="app/controllers/detailsController.js"></script>
 <script type="text/javascript" src="app/controllers/mapController.js"></script>
-
 
 <!-- FACTORIES -->
 <script type="text/javascript" src="app/factories/storesManager.js"></script>
 <script type="text/javascript" src="app/factories/sessionManager.js"></script>
 <script type="text/javascript" src="app/factories/mapManager.js"></script>
 <script type="text/javascript" src="app/factories/localizationManager.js"></script>
-
-
 
 </html>

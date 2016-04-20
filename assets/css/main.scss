@@ -1,6 +1,7 @@
 @import "_import";
 
 body {
+  overflow: hidden;
   color: $main-font-color;
   background: url('../images/pattern.jpg');
   .container-fluid {

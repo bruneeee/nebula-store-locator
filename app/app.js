@@ -20,7 +20,6 @@ storeLocator.config(function($stateProvider, $urlRouterProvider) {
       $stateProvider
       .state('home', {
         url: '/home',
-        //templateUrl: 'view/homeView.html',
         views:{
             'stores':{
                 templateUrl: 'view/storesView.html',
@@ -37,20 +36,10 @@ storeLocator.config(function($stateProvider, $urlRouterProvider) {
         templateUrl: 'view/loginView.html',
         controller: 'loginController'
       })
-      .state('stores', {
-          url: '/stores',
-          templateUrl: 'view/storesView.html',
-          controller: 'storesController'
-      })
       .state('details', {
           url: '/details/:id',
           templateUrl: 'view/detailsView.html',
           controller: 'detailsController'
-      })
-      .state('map', {
-          url: '/map',
-          templateUrl: 'view/mapView.html',
-          controller: 'mapController'
       })
 });
 

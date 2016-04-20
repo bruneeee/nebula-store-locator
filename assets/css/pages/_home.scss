@@ -1,0 +1,15 @@
+@import "../utility/variables";
+
+#map {
+  height: calc(100vh - 100px);
+}
+
+#stores {
+  overflow-y: scroll;
+  height: calc(100vh - 100px);
+  div {
+    cursor: pointer;
+    margin: 10px 0;
+    background-color: $light-background-color;
+  }
+}

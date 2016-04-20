@@ -1,9 +1,7 @@
-<div>Stores
-    <div ng-repeat="store in stores">
-        <a ui-sref="details({id : store.guid})">
-            <div>{{store.name}} </div>
-            <div>{{store.phone}} </div>
-            <div>{{store.address}} </div>
-        </a>
+<div id="stores">
+    <div ng-repeat="store in stores" ui-sref="details({id : store.guid})">
+        <div>{{store.name}} </div>
+        <div>{{store.phone}} </div>
+        <div>{{store.address}} </div>
     </div>
 </div>
