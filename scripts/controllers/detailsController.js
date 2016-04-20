@@ -33,7 +33,5 @@ angular.module('routerApp')
         
         $scope.getStore();
 
-        console.log($scope.store);
-
         SessionService.allowSession($stateParams.session);
     });

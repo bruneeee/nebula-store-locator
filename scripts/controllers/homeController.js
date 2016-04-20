@@ -92,7 +92,7 @@ angular.module('routerApp')
          $("#mappa").click(
 
           function () {
-              if (fading) return;
+              if (fading) return google.maps.event.trigger(map, 'resize');;
               fading = true;
               google.maps.event.trigger(map, 'resize');
               $(".divNegozi").stop().slideUp(500);
@@ -116,7 +116,7 @@ angular.module('routerApp')
        $("#negozi").click(
 
          function () {
-             if (fading) return;
+             if (fading) return google.maps.event.trigger(map, 'resize');
              fading = true;
              $("#gmap01").stop().slideUp(500);
 
@@ -179,6 +179,7 @@ angular.module('routerApp')
         }
 
         $scope.goToDetails = function (storeObj) {//<---- usare questo per passare ai dettagli
+            console.log(storeObj);
             var id = storeObj.guid;
             $state.go('details', { guid: id, session: $stateParams.session });
         }
@@ -225,6 +226,7 @@ angular.module('routerApp')
 
         var map = {};
         var centerMarker;
+        var previousAnimatedMarker;
         var mapLoaded = false;
         var storesLoaded = false;
         var storeMarkers;
@@ -235,7 +237,7 @@ angular.module('routerApp')
         window.initMap = function () {
             map = new google.maps.Map(document.getElementById('map'), {
                 center: { lat: -34.397, lng: 150.644 },
-                zoom: 10,
+                zoom: 6,
                 zoomControl: true,
                 mapTypeControl: true,
                 scaleControl: true,
@@ -247,6 +249,7 @@ angular.module('routerApp')
             var marker = new google.maps.Marker({ map: map });
             google.maps.event.addListener(marker, 'click', (function (marker) {
                 return function () {
+
                     map.panTo(marker.position);
                 }
             })(marker));
@@ -290,7 +293,8 @@ angular.module('routerApp')
                 marker = new google.maps.Marker({
                     position: position,
                     map: map,
-                    title: markers[i][0]
+                    title: markers[i][0],
+                    animation: google.maps.Animation.DROP
                 });
                 storeMarkers.push(marker);
                 google.maps.event.addListener(marker, 'click', (function (marker, i) {
@@ -298,6 +302,11 @@ angular.module('routerApp')
                         infoWindow.setContent(infoWindowsContent[i][0]);
                         infoWindow.open(map, marker);
                         map.panTo(marker.position);
+                        //console.log(marker.position);
+                        //$scope.goToDetails(obtainStore(markers[i][3]));
+                        if (previousAnimatedMarker != undefined && previousAnimatedMarker != marker) previousAnimatedMarker.setAnimation(null);
+                        marker.setAnimation(google.maps.Animation.BOUNCE);
+                        previousAnimatedMarker = marker;
                     }
                 })(marker, i));
                 //map.fitBounds(bounds);
@@ -317,24 +326,45 @@ angular.module('routerApp')
             var array = [];
             $scope.stores1.concat($scope.stores2).concat($scope.stores3).forEach(function (x) {
                 var m = [];
+                //m.push(x.name);
                 m.push(x.address);
                 //console.log(x.address);
                 //console.log(getLanLongByAddress(x.address));
                 m.push(x.latitude);
                 m.push(x.longitude);
+                m.push(x.name);
                 array.push(m);
             })
             return array;
         }
 
+        function obtainStore(name){
+            var stores = $scope.stores1.concat($scope.stores2).concat($scope.stores3);
+            for (var i = 0; i < stores.length; i++){
+                console.log(stores[i].name + " " + name);
+                console.log(stores[i].name.localeCompare(name));
+                if (stores[i].name.localeCompare(name) == 0) return stores[i];
+            }
+            return null;
+        }
+
+
+
         function obtainWindowInfoArray() {//TODO qui la descrizione con il bottone per andare ai dettagli
             var array = [];
             $scope.stores1.concat($scope.stores2).concat($scope.stores3).forEach(function (x) {
-                var m = [x.name];
+                var m = [
+                    "<h4>" + x.name + "</h4>" +
+                    "<h5>" + x.address + "</h5>" +
+                    '<button class="btn btn-default center-block trovaNegozio" onclick="cristo(\'' + x.name + '\')">Visualizza dettagli</button>'
+                ];
                 array.push(m);
             })
+            console.log(array);
             return array;
         }
+
+
 
         function getLanLongByAddress(add) {//TODO delay tra le richieste o da OVER_QUERY_LIMIT ma che poi sta roba neanche serve
             var geocoder = new google.maps.Geocoder();
@@ -376,3 +406,11 @@ angular.module('routerApp')
 
         if (!SessionService.allowSession($stateParams.session)) $state.go('login');
     });
+
+cristo = function(x){
+    console.log(x);
+    var scope = angular.element(document.getElementById('homeController')).scope;
+    console.log(scope);
+    scope.logout();
+    scope.$apply();
+};
