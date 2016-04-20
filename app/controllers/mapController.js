@@ -50,4 +50,9 @@ storeLocator.controller("mapController", function($scope,$state, storesService,l
                 $state.go("details",{id: this.guid} );
         });
     }
+
+    $scope.$on('focusOn',function(event,coords){
+        var myPos = new google.maps.LatLng(coords[0],coords[1]);
+        map.setCenter(myPos);
+    })
 });
