@@ -1,5 +1,25 @@
-<div>Store
-    <div>{{store.name}} </div>
-    <div>{{store.phone}} </div>
-    <div>{{store.address}} </div>
+<div>Dettagli store:
+    <img src="{{store.featuredimage}}">
+
+    <div>NOME: {{store.name}} </div>
+    <div>PHONE: {{store.phone}} </div>
+    <div>ADDRESS: {{store.address}} </div>
+    <div>DESC: {{store.description}} </div>
+    <div>ACTIVE: {{store.isActive}} </div>
+    <div>OPEN DATE: {{store.open_date}} </div>
+
+</div>
+<br>
+<div>Dettagli salesMan:
+    <div>{{store.sales_person.first}} {{store.sales_person.last}}</div>
+    <div>{{store.sales_person.email}} </div>
+
+</div>
+<br>
+<div>PRODUCTS
+    <div ng-repeat="product in store.products">
+        <div>NAME:{{product.name}}</div>
+        <div>AVAIBLE: {{product.isAvailable}}</div>
+        <div>PRICE: {{product.price}}</div>
+    </div>
 </div>

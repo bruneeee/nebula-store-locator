@@ -49,6 +49,6 @@ storeLocator.controller("mapController", function($scope,$state, storesManager,l
             $state.go("details",{id: this.guid} );
             //$state.go("home");
         });
-    };
+    }
 
 });
