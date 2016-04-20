@@ -16,7 +16,7 @@
             src="bower_components/angular-ui-router/release/angular-ui-router.js"></script> <!-- Angular -->
 
     <script type="text/javascript"
-            src="bower_components\ngstorage\ngStorage.min.js"></script> <!--Angular ng-storage -->
+            src="bower_components/ngstorage/ngStorage.min.js"></script> <!--Angular ng-storage -->
 
     <script type="text/javascript"
             src="bower_components/jquery/dist/jquery.js"></script><!-- jQuery -->
@@ -39,23 +39,34 @@
      <link type="text/css" rel="stylesheet"
           href="styles/hover.css"> <!-- Effects stylesheet -->
 
-    <script type="text/javascript"
-            src="scripts/app.js"></script><!-- Main app js -->
+    <!-- Main app js -->
 
     <script type="text/javascript"
-            src="scripts/factory.js"></script><!-- factory js -->
+            src="scripts/app.js"></script>
+
+    <!-- Factories -->
 
     <script type="text/javascript"
-            src="pages/homeController.js"></script> <!--  home controller -->
+            src="scripts/factories/loginFactory.js"></script>
 
     <script type="text/javascript"
-            src="pages/contactController.js"></script> <!-- contact controller -->
+            src="scripts/factories/storesFactory.js"></script>
+
+    <!-- Controllers -->
 
     <script type="text/javascript"
-            src="pages/detailsController.js"></script> <!-- details controller -->
+            src="scripts/controllers/homeController.js"></script>
 
     <script type="text/javascript"
-            src="pages/loginController.js"></script> <!-- login controller -->
+            src="scripts/controllers/detailsController.js"></script>
+
+    <script type="text/javascript"
+            src="scripts/controllers/loginController.js"></script>
+
+    <!-- Services -->
+
+    <script type="text/javascript"
+            src="scripts/services/sessionService.js"></script>
 
     <link href="http://fonts.googleapis.com/css?family=Abel|Nova+Mono|Wire+One|Russo+One|Exo|Antic|Jura|Carme|Audiowide|Electrolize|Iceland" rel="stylesheet" type="text/css">
 

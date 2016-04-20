@@ -14,11 +14,6 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: 'pages/loginView.html',
             controller: 'loginController'
         })
-        .state('contact', {
-            url: '/contact',
-            templateUrl: 'pages/contactView.html',
-            controller: 'contactController'
-        })
         .state('details', {
             url: '/details/:guid/:session',
             templateUrl: 'pages/detailsView.html',

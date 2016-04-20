@@ -1,5 +1,5 @@
 angular.module('routerApp')
-    .controller('homeController', function ($scope, StoresFactory, $stateParams, $state, $sessionStorage) {
+    .controller('homeController', function ($scope, StoresFactory, $stateParams, $state, SessionService) {
 
         //Tamarrate di raggio
 
@@ -174,7 +174,8 @@ angular.module('routerApp')
         }
 
         $scope.logout = function(){//<---- usare questo per il logout
-            $sessionStorage.jesseSession = -1;
+            //$sessionStorage.jesseSession = -1;
+            SessionService.destroySession();
             $state.go('login');
         }
 
@@ -363,18 +364,5 @@ angular.module('routerApp')
             return google.maps.geometry.spherical.computeDistanceBetween(a.position, b.position);
         }
 
-        function checkValidSession(){
-            return $sessionStorage.jesseSession == $stateParams.session;
-        }
-
-        function allowSession(){
-            console.log("Check sessione" + " " + $sessionStorage.jesseSession + " " + $stateParams.session);
-            if (!checkValidSession()){
-                
-                //TODO scrivere modali ultratamarri o non so cosa
-                $state.go('login');
-            }
-        }
-
-        allowSession();
+        if (!SessionService.allowSession($stateParams.session)) $state.go('login');
     });

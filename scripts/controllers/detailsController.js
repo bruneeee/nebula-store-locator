@@ -1,5 +1,5 @@
 angular.module('routerApp')
-    .controller('detailsController', function($scope, $stateParams, StoresFactory, $state, $sessionStorage){
+    .controller('detailsController', function($scope, $stateParams, StoresFactory, $state, SessionService){
 
         $scope.store = {};
 
@@ -35,17 +35,5 @@ angular.module('routerApp')
 
         console.log($scope.store);
 
-        function checkValidSession(){
-            return $sessionStorage.jesseSession == $stateParams.session;
-        }
-
-        function allowSession(){
-            console.log("Check sessione" + " " + $sessionStorage.jesseSession + " " + $stateParams.session);
-            if (!checkValidSession()){
-                alert("Sessione scaduta, ritornerai alla pagina di login");
-                $state.go('login');
-            }
-        }
-
-        allowSession();
+        SessionService.allowSession($stateParams.session);
     });
