@@ -39,3 +39,13 @@ storeLocator.config(function($stateProvider, $urlRouterProvider) {
           controller: 'detailsController'
       })
 });
+
+storeLocator.run(function($rootScope, sessionManager) {
+    $rootScope.$on('$routeChangeSuccess', function () {
+        sessionManager.verify(function(result) {
+            if(!result) {
+                $state.go('login')
+            }
+        });
+    })
+});
