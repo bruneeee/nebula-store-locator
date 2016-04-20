@@ -87,45 +87,43 @@ angular.module('routerApp')
 
         $(document).ready(
 
-        $("#mappa").hover(
+         $("#mappa").click(
 
-         function () {
+          function () {
+              google.maps.event.trigger(map, 'resize');
+              $(".divNegozi").stop().slideUp(500);
+
+              setTimeout(function () {
+                  $("#gmap01").slideDown(500);
+              }, 1000);
+
+              setTimeout(function () {
+                  $('#mappa').trigger('click');
+              }, 1800);
              
-             google.maps.event.trigger(map, 'resize');
-             $(".divNegozi").stop().fadeOut(500);
-             setTimeout(function () {
-                 $("#gmap01").stop().fadeIn(500);
-             }, 1000);
-         },
+
+          }
+
+          ));
+
+       $(document).ready(
+
+       $("#negozi").click(
 
          function () {
-             google.maps.event.trigger(map, 'resize');
-             $(".divNegozi").stop().fadeOut(500);
+
+             $("#gmap01").stop().slideUp(500);
+
              setTimeout(function () {
-                 $("#gmap01").stop().fadeIn(500);
-             }, 700);
-         }));
+                 $(".divNegozi").slideDown(500);
+             }, 1000);
+         }
 
-        $(document).ready(
 
-       $("#negozi").hover(
+         ));
 
-        function () {
-            
-            $("#gmap01").stop().fadeOut(500);
-            setTimeout(function () {
-                $(".divNegozi").stop().fadeIn(500);
-            }, 700);
-        },
 
-        function () {
-            $("#gmap01").stop().fadeOut(500);
-            setTimeout(function () {
-                $(".divNegozi").stop().fadeIn(500);
-            }, 700);
-        }));
-
-        $(document).ready(
+       $(document).ready(
 
       $("#gmap01").hover(
 
@@ -138,6 +136,7 @@ angular.module('routerApp')
            google.maps.event.trigger(map, 'resize');
 
        }));
+
 
 
 
