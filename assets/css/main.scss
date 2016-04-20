@@ -2,6 +2,7 @@
 
 body {
   overflow-y: auto;
+  overflow-x: hidden;
   color: $main-font-color;
   background: url('../images/pattern.jpg');
   .container-fluid {

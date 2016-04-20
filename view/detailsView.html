@@ -2,10 +2,27 @@
     <div class="col-xs-12 col-md-6 featured-image">
         <img ng-src="{{store.featured_image}}"/>
     </div>
-    <div class="col-xs-12 col-md-6">
-        <div>
-            {{store.name}}
-        </div>
+    <div class="col-xs-12 col-md-6 info">
+        <h1 class="col-xs-12">
+            <b>{{store.name}} </b>
+            <span ng-if="store.isActive == true" class="glyphicon glyphicon-ok-sign"></span>
+            <span ng-if="store.isActive == false" class="glyphicon glyphicon-remove-sign"></span>
+        </h1>
+        <p class="col-xs-12">
+            <i>{{store.description}}</i>
+        </p>
+        <p class="col-xs-12">
+            <span class="glyphicon glyphicon-earphone"></span>
+            {{store.phone}}
+        </p>
+        <p class="col-xs-12">
+            <span class="glyphicon glyphicon-pushpin"></span>
+            {{store.address}}
+        </p>
+        <p class="col-xs-12">
+            <span class="glyphicon glyphicon-calendar"></span>
+            {{store.open_date}}
+        </p>
     </div>
 </div>
 

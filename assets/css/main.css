@@ -68,27 +68,37 @@
   background-color: #ffffff;
   overflow: hidden;
   box-shadow: 0 0 20px 0 rgba(50, 50, 50, 0.1); }
-  .details div {
+  .details div.featured-image {
     padding: 0; }
     .details div.featured-image img {
       position: relative;
       width: calc(100% - 30px);
       max-width: 770px; }
+  .details div.info {
+    padding-top: 30px; }
+    .details div.info h1 {
+      margin-left: 17px;
+      border-left: 5px solid #ffdf32; }
+    .details div.info p {
+      margin-top: 20px; }
+      .details div.info p span {
+        color: #ffdf32;
+        margin-right: 5px; }
   @media screen and (max-width: 991px) {
     .details {
       margin: 0;
       border-radius: 0; }
-      .details div {
-        margin-top: 30px; }
-        .details div.featured-image {
-          text-align: center; }
-          .details div.featured-image img {
-            max-width: 500px;
-            width: 100%; } }
+      .details div.featured-image {
+        text-align: center;
+        background-color: #cccccc; }
+        .details div.featured-image img {
+          max-width: 500px;
+          width: 100%; } }
 
 body {
   overflow-y: auto;
-  color: #333333;
+  overflow-x: hidden;
+  color: #202020;
   background: url("../images/pattern.jpg"); }
   body .container-fluid header {
     background-color: #202020;
