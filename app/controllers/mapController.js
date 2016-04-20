@@ -22,8 +22,8 @@ storeLocator.controller("mapController", function($scope,$state, storesManager,l
 
         map.setCenter(myPos);
         map.setZoom(4);
-
         addMarker(myPos,"Tu sei qui!!!");
+
     });
 
     storesManager.getAll(
@@ -46,9 +46,8 @@ storeLocator.controller("mapController", function($scope,$state, storesManager,l
             guid:guid
         });
         google.maps.event.addListener(marker, 'click', function() {
-            $state.go("details",{id: this.guid} );
-            //$state.go("home");
+            if(this.guid.length > 1)
+                $state.go("details",{id: this.guid} );
         });
     }
-
 });
