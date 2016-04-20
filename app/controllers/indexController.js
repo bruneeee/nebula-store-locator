@@ -2,6 +2,7 @@ storeLocator.controller("indexController", function($scope, $state, sessionManag
 
     $scope.$on('$stateChangeSuccess', function () {
         $scope.isSessionSet = sessionManager.getCookie() != undefined;
+        $scope.isInDetails = $state.$current == 'details';
     });
 
     $scope.doLogout = function() {

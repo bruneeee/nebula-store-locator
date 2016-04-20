@@ -1,6 +1,16 @@
+//------------ COLOR -------------//
+
 $main-background-color:     #fcfcfc;
 $light-background-color:    #ffffff;
 $accent-color:              #ffdf32;
 $dark-background-color:     #202020;
 $main-font-color:           #333333;
 $accent-font-color:         #ffffff;
+
+//------------ MEDIA -------------//
+
+@mixin mdMedia {
+  @media screen and (max-width: 991px) {
+    @content;
+  }
+}

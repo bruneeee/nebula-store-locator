@@ -4,6 +4,9 @@
   h1 {
     text-align: center;
     padding: 50px;
+    span {
+      color: $accent-color;
+    }
   }
   form {
     border-radius: 5px;

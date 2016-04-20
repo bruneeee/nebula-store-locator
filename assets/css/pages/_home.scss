@@ -5,13 +5,13 @@
   padding: 0;
   display: flex;
 
-  @media screen and (max-width: 991px){
+  @include mdMedia{
     flex-direction: column-reverse;
   }
 
   .map {
 
-    @media screen and (max-width: 991px){
+    @include mdMedia{
       max-height: calc(50vh - 50px);
     }
 
@@ -20,7 +20,7 @@
 
   .stores {
 
-    @media screen and (max-width: 991px){
+    @include mdMedia{
       max-height: calc(50vh - 50px);
     }
 

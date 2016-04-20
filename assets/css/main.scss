@@ -23,12 +23,24 @@ body {
         button {
           float: right;
           color: $accent-color;
-          font-size: 15px;
+          font-size: 25px;
           background: transparent;
           border: none;
-          margin: 22px 10px;
+          margin: 20px 10px;
           height: 50px;
         }
+      }
+      .back {
+        button {
+          float: left;
+          color: $accent-color;
+          font-size: 25px;
+          background: transparent;
+          border: none;
+          margin: 20px 10px;
+          height: 50px;
+        }
+
       }
     }
     section {

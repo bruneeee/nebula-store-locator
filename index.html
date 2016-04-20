@@ -16,11 +16,14 @@
 <body ng-app="storeLocator">
     <div class="container-fluid" ng-controller="indexController">
         <header class="row" >
-            <div class="jesse-logo col-xs-offset-2 col-xs-8">
+            <div class="col-xs-2 back">
+                <button ui-sref="home" class="glyphicon glyphicon-menu-left ng-hide" ng-show="isInDetails"></button>
+            </div>
+            <div class="jesse-logo col-xs-8">
                 <img src="assets/images/jesse-logo-circle.svg">
             </div>
             <div class="col-xs-2 logout ng-hide" ng-show="isSessionSet">
-                <button ng-click="doLogout()">LOGOUT</button>
+                <button ng-click="doLogout()" class="glyphicon glyphicon-log-out"></button>
             </div>
         </header>
         <section class="row">
