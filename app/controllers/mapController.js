@@ -1,6 +1,6 @@
 storeLocator.controller("mapController", function($scope, storesManager,localizationManager) {
-    var myLat = 0.0;
-    var myLng = 0.0;
+    var myLat = 45.9626;
+    var myLng = 12.6563;
     var precision = 8;
 
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -13,18 +13,17 @@ storeLocator.controller("mapController", function($scope, storesManager,localiza
             console.log(data);
             myLat = data.coords.latitude;
             myLng = data.coords.longitude;
-            //precision = data.coords.accuracy + 10;
 
-            var myPos = new google.maps.LatLng(myLat,myLng);
-
-            map.setCenter(myPos);
-            map.setZoom(4);
-
-            addMarker(myPos,"Tu sei qui!!!");
         }
-        else
-            console.log(data);
+        else{
+            console.log("No localizzazione, gg");
+        }
+        var myPos = new google.maps.LatLng(myLat,myLng);
 
+        map.setCenter(myPos);
+        map.setZoom(4);
+
+        addMarker(myPos,"Tu sei qui!!!");
     });
 
     storesManager.getAll(
