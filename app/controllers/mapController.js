@@ -53,6 +53,6 @@ storeLocator.controller("mapController", function($scope,$state, storesService,l
 
     $scope.$on('focusOn',function(event,coords){
         var myPos = new google.maps.LatLng(coords[0],coords[1]);
-        map.setCenter(myPos);
+        map.panTo(myPos);
     })
 });
