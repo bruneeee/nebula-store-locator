@@ -20,29 +20,46 @@
     height: 50px;
     margin-bottom: 25px; }
     .login form input[type="submit"] {
-      background-color: #000000;
+      background-color: #202020;
       border: none;
       color: #ffffff;
       text-transform: uppercase; }
 
-#map {
-  height: calc(100vh - 100px); }
-
-#stores {
-  overflow-y: scroll;
-  height: calc(100vh - 100px); }
-  #stores div {
-    cursor: pointer;
-    margin: 10px 0;
-    background-color: #ffffff; }
+.home {
+  padding: 0;
+  display: flex; }
+  @media screen and (max-width: 991px) {
+    .home {
+      flex-direction: column-reverse; } }
+  .home .map {
+    height: calc(100vh - 100px); }
+    @media screen and (max-width: 991px) {
+      .home .map {
+        max-height: calc(50vh - 50px); } }
+  .home .stores {
+    overflow-y: scroll;
+    height: calc(100vh - 100px); }
+    @media screen and (max-width: 991px) {
+      .home .stores {
+        max-height: calc(50vh - 50px); } }
+    .home .stores .card {
+      height: 100px;
+      cursor: pointer;
+      padding: 20px;
+      background-color: #ffffff;
+      border-bottom: 1px solid #EEE;
+      border-left: 5px solid transparent;
+      transition: border-color ease-out 0.15s; }
+      .home .stores .card:hover {
+        border-left: 5px solid #202020; }
 
 body {
   overflow: hidden;
   color: #333333;
   background: url("../images/pattern.jpg"); }
   body .container-fluid header {
-    background-color: #ffffff;
-    box-shadow: 0 0 15px 0 rgba(50, 50, 50, 0.1);
+    background-color: #202020;
+    box-shadow: 0 0 15px 0 rgba(50, 50, 50, 0.2);
     overflow: hidden;
     height: 100px;
     border-bottom: 5px solid #ffdf32; }
@@ -52,5 +69,13 @@ body {
       height: 150px; }
       body .container-fluid header .jesse-logo img {
         height: inherit; }
+    body .container-fluid header .logout button {
+      float: right;
+      color: #ffdf32;
+      font-size: 15px;
+      background: transparent;
+      border: none;
+      margin: 22px 10px;
+      height: 50px; }
 
 /*# sourceMappingURL=main.css.map */

@@ -6,8 +6,8 @@ body {
   background: url('../images/pattern.jpg');
   .container-fluid {
     header {
-      background-color: $light-background-color;
-      box-shadow: 0 0 15px 0 rgba(50, 50, 50, 0.1);
+      background-color: $dark-background-color;
+      box-shadow: 0 0 15px 0 rgba(50, 50, 50, 0.2);
       overflow: hidden;
       height: 100px;
       border-bottom: 5px solid $accent-color;
@@ -17,6 +17,17 @@ body {
         height: 150px;
         img {
           height: inherit;
+        }
+      }
+      .logout {
+        button {
+          float: right;
+          color: $accent-color;
+          font-size: 15px;
+          background: transparent;
+          border: none;
+          margin: 22px 10px;
+          height: 50px;
         }
       }
     }

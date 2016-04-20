@@ -1,15 +1,44 @@
 @import "../utility/variables";
 
-#map {
-  height: calc(100vh - 100px);
-}
+.home {
 
-#stores {
-  overflow-y: scroll;
-  height: calc(100vh - 100px);
-  div {
-    cursor: pointer;
-    margin: 10px 0;
-    background-color: $light-background-color;
+  padding: 0;
+  display: flex;
+
+  @media screen and (max-width: 991px){
+    flex-direction: column-reverse;
+  }
+
+  .map {
+
+    @media screen and (max-width: 991px){
+      max-height: calc(50vh - 50px);
+    }
+
+    height: calc(100vh - 100px);
+  }
+
+  .stores {
+
+    @media screen and (max-width: 991px){
+      max-height: calc(50vh - 50px);
+    }
+
+    overflow-y: scroll;
+    height: calc(100vh - 100px);
+    .card {
+      height: 100px;
+      cursor: pointer;
+      padding: 20px;
+      background-color: $light-background-color;
+      border-bottom: 1px solid #EEE;
+      border-left: 5px solid transparent;
+
+      transition: border-color ease-out 0.15s ;
+      &:hover {
+        border-left: 5px solid $dark-background-color;
+      }
+    }
   }
 }
+

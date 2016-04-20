@@ -1,6 +1,6 @@
-<div id="stores">
-    <div ng-repeat="store in stores" ui-sref="details({id : store.guid})">
-        <div>{{store.name}} </div>
+<div id="stores" class="row stores">
+    <div class="card" ng-repeat="store in stores" ui-sref="details({id : store.guid})">
+        <div><b>{{store.name}}</b></div>
         <div>{{store.phone}} </div>
         <div>{{store.address}} </div>
     </div>
