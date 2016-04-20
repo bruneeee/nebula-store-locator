@@ -1,7 +1,7 @@
-storeLocator.controller("detailsController", function($scope,$stateParams, storesManager) {
+storeLocator.controller("detailsController", function($scope,$stateParams, storesService) {
     var guid  = $stateParams.id;
 
-    storesManager.get(guid,
+    storesService.get(guid,
         function(data){
             if(data){
                 $scope.store = data;

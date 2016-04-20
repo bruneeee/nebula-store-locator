@@ -1,5 +1,5 @@
-storeLocator.controller("storesController", function($scope, storesManager) {
-    storesManager.getAll(
+storeLocator.controller("storesController", function($scope, storesService) {
+    storesService.getAll(
         function(data){
             $scope.stores = data;
         }

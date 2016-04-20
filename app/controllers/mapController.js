@@ -1,4 +1,4 @@
-storeLocator.controller("mapController", function($scope,$state, storesManager,localizationManager) {
+storeLocator.controller("mapController", function($scope,$state, storesService,localizationManager) {
     var myLat = 45.9626;
     var myLng = 12.6563;
     var precision = 8;
@@ -26,7 +26,7 @@ storeLocator.controller("mapController", function($scope,$state, storesManager,l
 
     });
 
-    storesManager.getAll(
+    storesService.getAll(
         function(data){
             if(data){
                 $scope.pins = data;
