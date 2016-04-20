@@ -85,11 +85,15 @@ angular.module('routerApp')
      })
                    );
 
+        var fading = false;
+
         $(document).ready(
 
          $("#mappa").click(
 
           function () {
+              if (fading) return;
+              fading = true;
               google.maps.event.trigger(map, 'resize');
               $(".divNegozi").stop().slideUp(500);
 
@@ -99,6 +103,7 @@ angular.module('routerApp')
 
               setTimeout(function () {
                   $('#mappa').trigger('click');
+                  fading = false;
               }, 1800);
              
 
@@ -111,12 +116,18 @@ angular.module('routerApp')
        $("#negozi").click(
 
          function () {
-
+             if (fading) return;
+             fading = true;
              $("#gmap01").stop().slideUp(500);
 
              setTimeout(function () {
                  $(".divNegozi").slideDown(500);
              }, 1000);
+
+             setTimeout(function () {
+                 $('.divNegozi').trigger('click');
+                 fading = false;
+             }, 1800);
          }
 
 

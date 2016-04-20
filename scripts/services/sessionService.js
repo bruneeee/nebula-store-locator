@@ -23,4 +23,8 @@ routerApp.service('SessionService', function($sessionStorage){
         //$state.go('login');
     }
 
+    this.storeSession = function(currentSession){
+        $sessionStorage.jesseSession = currentSession;
+    }
+
 });
