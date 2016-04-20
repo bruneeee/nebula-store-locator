@@ -62,8 +62,32 @@
       .home .stores .card:hover {
         border-left: 5px solid #202020; }
 
-body {
+.details {
+  margin: 30px;
+  border-radius: 5px;
+  background-color: #ffffff;
   overflow: hidden;
+  box-shadow: 0 0 20px 0 rgba(50, 50, 50, 0.1); }
+  .details div {
+    padding: 0; }
+    .details div.featured-image img {
+      position: relative;
+      width: calc(100% - 30px);
+      max-width: 770px; }
+  @media screen and (max-width: 991px) {
+    .details {
+      margin: 0;
+      border-radius: 0; }
+      .details div {
+        margin-top: 30px; }
+        .details div.featured-image {
+          text-align: center; }
+          .details div.featured-image img {
+            max-width: 500px;
+            width: 100%; } }
+
+body {
+  overflow-y: auto;
   color: #333333;
   background: url("../images/pattern.jpg"); }
   body .container-fluid header {
@@ -94,5 +118,7 @@ body {
       border: none;
       margin: 20px 10px;
       height: 50px; }
+  body .container-fluid section div {
+    padding: 0; }
 
 /*# sourceMappingURL=main.css.map */
