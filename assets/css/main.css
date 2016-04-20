@@ -1,31 +1,38 @@
-.login h1 {
-  text-align: center;
-  padding: 50px; }
-  .login h1 span {
-    color: #ffdf32; }
-.login form {
-  border-radius: 5px;
-  background-color: #ffffff;
-  border-bottom: 5px solid #ffdf32;
-  box-shadow: 0 5px 20px 0 rgba(50, 50, 50, 0.1);
-  position: relative;
-  text-align: center;
-  width: 350px;
-  height: 350px;
-  margin: auto;
-  padding: 75px 25px; }
-  .login form input {
-    border-radius: 3px;
-    border: 1px solid #ccc;
+.login {
+  padding: 0; }
+  .login form {
+    border-radius: 5px;
+    background-color: #ffffff;
+    border-bottom: 5px solid #ffdf32;
+    box-shadow: 0 5px 20px 0 rgba(50, 50, 50, 0.1);
+    position: relative;
     text-align: center;
-    width: 200px;
-    height: 50px;
-    margin-bottom: 25px; }
-    .login form input[type="submit"] {
-      background-color: #202020;
-      border: none;
-      color: #ffffff;
-      text-transform: uppercase; }
+    width: 350px;
+    margin: 50px auto;
+    padding: 25px; }
+    @media screen and (max-width: 991px) {
+      .login form {
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        border-radius: 0; } }
+    .login form h1 {
+      padding-bottom: 25px;
+      text-align: center; }
+      .login form h1 span {
+        color: #ffdf32; }
+    .login form div input {
+      border-radius: 3px;
+      border: 1px solid #e0e0e0;
+      text-align: center;
+      width: 200px;
+      height: 50px;
+      margin-bottom: 25px; }
+      .login form div input[type="submit"] {
+        background-color: #202020;
+        border: none;
+        color: #ffffff;
+        text-transform: uppercase; }
 
 .home {
   padding: 0;
