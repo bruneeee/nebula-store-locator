@@ -46,11 +46,12 @@ storeLocator.config(function($stateProvider, $urlRouterProvider) {
 });
 
 storeLocator.run(function($rootScope, $state, sessionManager) {
+
     $rootScope.$on('$stateChangeSuccess', function () {
         if(sessionManager.getCookie()) {
             sessionManager.verify(function(result) {
                 if(!result) {
-                    $state.go('login')
+                    $state.go('login');
                 }
             });
         }

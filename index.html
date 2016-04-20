@@ -13,9 +13,12 @@
 
 <body ng-app="storeLocator">
     <div class="container-fluid">
-        <header class="row">
-            <div class="jesse-logo col-xs-12">
+        <header class="row" ng-controller="headerController">
+            <div class="jesse-logo col-xs-offset-2 col-xs-8">
                 <img src="assets/images/jesse-logo-circle.svg">
+            </div>
+            <div class="col-xs-2" ng-show="isSessionSet">
+                <button ng-click="doLogout()">LOGOUT</button>
             </div>
         </header>
         <section class="row">
@@ -39,6 +42,7 @@
 <script type="text/javascript" src="app/app.js"></script>
 
 <!-- CONTROLLERS -->
+<script type="text/javascript" src="app/controllers/headerController.js"></script>
 <script type="text/javascript" src="app/controllers/loginController.js"></script>
 <script type="text/javascript" src="app/controllers/homeController.js"></script>
 <script type="text/javascript" src="app/controllers/storesController.js"></script>

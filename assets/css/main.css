@@ -1,3 +1,30 @@
+.login h1 {
+  text-align: center;
+  padding: 50px; }
+.login form {
+  border-radius: 5px;
+  background-color: #ffffff;
+  border-bottom: 5px solid #ffdf32;
+  box-shadow: 0 5px 20px 0 rgba(50, 50, 50, 0.1);
+  position: relative;
+  text-align: center;
+  width: 350px;
+  height: 350px;
+  margin: auto;
+  padding: 75px 25px; }
+  .login form input {
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    text-align: center;
+    width: 200px;
+    height: 50px;
+    margin-bottom: 25px; }
+    .login form input[type="submit"] {
+      background-color: #000000;
+      border: none;
+      color: #ffffff;
+      text-transform: uppercase; }
+
 body {
   color: #333333;
   background: url("../images/pattern.jpg"); }
@@ -13,31 +40,5 @@ body {
       height: 150px; }
       body .container-fluid header .jesse-logo img {
         height: inherit; }
-  body .container-fluid section div .login h1 {
-    text-align: center;
-    padding: 50px; }
-  body .container-fluid section div .login form {
-    border-radius: 5px;
-    background-color: #ffffff;
-    border-bottom: 5px solid #ffdf32;
-    box-shadow: 0 5px 20px 0 rgba(50, 50, 50, 0.1);
-    position: relative;
-    text-align: center;
-    width: 350px;
-    height: 350px;
-    margin: auto;
-    padding: 75px 25px; }
-    body .container-fluid section div .login form input {
-      border-radius: 3px;
-      border: 1px solid #ccc;
-      text-align: center;
-      width: 200px;
-      height: 50px;
-      margin-bottom: 25px; }
-      body .container-fluid section div .login form input[type="submit"] {
-        background-color: #000000;
-        border: none;
-        color: #ffffff;
-        text-transform: uppercase; }
 
 /*# sourceMappingURL=main.css.map */
