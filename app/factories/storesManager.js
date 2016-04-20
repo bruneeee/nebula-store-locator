@@ -1,40 +1,44 @@
-storeLocator.factory("storesManager", function($http,sessionManager,RequestURL) {
+storeLocator.factory("storesManager", function($http, sessionManager, RequestURL) {
     var session =  sessionManager.getCookie();
 
     return{
         getAll : function (completionHandler) {
 
-            $http({
-                url: RequestURL.datasource.protocol+"://"+RequestURL.datasource.host + "/api/v2/stores",
-                method: "GET",
-                headers: {"x-bitrace-session": session}
-            }).success(function (result) {
-                if (result.success == false)
+            if(session) {
+                $http({
+                    url: RequestURL.datasource.protocol+"://"+RequestURL.datasource.host + "/api/v2/stores",
+                    method: "GET",
+                    headers: {"x-bitrace-session": session}
+                }).success(function (result) {
+                    if (result.success == false)
+                        completionHandler(undefined);
+                    else
+                        completionHandler(result.data);
+                }).error(function () {
                     completionHandler(undefined);
-                else
-                    completionHandler(result.data);
-            }).error(function () {
-                completionHandler(undefined);
-            })
+                })
+            }
         },
 
         get : function(guid,completionHandler) {
-            $http({
-                url: RequestURL.datasource.protocol + "://" + RequestURL.datasource.host + "/api/v2/stores/" + guid,
-                method: "GET",
-                headers: {"x-bitrace-session": session}
-            })
-            .success(function (result) {
-                if (result.success == false) {
-                    completionHandler(undefined);
-                }
-                else {
-                    completionHandler(result.data);
-                }
-            })
-            .error(function () {
-                completionHandler(undefined);
-            })
+            if(session) {
+                $http({
+                    url: RequestURL.datasource.protocol + "://" + RequestURL.datasource.host + "/api/v2/stores/" + guid,
+                    method: "GET",
+                    headers: {"x-bitrace-session": session}
+                })
+                    .success(function (result) {
+                        if (result.success == false) {
+                            completionHandler(undefined);
+                        }
+                        else {
+                            completionHandler(result.data);
+                        }
+                    })
+                    .error(function () {
+                        completionHandler(undefined);
+                    })
+            }
         }
     }
 });
