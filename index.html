@@ -17,12 +17,12 @@
             <div class="jesse-logo col-xs-offset-2 col-xs-8">
                 <img src="assets/images/jesse-logo-circle.svg">
             </div>
-            <div class="col-xs-2" ng-show="isSessionSet">
+            <div class="col-xs-2 ng-hide" ng-show="isSessionSet">
                 <button ng-click="doLogout()">LOGOUT</button>
             </div>
         </header>
         <section class="row">
-            <div class="col-xs-12" ui-view="">
+            <div class="col-xs-12" ui-view>
                 <!-- CONTENT -->
             </div>
         </section>
@@ -30,7 +30,7 @@
 </body>
 
 <!-- EXTERNAL APIs -->
-<script  defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuNmwUoTNG8J4F5hZlXDPbOkQ0lAGleqo"></script>
+<script  defer src="https://maps.googleapis.com/maps/api/js"></script>
 
 <!-- DEPENDENCIES -->
 <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
