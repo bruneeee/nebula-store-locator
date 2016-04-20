@@ -25,18 +25,55 @@
     }
 
     overflow-y: scroll;
+    overflow-x: hidden;
+
     height: calc(100vh - 100px);
+
     .card {
-      height: 100px;
+      padding: 0;
       cursor: pointer;
-      padding: 20px;
       background-color: $light-background-color;
-      border-bottom: 1px solid #EEE;
       border-left: 5px solid transparent;
 
       transition: border-color ease-out 0.15s ;
       &:hover {
         border-left: 5px solid $dark-background-color;
+
+        .info {
+          left: -8%;
+        }
+
+        button {
+          left: -5px;
+        }
+      }
+
+      .info {
+        z-index: 1;
+        position: relative;
+        display: inline-block;
+        padding: 20px 20px 20px 40%;
+        left: -32%;
+        width: 140%;
+        border-bottom: 1px solid #EEE;
+
+        transition: left ease-out 0.3s;
+      }
+
+      button {
+        z-index: 2;
+        position: absolute;
+        left: -30%;
+        display: inline-block;
+        height: 100%;
+        border: none;
+        border-right: 5px solid $accent-color;
+        background-color: $dark-background-color;
+        color: $light-background-color;
+        text-transform: uppercase;
+
+        transition: left ease-out 0.3s;
+
       }
     }
   }

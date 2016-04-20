@@ -1,6 +1,14 @@
 <div id="stores" class="row stores">
-    <div class="card" ng-repeat="store in stores | orderObjectBy:'distance':false" ng-click="focus(store.latitude,store.longitude)" > <!--ui-sref="details({id : store.guid})"-->
-        <div><b>{{store.name}}</b></div>
-        <div>{{store.distance}} </div>
+    <div class="col-xs-12 card" ng-repeat="store in stores | orderObjectBy:'distance':false" >
+        <div class="row">
+            <button class="col-xs-3" ui-sref="details({id: store.guid})">
+                DISCOVER
+            </button>
+            <div class="info" ng-click="focus(store.latitude,store.longitude)">
+                <div><b>{{store.name}}</b></div>
+                <div>{{store.distance}} </div>
+            </div>
+        </div>
     </div>
+
 </div>

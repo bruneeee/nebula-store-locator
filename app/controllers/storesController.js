@@ -20,34 +20,42 @@ storeLocator.controller("storesController", function($rootScope, $scope, storesS
     storesService.getAll(
         function(data){
             $scope.stores = data;
-            gg();
+            setDistances();
         }
-);
-    function gg(){
-        for(var i=0;i < $scope.stores.length;i++){
+    );
 
-            storesService.distance(myLat,myLng,$scope.stores[i].latitude,$scope.stores[i].longitude,function(res){
-                $scope.stores[i].distance = res;
-                //console.log(res);
+    function setDistances(){
+        $scope.stores.forEach(function(x){
+            storesService.distance(myLat, myLng, x.latitude, x.longitude,function(res){
+                x.distance = res;
             });
-        }
+        });
     }
 
     $scope.focus = function (lat,lng){
         $rootScope.$broadcast('focusOn',[lat,lng]);
-    }
+    };
+
+    $scope.isActive = false;
 
 });
+
 storeLocator.filter('orderObjectBy', function() {
     return function(items, field, reverse) {
         var filtered = [];
+
         angular.forEach(items, function(item) {
             filtered.push(item);
         });
+
         filtered.sort(function (a, b) {
             return (a[field] > b[field] ? 1 : -1);
         });
-        if(reverse) filtered.reverse();
+
+        if(reverse) {
+            filtered.reverse();
+        }
+
         return filtered;
     };
 });
