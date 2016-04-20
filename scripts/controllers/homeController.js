@@ -92,7 +92,7 @@ angular.module('routerApp')
          $("#mappa").click(
 
           function () {
-              if (fading) return;
+              if (fading) return google.maps.event.trigger(map, 'resize');
               fading = true;
               google.maps.event.trigger(map, 'resize');
               $(".divNegozi").stop().slideUp(500);
