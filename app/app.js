@@ -20,8 +20,17 @@ storeLocator.config(function($stateProvider, $urlRouterProvider) {
       $stateProvider
       .state('home', {
         url: '/home',
-        templateUrl: 'view/homeView.html',
-        controller: 'homeController'
+        //templateUrl: 'view/homeView.html',
+        views:{
+            'stores':{
+                templateUrl: 'view/storesView.html',
+                controller: 'storesController'
+            },
+            'map':{
+                templateUrl: 'view/mapView.html',
+                controller: 'mapController'
+            }
+        }
       })
       .state('login', {
         url: '/login',
