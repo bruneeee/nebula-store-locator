@@ -1,25 +1,50 @@
 storeLocator.controller("mapController", function($scope, storesManager,localizationManager) {
+    var myLat = 0.0;
+    var myLng = 0.0;
+    var precision = 8;
+
     var map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat:43.0, lng:43.0},
-        zoom:8
+        center: {lat:myLat, lng:myLng},
+        zoom : precision
     });
-    console.log(localizationManager.getCurrentPosition);
-    var lat = localizationManager.getCurrentPosition.value.coords.latitude; console.log(lat);
-    var lng = localizationManager.getCurrentPosition.value.coords.longitude;console.log(lng);
+
+    localizationManager.getPosition(function(data){
+        if(data){
+            console.log(data);
+            myLat = data.coords.latitude;
+            myLng = data.coords.longitude;
+            //precision = data.coords.accuracy + 10;
+
+            var myPos = new google.maps.LatLng(myLat,myLng);
+
+            map.setCenter(myPos);
+            map.setZoom(4);
+
+            addMarker(myPos,"Tu sei qui!!!");
+        }
+        else
+            console.log(data);
+
+    });
+
     storesManager.getAll(
         function(data){
             $scope.pins = data;
 
             $scope.pins.forEach(function(store){
-                //console.log(store.latitude.toPrecision());
-                var marker = new google.maps.Marker({
-                    position: {lat: 44.2, lng: 43.1},
-                    map: map,
-                    title: store.name
-                });
+                var storePos = new google.maps.LatLng(store.latitude,store.longitude)
+                addMarker(storePos,store.name);
             });
         }
     );
+
+    function addMarker(pos,title){
+        var marker = new google.maps.Marker({
+            position: pos,
+            map: map,
+            title: title
+        });
+    };
 
 
 

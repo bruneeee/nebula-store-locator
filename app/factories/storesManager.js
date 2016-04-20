@@ -1,5 +1,5 @@
 storeLocator.factory("storesManager", function($http,sessionManager,RequestURL) {
-    var session =  sessionManager.get();
+    var session =  sessionManager.getCookie();
 
     return{
         getAll : function (completionHandler) {

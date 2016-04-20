@@ -1,26 +1,11 @@
-storeLocator.factory('localizationManager', ['$q', '$window', function ($q, $window) {
-
-    'use strict';
-
-    function getCurrentPosition() {
-        var deferred = $q.defer();
-
-        if (!$window.navigator.geolocation) {
-            deferred.reject('Geolocation not supported.');
-        } else {
-            $window.navigator.geolocation.getCurrentPosition(
-                function (position) {
-                    deferred.resolve(position);
-                },
-                function (err) {
-                    deferred.reject(err);
-                });
-        }
-
-        return deferred.promise;
-    }
+storeLocator.factory('localizationManager', [ function () {
 
     return {
-        getCurrentPosition: getCurrentPosition()
+        getPosition: function(completionHandler){
+            if (navigator.geolocation)
+                navigator.geolocation.getCurrentPosition(completionHandler);
+            else
+                completionHandler(null);
+        }
     };
 }]);
