@@ -8,14 +8,14 @@
          <span class="col-xs-12 backHome" ng-click="goToHome()">
                 Torna indietro <i class="fa fa-home" aria-hidden="true"></i>
             </span>
-        <h1 class="col-xs-12 storeNameDetail">
+        <h1 class="col-xs-12 storeNameDetail" ng-cloak>
             {{getState(store)}} Store
             </h1>
            
     </div>
     <div class="row">
-        <span class="col-xs-12"><b>{{store.name}}</b> - {{store.address}}
-        <img src="{{store.thumbnail}}" /> </span>
+        <span class="col-xs-12" ng-cloak><b ng-cloak>{{store.name}}</b> - {{store.address}}
+        <img src="{{store.thumbnail}}" ng-cloak /> </span>
     </div>
 
     <div class="row">
