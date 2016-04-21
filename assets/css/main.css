@@ -58,12 +58,6 @@
       background-color: #ffffff;
       border-left: 5px solid transparent;
       transition: border-color ease-out 0.15s; }
-      .home .stores .card:hover {
-        border-left: 5px solid #202020; }
-        .home .stores .card:hover .info {
-          left: -8%; }
-        .home .stores .card:hover button {
-          left: -5px; }
       .home .stores .card .info {
         z-index: 1;
         position: relative;
@@ -84,7 +78,17 @@
         background-color: #202020;
         color: #ffffff;
         text-transform: uppercase;
-        transition: left ease-out 0.3s; }
+        transition: left ease-out 0.3s, background-color ease-out 0.2s; }
+        .home .stores .card button:hover {
+          background-color: #3a3a3a; }
+      .home .stores .card:focus {
+        outline: none; }
+        .home .stores .card:focus .info {
+          left: -8%; }
+        .home .stores .card:focus button {
+          left: -5px; }
+      .home .stores .card:hover {
+        border-left: 5px solid #ffdf32; }
 
 .details {
   margin: 30px;

@@ -1,5 +1,5 @@
 <div id="stores" class="row stores">
-    <div class="col-xs-12 card" ng-repeat="store in stores | orderObjectBy:'distance':false" >
+    <div class="col-xs-12 card" ng-repeat="store in stores | orderObjectBy:'distance':false" tabindex="{{$index}}">
         <div class="row">
             <button class="col-xs-3" ui-sref="details({id: store.guid})">
                 DISCOVER

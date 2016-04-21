@@ -35,19 +35,6 @@
       background-color: $light-background-color;
       border-left: 5px solid transparent;
 
-      transition: border-color ease-out 0.15s ;
-      &:hover {
-        border-left: 5px solid $dark-background-color;
-
-        .info {
-          left: -8%;
-        }
-
-        button {
-          left: -5px;
-        }
-      }
-
       .info {
         z-index: 1;
         position: relative;
@@ -72,8 +59,27 @@
         color: $light-background-color;
         text-transform: uppercase;
 
-        transition: left ease-out 0.3s;
+        transition: left ease-out 0.3s, background-color ease-out 0.2s;
 
+        &:hover {
+          background-color: lighten( $dark-background-color, 10% );
+        }
+      }
+
+      transition: border-color ease-out 0.15s ;
+
+      &:focus {
+        outline: none;
+        .info {
+          left: -8%;
+        }
+        button {
+          left: -5px;
+        }
+      }
+
+      &:hover {
+        border-left: 5px solid $accent-color;
       }
     }
   }
