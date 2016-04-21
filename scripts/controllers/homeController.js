@@ -174,23 +174,54 @@ angular.module('routerApp')
 
         $scope.getState = function (storeObj) {
             return storeObj.address.split(",")[2];
-        }
+        };
 
         $scope.goToDetails = function (storeObj) {//<---- usare questo per passare ai dettagli
             console.log(storeObj);
             var id = storeObj.guid;
             $state.go('details', { guid: id, session: $stateParams.session });
-        }
+        };
 
         $scope.logout = function(){//<---- usare questo per il logout
             //$sessionStorage.jesseSession = -1;
             SessionService.destroySession();
             $state.go('login');
+        };
+
+        $scope.findNearestStore = function(){
+            var lowerMarker;
+            var lowerDistance;
+            var distance;
+            console.log(storeMarkers);
+            for (var i = 0; i < storeMarkers.length; i++){
+                if (i == 0){
+                    lowerMarker = storeMarkers[0];
+                    lowerDistance = getDistanceBetweenMarkers(centerMarker, storeMarkers[0]);
+                }
+                else {
+                    distance = getDistanceBetweenMarkers(centerMarker, storeMarkers[i]);
+                    if (distance < lowerDistance){
+                        lowerMarker = storeMarkers[i];
+                        lowerDistance = distance;
+                    }
+                }
+            }
+            map.panTo(lowerMarker.position);
+        }
+
+        $scope.findStore = function(name){  //<------------ Questa per far vedere un negozio dato un nome
+            var stores = obtainMarkersArray();
+            for (var i = 0; i < storeMarkers.length; i++){
+                if (stores[i][3] == name){
+                    map.panTo(storeMarkers[i].position);
+                    break;
+                }
+            }
         }
 
         //$scope.stores = $scope.getStores();
 
-        $scope.sortMode = 2; //0 niente, 1 alfabetico (dei nomi?), 2 per stato alfabetico
+        $scope.sortMode = 2; //0 niente, 1 alfabetico (dei nomi?), 2 per stato alfabetico, 3 per distanza dall' utente
 
         function fillArrays(data) {
             data = data.sort(function (a, b) {
@@ -256,7 +287,7 @@ angular.module('routerApp')
                         lng: position.coords.longitude
                     };
                     marker.setPosition(pos);
-                    marker.setTitle("Tu sei qui");
+                    marker.setTitle("Tu sei qui!");
                     map.setCenter(pos);
                     centerMarker = marker;
                     map.panBy(-600, -400);
@@ -298,6 +329,7 @@ angular.module('routerApp')
                         infoWindow.setContent(infoWindowsContent[i][0]);
                         infoWindow.open(map, marker);
                         map.panTo(marker.position);
+                        //zoomAnimation(marker);
                         //console.log(marker.position);
                         //$scope.goToDetails(obtainStore(markers[i][3]));
                         if (previousAnimatedMarker != undefined && previousAnimatedMarker != marker) previousAnimatedMarker.setAnimation(null);
@@ -331,7 +363,7 @@ angular.module('routerApp')
                 m.push(x.longitude);
                 m.push(x.name);
                 array.push(m);
-            })
+            });
             return array;
         }
 
@@ -345,18 +377,14 @@ angular.module('routerApp')
             return null;
         }
 
-        function zoomAnimation (map, max, cnt) {
-            if (cnt >= max) return;
-            else {
-                z = google.maps.event.addListener(map, 'zoom_changed', function(event){
-                    google.maps.event.removeListener(z);
-                    zoomAnimation(map, max, cnt + 1);
-                });
-                setTimeout(function(){map.setZoom(cnt)}, 300);
-            }
+        function zoomAnimation (marker) {
+            var point = marker.getPosition(); // Get marker position
+            map.setZoom(5); // Back to default zoom
+            map.panTo(point); // Pan map to that position
+            setTimeout(map.setZoom(15),1000); // Zoom in after 1 sec
         }
 
-        function obtainWindowInfoArray() {//TODO qui la descrizione con il bottone per andare ai dettagli
+        function obtainWindowInfoArray() {
             var array = [];
             $scope.stores.forEach(function (x) {
                 var content=document.createElement('div');
@@ -396,37 +424,9 @@ angular.module('routerApp')
             });
         }
 
-        $scope.findNearestStore = function(){
-            var lowerMarker;
-            var lowerDistance;
-            var distance;
-            console.log(storeMarkers);
-            for (var i = 0; i < storeMarkers.length; i++){
-                if (i == 0){
-                    lowerMarker = storeMarkers[0];
-                    lowerDistance = getDistanceBetweenMarkers(centerMarker, storeMarkers[0]);
-                }
-                else {
-                    distance = getDistanceBetweenMarkers(centerMarker, storeMarkers[i]);
-                    if (distance < lowerDistance){
-                        lowerMarker = storeMarkers[i];
-                        lowerDistance = distance;
-                    }
-                }
-            }
-            map.panTo(lowerMarker.position);
-        }
+        function sortByDistance(){
 
-        $scope.findStore = function(name){  //<------------ Questa per far vedere un negozio dato un nome
-            var stores = obtainMarkersArray();
-            for (var i = 0; i < storeMarkers.length; i++){
-                if (stores[i][3] == name){
-                    map.panTo(storeMarkers[i].position);
-                    break;
-                }
-            }
         }
-
 
         function getDistanceBetweenMarkers(a, b){
             return google.maps.geometry.spherical.computeDistanceBetween(a.position, b.position);
@@ -434,13 +434,3 @@ angular.module('routerApp')
 
         if (!SessionService.allowSession($stateParams.session)) $state.go('login');
     });
-
-cristo = function(x){
-    //console.log(x);
-    var scope = angular.element(document.getElementById('MainWrap')).scope;
-    console.log(scope);
-    scope.$apply(function () {
-        scope.logout();
-    });
-    //scope.$apply();
-};
