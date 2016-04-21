@@ -1,11 +1,10 @@
 storeLocator.controller("mapController", function($scope,$state, storesService,localizationManager) {
     var myLat = 45.9626;
     var myLng = 12.6563;
-    var precision = 8;
 
     var map = new google.maps.Map(document.getElementById('map'), {
         center: {lat:myLat, lng:myLng},
-        zoom : precision
+        zoom : 2
     });
 
     localizationManager.getPosition(function(data){
@@ -21,7 +20,6 @@ storeLocator.controller("mapController", function($scope,$state, storesService,l
         var myPos = new google.maps.LatLng(myLat,myLng);
 
         map.setCenter(myPos);
-        map.setZoom(4);
         addMarker(myPos,"Tu sei qui!!!");
 
     });
@@ -53,6 +51,9 @@ storeLocator.controller("mapController", function($scope,$state, storesService,l
 
     $scope.$on('focusOn',function(event,coords){
         var myPos = new google.maps.LatLng(coords[0],coords[1]);
-        map.panTo(myPos);
+        map.setZoom(4);
+        setTimeout(function(){map.panTo(myPos)},500);
+        setTimeout(function(){map.setZoom(10)},1000);
+
     })
 });
