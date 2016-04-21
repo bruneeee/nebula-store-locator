@@ -4,7 +4,7 @@ storeLocator.controller("mapController", function($scope,$state, storesService,l
 
     var map = new google.maps.Map(document.getElementById('map'), {
         center: {lat:myLat, lng:myLng},
-        zoom : 2
+        zoom : 6
     });
 
     localizationManager.getPosition(function(data){
