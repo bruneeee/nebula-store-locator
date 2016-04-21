@@ -1,9 +1,9 @@
 <div id="stores" class="row stores">
-    <div class="col-xs-12 card" ng-repeat="store in stores | orderObjectBy:'distance':false" tabindex="{{$index}}">
+    <div class="col-xs-12 card" ng-repeat="store in stores | orderObjectBy:'distance':false" tabindex="{{$index}}" ng-focus="focus(store.latitude,store.longitude)">
         <div class="discover" ui-sref="details({id: store.guid})">
             DISCOVER
         </div>
-        <div class="info" ng-click="focus(store.latitude,store.longitude)">
+        <div class="info">
             <div><b>{{store.name}}</b></div>
             <div ng-if="store.distance">{{store.distance}} km</div>
         </div>
