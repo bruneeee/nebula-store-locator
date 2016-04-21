@@ -1,78 +1,77 @@
 
-<div class="container-fluid no_padding" id="homeSection">
-    <div class="row">
-        <div class="col-xs-12 centered centered-top logo">
-            <img src="images/logo.svg" id="logoHome">
-        </div>
-    </div>
 
-    <nav class="row">
-            <span class="col-xs-4 navBarSpan" id="mappa">
-                <span class="preLinkNavBar" style="display:none;">- </span>
-                MAPPA MONDIALE
-                <span class="preLinkNavBar" style="display:none;"> -</span>
-            </span>
-            <span class="col-xs-4 navBarSpan" id="negozi">
-                <span class="preLinkNavBar" style="display:none;">- </span>
-                NEGOZI
-                <span class="preLinkNavBar" style="display:none;"> -</span>
-            </span>
-            <span class="col-xs-4 navBarSpan" ng-click="logout()">
-                <span class="preLinkNavBar" style="display:none;">- </span>
-                LOGOUT
-                <span class="preLinkNavBar" style="display:none;"> -</span>
-            </span>
-        </nav>
-
-     <div class="row" id="gmap01" style="display:none;"> <!-- DIV DELLA MAPPA PER LA GEOLOCALIZZAZIONE -->
-         <div class="row">
-          <p class="col-xs-12">Jesse's nel mondo !</p>
-        
-        </div>
-         <div class="row">
-             <div class="col-xs-12">
-            <button class="btn btn-default center-block trovaNegozio" ng-click="findNearestStore()">Trova il negozio piu vicino a me</button>
-         </div>
-         </div>
-         <div class="row">
-             <p class="map">
-                <div class="col-xs-11" id="map"></div>
-             </p>
-        </div>
-     </div>
-    <div class="row divNegozi" style="display:none;"> <!-- DIV NEGOZI NEL MONDO -->
-        <div class="col-xs-12">
-            <p>Scopri i dettagli di ogni negozio !</p>
-            </div>
-         <div class="col-xs-6">
-            <img src="images/showroom.jpg" class="center-block imgStore"/>
-             </div>
-        <div class="col-xs-6">
-            <img src="http://jesse.it/wp-content/uploads/2015/11/chelsea-tavolini-jesse-1.jpg" class="center-block imgStore"/>
-             </div>
-            <div class="row">      
-                <div class="col-xs-2">
-                    </div>         
-                    <div class="col-xs-3 leftStores">
-                        <span ng-repeat="store in stores1" ng-click="goToDetails(store)">
-                            <i class="fa fa-angle-double-right preSpanStoreLink" aria-hidden="true" style="display:none"></i> 
-                        {{getState(store)}} ~ <b>{{store.name}}</b><br />               
-                        </span>       
-                    </div>
-                    <div class="col-xs-3 middleStores">
-                        <span ng-repeat="store in stores2" ng-click="goToDetails(store)">
-                            <i class="fa fa-angle-double-right preSpanStoreLink" aria-hidden="true" style="display:none"></i> 
-                            {{getState(store)}} ~ <b>{{store.name}}</b><br />  
-                        </span><br /> 
-                    </div>
-                <div class="col-xs-3 rightStores">
-                       <span ng-repeat="store in stores3" ng-click="goToDetails(store)">
-                           <i class="fa fa-angle-double-right preSpanStoreLink" aria-hidden="true" style="display:none"></i> 
-                           {{getState(store)}} ~ <b>{{store.name}}</b><br />  
-                       </span>
-                    </div>
+    <div class="container-fluid no_padding" id="homeSection">
+        <div class="row">
+            <div class="col-xs-12 centered centered-top logo">
+                <img src="images/logo.svg" id="logoHome">
             </div>
         </div>
 
-    </div>
-    </div>
+        <nav class="row">
+                <span class="col-xs-4 navBarSpan" id="mappa">
+                    <span class="preLinkNavBar" style="display:none;">- </span>
+                    MAPPA MONDIALE
+                    <span class="preLinkNavBar" style="display:none;"> -</span>
+                </span>
+                <span class="col-xs-4 navBarSpan" id="negozi">
+                    <span class="preLinkNavBar" style="display:none;">- </span>
+                    NEGOZI
+                    <span class="preLinkNavBar" style="display:none;"> -</span>
+                </span>
+                <span class="col-xs-4 navBarSpan" ng-click="logout()">
+                    <span class="preLinkNavBar" style="display:none;">- </span>
+                    LOGOUT
+                    <span class="preLinkNavBar" style="display:none;"> -</span>
+                </span>
+            </nav>
+
+         <div class="row" id="gmap01" style="display:none;"> <!-- DIV DELLA MAPPA PER LA GEOLOCALIZZAZIONE -->
+             <div class="row">
+              <p class="col-xs-12">Jesse's nel mondo !</p>
+
+            </div>
+             <div class="row">
+                 <div class="col-xs-12">
+                <button class="btn btn-default center-block trovaNegozio" ng-click="findNearestStore()">Trova il negozio piu vicino a me</button>
+             </div>
+             </div>
+             <div class="row">
+                 <p class="map">
+                    <div class="col-xs-11" id="map"></div>
+                 </p>
+            </div>
+         </div>
+        <div class="row divNegozi" style="display:none;"> <!-- DIV NEGOZI NEL MONDO -->
+            <div class="col-xs-12">
+                <p>Scopri i dettagli di ogni negozio !</p>
+                </div>
+             <div class="col-xs-6">
+                <img src="images/showroom.jpg" class="center-block imgStore"/>
+                 </div>
+            <div class="col-xs-6">
+                <img src="http://jesse.it/wp-content/uploads/2015/11/chelsea-tavolini-jesse-1.jpg" class="center-block imgStore"/>
+                 </div>
+                <div class="row">
+                    <div class="col-xs-2">
+                        </div>
+                        <div class="col-xs-3 leftStores">
+                            <span ng-repeat="store in stores1" ng-click="goToDetails(store)">
+                                <i class="fa fa-angle-double-right preSpanStoreLink" aria-hidden="true" style="display:none"></i>
+                            {{getState(store)}} ~ <b>{{store.name}}</b><br />
+                            </span>
+                        </div>
+                        <div class="col-xs-3 middleStores">
+                            <span ng-repeat="store in stores2" ng-click="goToDetails(store)">
+                                <i class="fa fa-angle-double-right preSpanStoreLink" aria-hidden="true" style="display:none"></i>
+                                {{getState(store)}} ~ <b>{{store.name}}</b><br />
+                            </span><br />
+                        </div>
+                    <div class="col-xs-3 rightStores">
+                           <span ng-repeat="store in stores3" ng-click="goToDetails(store)">
+                               <i class="fa fa-angle-double-right preSpanStoreLink" aria-hidden="true" style="display:none"></i>
+                               {{getState(store)}} ~ <b>{{store.name}}</b><br />
+                           </span>
+                        </div>
+                </div>
+            </div>
+        </div>

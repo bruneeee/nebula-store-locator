@@ -148,9 +148,6 @@ angular.module('routerApp')
 
        }));
 
-
-
-
         //Gesu' cristo
 
         $scope.stores1 = [];
@@ -218,8 +215,6 @@ angular.module('routerApp')
             var sortedAdress = s[0].split(" ").slice((1)).toString().replace(",", " ") + " " + s[0].split(" ")[0];
             return (s[2] + s[1] + " " + sortedAdress).slice(1);
         }
-
-
 
         $scope.getStores();
         //console.log($scope.stores);
@@ -400,6 +395,17 @@ angular.module('routerApp')
             map.panTo(lowerMarker.position);
         }
 
+        $scope.findStore = function(name){  //<------------ Questa per far vedere un negozio dato un nome
+            var stores = obtainMarkersArray();
+            for (var i = 0; i < storeMarkers.length; i++){
+                if (stores[i][3] == name){
+                    map.panTo(storeMarkers[i].position);
+                    break;
+                }
+            }
+        }
+
+
         function getDistanceBetweenMarkers(a, b){
             return google.maps.geometry.spherical.computeDistanceBetween(a.position, b.position);
         }
@@ -408,9 +414,11 @@ angular.module('routerApp')
     });
 
 cristo = function(x){
-    console.log(x);
-    var scope = angular.element(document.getElementById('homeController')).scope;
+    //console.log(x);
+    var scope = angular.element(document.getElementById('MainWrap')).scope;
     console.log(scope);
-    scope.logout();
-    scope.$apply();
+    scope.$apply(function () {
+        scope.logout();
+    });
+    //scope.$apply();
 };
