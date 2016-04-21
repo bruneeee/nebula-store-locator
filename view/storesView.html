@@ -6,7 +6,7 @@
             </button>
             <div class="info" ng-click="focus(store.latitude,store.longitude)">
                 <div><b>{{store.name}}</b></div>
-                <div>{{store.distance}} </div>
+                <div ng-if="store.distance">{{store.distance}} km</div>
             </div>
         </div>
     </div>

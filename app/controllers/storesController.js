@@ -26,8 +26,8 @@ storeLocator.controller("storesController", function($rootScope, $scope, storesS
 
     function setDistances(){
         $scope.stores.forEach(function(x){
-            storesService.distance(myLat, myLng, x.latitude, x.longitude,function(res){
-                x.distance = res;
+            storesService.distance(myLat, myLng, x.latitude, x.longitude, function(res){
+                x.distance = !isNaN(res) ? parseInt(res) : "";
             });
         });
     }

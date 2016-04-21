@@ -1,4 +1,5 @@
 @import "../utility/variables";
+
 .details {
   margin: 30px;
   border-radius: 5px;
@@ -16,9 +17,9 @@
       }
     }
     &.info {
-      padding-top: 30px;
 
-      h1 {
+      h1, h2 {
+        margin-top: 60px;
         margin-left: 17px;
         border-left: 5px solid $accent-color;
       }
