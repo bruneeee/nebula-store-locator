@@ -244,7 +244,6 @@ angular.module('routerApp')
             var marker = new google.maps.Marker({ map: map });
             google.maps.event.addListener(marker, 'click', (function (marker) {
                 return function () {
-
                     map.panTo(marker.position);
                 }
             })(marker));
@@ -302,6 +301,7 @@ angular.module('routerApp')
                         if (previousAnimatedMarker != undefined && previousAnimatedMarker != marker) previousAnimatedMarker.setAnimation(null);
                         marker.setAnimation(google.maps.Animation.BOUNCE);
                         previousAnimatedMarker = marker;
+
                     }
                 })(marker, i));
                 //map.fitBounds(bounds);
@@ -343,15 +343,35 @@ angular.module('routerApp')
             return null;
         }
 
-
+        function zoomAnimation (map, max, cnt) {
+            if (cnt >= max) return;
+            else {
+                z = google.maps.event.addListener(map, 'zoom_changed', function(event){
+                    google.maps.event.removeListener(z);
+                    zoomAnimation(map, max, cnt + 1);
+                });
+                setTimeout(function(){map.setZoom(cnt)}, 300); // 80ms is what I found to work well on my system -- it might not work well on all systems
+            }
+        }
 
         function obtainWindowInfoArray() {//TODO qui la descrizione con il bottone per andare ai dettagli
             var array = [];
             $scope.stores1.concat($scope.stores2).concat($scope.stores3).forEach(function (x) {
+                var content=document.createElement('div');
+                var button;
+                content.innerHTML = "<h4>" + x.name + "</h4>" +
+                                    "<h5>" + x.address + "</h5>";
+                button = content.appendChild(document.createElement('input'));
+                button.type= 'button';
+                button.class = 'btn btn-default center-block centered trovaNegozio';
+                button.value= 'Visualizza dettagli'
+                google.maps.event.addDomListener(button,'click', function(){
+                    $scope.goToDetails(x);})
                 var m = [
-                    "<h4>" + x.name + "</h4>" +
-                    "<h5>" + x.address + "</h5>" +
-                    '<button class="btn btn-default center-block trovaNegozio" onclick="cristo(\'' + x.name + '\')">Visualizza dettagli</button>'
+                    /*"<h4>" + x.name + "</h4>" +
+                     "<h5>" + x.address + "</h5>" +
+                     '<button class="btn btn-default center-block trovaNegozio" onclick="cristo(\'' + x.name + '\')">Visualizza dettagli</button>'*/
+                    content
                 ];
                 array.push(m);
             })
