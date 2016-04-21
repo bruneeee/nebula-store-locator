@@ -150,9 +150,10 @@ angular.module('routerApp')
 
         //Gesu' cristo
 
-        $scope.stores1 = [];
+        /*$scope.stores1 = [];
         $scope.stores2 = [];
-        $scope.stores3 = [];
+        $scope.stores3 = [];*/
+        $scope.stores = [];
 
         $scope.getStores = function () {
             StoresFactory.getAll($stateParams.session, function (err, result) {
@@ -200,9 +201,10 @@ angular.module('routerApp')
                     return ad1 > ad2 ? 1 : ad1 < ad2 ? -1 : 0;
                 }
             });
-            $scope.stores1 = data.slice(0, 10);
+            /*$scope.stores1 = data.slice(0, 10);
             $scope.stores2 = data.slice(10, 20);
-            $scope.stores3 = data.slice(20, 30);
+            $scope.stores3 = data.slice(20, 30);*/
+            $scope.stores = data;
             //console.log($scope.stores1);
             //console.log($scope.stores2);
             //console.log($scope.stores3);
@@ -319,7 +321,7 @@ angular.module('routerApp')
 
         function obtainMarkersArray() {
             var array = [];
-            $scope.stores1.concat($scope.stores2).concat($scope.stores3).forEach(function (x) {
+            $scope.stores.forEach(function (x) {
                 var m = [];
                 //m.push(x.name);
                 m.push(x.address);
@@ -334,7 +336,7 @@ angular.module('routerApp')
         }
 
         function obtainStore(name){
-            var stores = $scope.stores1.concat($scope.stores2).concat($scope.stores3);
+            var stores = $scope.stores;
             for (var i = 0; i < stores.length; i++){
                 console.log(stores[i].name + " " + name);
                 console.log(stores[i].name.localeCompare(name));
@@ -350,13 +352,13 @@ angular.module('routerApp')
                     google.maps.event.removeListener(z);
                     zoomAnimation(map, max, cnt + 1);
                 });
-                setTimeout(function(){map.setZoom(cnt)}, 300); // 80ms is what I found to work well on my system -- it might not work well on all systems
+                setTimeout(function(){map.setZoom(cnt)}, 300);
             }
         }
 
         function obtainWindowInfoArray() {//TODO qui la descrizione con il bottone per andare ai dettagli
             var array = [];
-            $scope.stores1.concat($scope.stores2).concat($scope.stores3).forEach(function (x) {
+            $scope.stores.forEach(function (x) {
                 var content=document.createElement('div');
                 var button;
                 content.innerHTML = "<h4>" + x.name + "</h4>" +
