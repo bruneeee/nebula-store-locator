@@ -17,9 +17,50 @@ body {
 }
 
 #loginSection {
-    background: url("../images/login.jpg") no-repeat;
+    background: url("../images/pattern.svg") no-repeat;
     height: 100vh;
     background-size: cover;
+}
+
+#submitButtonLogin {
+    background: rgba(218, 165, 32,0.8);
+    font-size: 40pt;
+    font-family: Open Sans Condensed;
+    text-align: center;
+    margin-top: 2%;
+}
+
+.loginInput {
+    background: transparent;
+    color: black;
+    font-size: 40pt;
+    border: none;
+    font-family: Open Sans Condensed;
+    width: 100%;
+    text-align: center;
+}
+
+#alertHumanError {
+    position: absolute;
+    margin-top: -1%;
+    color: black;
+}
+
+.loginInput::-webkit-input-placeholder {
+    color: rgb(238,232,170);
+}
+
+input:focus {
+    outline: none !important;
+    box-shadow: 0 0 10px rgba(218, 165, 32,0.8);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: #000 !important;
 }
 
 .centered {
@@ -27,59 +68,18 @@ body {
 }
 
 .centered-top {
-    margin-top: 15px;
+    margin-top: 2%;
 }
 
 #loginBox {
-    width: 35%;
-    border-radius: 20px;
-    padding-top: 16px;
-    padding-bottom: 1px;
-    position: relative;
-    background-color: rgba(221, 221, 221, 0.53);
-    left: 33%;
-    margin-top: 8%;
+    margin-top: 5%;
 }
-
-.divSocial {
-    font-size: 50px;
-    bottom: 0px;
-}
-
-    .divSocial a {
-        color: black;
-        text-align: center;
-        height: 15vh;
-        bottom: 0px;
-    }
-
-        .divSocial a:nth-child(1):hover {
-            -webkit-transition: all 0.5s ease-in-out;
-            background: #3B5998;
-            color: white;
-        }
-
-        .divSocial a:nth-child(2):hover {
-            background: #00aced;
-            color: white;
-        }
-
-        .divSocial a:nth-child(3):hover {
-            background: #c4302b;
-            color: white;
-        }
-
-        .divSocial a:nth-child(4):hover {
-            background: #C92228;
-            color: white;
-        }
 
 .footer {
     position: absolute;
     right: 0;
     bottom: 0;
     left: 0;
-    
 }
 
 #returnHomeLogin {
@@ -98,9 +98,24 @@ body {
     cursor: pointer;
 }
 
+.logout {
+    font-size: 25pt;
+    text-align: right;
+    margin-top: -5%;
+    margin-right: 25%;
+    cursor: pointer;
+}
+
 #logoHome {
     width: 50%;
     opacity: 0;
+}
+
+nav {
+    background: rgba(218, 165, 32,0.8);
+    color: black;
+    margin-top: 2%;
+    min-height: 80vh;
 }
 
 .navBarSpan {
@@ -110,12 +125,26 @@ body {
     text-align: center;
     display: none;
     cursor: pointer;
+    transform: translate(0,0%);
 }
 
-.divNegozi, #gmap01 {
-    background: rgba(218, 165, 32,0.8);
+.spanStores:hover {
+    font-weight: bold;
+}
+
+.navBarSpan i {
+    -webkit-transition: all 0.5s ease-in-out;
+    font-size: 80pt;
+    margin-top: 1%;
+    transform: translate(0,+0%);
+}
+
+.divNegozi, #gmap01, .divDetail {
     color: black;
-    font-size: 13pt;
+    font-size: 16pt;
+    font-family: Ubuntu;
+    text-align: left;
+    margin-top: 2%;
 }
 
 p {
@@ -125,25 +154,42 @@ p {
     font-size: 50pt;
 }
 
-.leftStores, .rightStores, .middleStores {
-    margin-top: 2%;
-    text-align: left;
-    letter-spacing: 1px;
+.trovaNegozio {
+    background: black;
+    color: rgba(218, 165, 32,0.8);
+    border-color: transparent;
 }
 
-    .leftStores span:hover, .rightStores span:hover, .middleStores span:hover {
-        font-weight: bold;
-        cursor: pointer;
+    .trovaNegozio:hover, .trovaNegozio:active, .trovaNegozio:visited, .trovaNegozio:focus {
+        background: black;
+        color: rgba(218, 165, 32,0.8);
+        border-color: transparent;
     }
 
-.preSpanStoreLink {
-    font-size: 10pt;
+.buttonNearNavSpan {
+    position: absolute;
+    margin-left: 5%;
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
 }
 
-.imgStore {
-    height: 30vh;
-    width: 75%;
-}
 
 .no_padding {
     padding: 0 !important;
@@ -158,21 +204,20 @@ p {
 }
 
 #map {
-    height: 56vh;
-    width: 99%;
-    margin-left: 1%;
+    border: double 1px black;
+    min-height: 58vh;
+    width: 100%;
+    margin-left: 2%;
 }
 
 .storeNameDetail {
-    border-bottom: solid 1px black;
+    text-align:center;
+    margin-top:-1%;
 }
 
-.articleDetail {
-    margin-top: 1%;
-    font-size: 15pt;
-    background: rgba(218, 165, 32, 0.8);
-    min-height: 547px;
-    padding-top: 15px;
+.underH1Detail {
+    text-align:center;
+    font-size:12pt;
 }
 
 hr {
@@ -188,9 +233,17 @@ ul {
     cursor: pointer;
 }
 
+.articleDetail {
+    font-family:Roboto;
+}
+
 .articleDetail .infoElement {
     font-size: 13pt;
     margin-top: 1%;
+}
+
+.articleDetail i {
+    font-size: 13pt;
 }
 
 .infoElement div:nth-child(even) {
@@ -218,6 +271,6 @@ ul {
 }
 
 #alertHumanError {
-    color:red;
-    margin-bottom:3%;
+    color: red;
+    margin-bottom: 3%;
 }

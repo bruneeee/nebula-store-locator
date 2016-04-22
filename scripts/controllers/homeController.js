@@ -6,7 +6,7 @@ angular.module('routerApp')
         $(document).ready(
 
                     function () {
-                        
+
                         $('#homeSection').animate({
                             top: "0px"
                         }, {
@@ -18,7 +18,7 @@ angular.module('routerApp')
                         }, 'linear');
                         setTimeout(function () {
                             $('#logoHome').css("-webkit-transition", "all 2s ease-in-out");
-                            $('#logoHome').css('width', '100px');
+                            $('#logoHome').css('width', '10%');
                         }, 1000);
 
                         setTimeout(function () {
@@ -28,132 +28,29 @@ angular.module('routerApp')
 
                         setTimeout(function () {
                             $('.navBarSpan').fadeIn(500);
-                        }, 2000);
+                        }, 2800);
 
                         setTimeout(function () {
                             $(".divNegozi").fadeIn(600);
-                           
-                        }, 2800);
 
-                        setInterval(function () {
-                            $(".divSocial").fadeIn(600);
+                        }, 3000);
 
+                        setTimeout(function () {
+                            $("#gmap01").fadeIn(600);
+                            google.maps.event.trigger(map, 'resize');
                         }, 3200);
-
-
+   
                     });
-
-       $(document).ready(
-
-       $(".divSocial a:nth-child(1), .divSocial a:nth-child(2), .divSocial a:nth-child(3), .divSocial a:nth-child(4)").hover(
-
-     function () {
-         $("i", this).css("color", "white");
-         $("i", this).css("-webkit-transition", "all 0.5s ease-in-out");
-         $("i", this).css("transform","translate(0,+50px)");
-     },
-     function () {
-         $("i", this).css("color", "initial");
-         $("i", this).css("-webkit-transition", "all 0.5s ease-in-out");
-         $("i", this).css("transform", "translate(0,0px)");
-     })
-                   );
-
-        $(document).ready(
-
-        $(".navBarSpan").hover(
-
-      function () {
-          $(".preLinkNavBar", this).stop().fadeIn(250);
-          $(this).addClass("hvr-underline-from-center");
-      },
-      function () {
-          $(".preLinkNavBar", this).stop().fadeOut(250);
-          $(this).addClass("hvr-underline-from-center");
-      })
-                    );
-
-        $(document).ready(
-
-     $(".leftStores span, .rightStores span, .middleStores span").hover(
-
-     function () {
-         $(".preSpanStoreLink", this).stop().fadeIn(300);
-     },
-     function () {
-         $(".preSpanStoreLink", this).stop().fadeOut(300);
-     })
-                   );
+        
 
         var fading = false;
 
-        $(document).ready(
-
-         $("#mappa").click(
-
-          function () {
-              if (fading) return google.maps.event.trigger(map, 'resize');;
-              fading = true;
-              google.maps.event.trigger(map, 'resize');
-              $(".divNegozi").stop().slideUp(500);
-
-              setTimeout(function () {
-                  $("#gmap01").slideDown(500);
-              }, 1000);
-
-              setTimeout(function () {
-                  $('#mappa').trigger('click');
-                  fading = false;
-              }, 1800);
-             
-
-          }
-
-          ));
-
-       $(document).ready(
-
-       $("#negozi").click(
-
-         function () {
-             if (fading) return google.maps.event.trigger(map, 'resize');
-             fading = true;
-             $("#gmap01").stop().slideUp(500);
-
-             setTimeout(function () {
-                 $(".divNegozi").slideDown(500);
-             }, 1000);
-
-             setTimeout(function () {
-                 $('.divNegozi').trigger('click');
-                 fading = false;
-             }, 1800);
-         }
-
-
-         ));
-
-
-       $(document).ready(
-
-      $("#gmap01").hover(
-
-       function () {
-           google.maps.event.trigger(map, 'resize');
-           
-       },
-
-       function () {
-           google.maps.event.trigger(map, 'resize');
-
-       }));
-
-        //Gesu' cristo
-
-        /*$scope.stores1 = [];
+        $scope.stores1 = [];
         $scope.stores2 = [];
-        $scope.stores3 = [];*/
+        /*$scope.stores3 = [];*/
         $scope.stores = [];
+
+        $scope.thisStore = {}; // store per il dettaglio incorporato nella home 
 
         $scope.getStores = function () {
             StoresFactory.getAll($stateParams.session, function (err, result) {
@@ -176,31 +73,55 @@ angular.module('routerApp')
             return storeObj.address.split(",")[2];
         };
 
-        $scope.goToDetails = function (storeObj) {//<---- usare questo per passare ai dettagli
+        $scope.goToDetails = function (storeObj) {// dettaglio in pagina a se stante
             console.log(storeObj);
             var id = storeObj.guid;
             $state.go('details', { guid: id, session: $stateParams.session });
         };
 
-        $scope.logout = function(){//<---- usare questo per il logout
+        //Detail Controller embbed o come cazzo si scrive, GG Raggio
+
+       $scope.getThisStore = function (storeObj) {
+            var id = storeObj.guid;
+            StoresFactory.get($stateParams.session, id, function (err, result) {
+                if (err) return console.log("Errore cosa? ", err);
+                $scope.thisStore = result;
+                console.log($scope.thisStore);
+
+                $(document).ready(
+
+                   function () {
+                       $(".divDetail").fadeIn(500);
+                   });
+
+            })
+        };
+
+        $scope.getState = function (storeObj) {
+            return storeObj.address.split(",")[2];
+        }
+
+        //Fine detail controller
+
+        $scope.logout = function () {//<---- usare questo per il logout
             //$sessionStorage.jesseSession = -1;
             SessionService.destroySession();
             $state.go('login');
         };
 
-        $scope.findNearestStore = function(){
+        $scope.findNearestStore = function () {
             var lowerMarker;
             var lowerDistance;
             var distance;
             console.log(storeMarkers);
-            for (var i = 0; i < storeMarkers.length; i++){
-                if (i == 0){
+            for (var i = 0; i < storeMarkers.length; i++) {
+                if (i == 0) {
                     lowerMarker = storeMarkers[0];
                     lowerDistance = getDistanceBetweenMarkers(centerMarker, storeMarkers[0]);
                 }
                 else {
                     distance = getDistanceBetweenMarkers(centerMarker, storeMarkers[i]);
-                    if (distance < lowerDistance){
+                    if (distance < lowerDistance) {
                         lowerMarker = storeMarkers[i];
                         lowerDistance = distance;
                     }
@@ -209,10 +130,10 @@ angular.module('routerApp')
             map.panTo(lowerMarker.position);
         }
 
-        $scope.findStore = function(name){  //<------------ Questa per far vedere un negozio dato un nome
+        $scope.findStore = function (name) {  //<------------ Questa per far vedere un negozio dato un nome
             var stores = obtainMarkersArray();
-            for (var i = 0; i < storeMarkers.length; i++){
-                if (stores[i][3] == name){
+            for (var i = 0; i < storeMarkers.length; i++) {
+                if (stores[i][3] == name) {
                     map.panTo(storeMarkers[i].position);
                     break;
                 }
@@ -232,9 +153,9 @@ angular.module('routerApp')
                     return ad1 > ad2 ? 1 : ad1 < ad2 ? -1 : 0;
                 }
             });
-            /*$scope.stores1 = data.slice(0, 10);
-            $scope.stores2 = data.slice(10, 20);
-            $scope.stores3 = data.slice(20, 30);*/
+            $scope.stores1 = data.slice(0, 15);
+            $scope.stores2 = data.slice(15, 30);
+            /*$scope.stores3 = data.slice(20, 30);*/
             $scope.stores = data;
             //console.log($scope.stores1);
             //console.log($scope.stores2);
@@ -367,9 +288,9 @@ angular.module('routerApp')
             return array;
         }
 
-        function obtainStore(name){
+        function obtainStore(name) {
             var stores = $scope.stores;
-            for (var i = 0; i < stores.length; i++){
+            for (var i = 0; i < stores.length; i++) {
                 console.log(stores[i].name + " " + name);
                 console.log(stores[i].name.localeCompare(name));
                 if (stores[i].name.localeCompare(name) == 0) return stores[i];
@@ -377,26 +298,27 @@ angular.module('routerApp')
             return null;
         }
 
-        function zoomAnimation (marker) {
+        function zoomAnimation(marker) {
             var point = marker.getPosition(); // Get marker position
             map.setZoom(5); // Back to default zoom
             map.panTo(point); // Pan map to that position
-            setTimeout(map.setZoom(15),1000); // Zoom in after 1 sec
+            setTimeout(map.setZoom(15), 1000); // Zoom in after 1 sec
         }
 
         function obtainWindowInfoArray() {
             var array = [];
             $scope.stores.forEach(function (x) {
-                var content=document.createElement('div');
+                var content = document.createElement('div');
                 var button;
                 content.innerHTML = "<h4>" + x.name + "</h4>" +
                                     "<h5>" + x.address + "</h5>";
                 button = content.appendChild(document.createElement('input'));
-                button.type= 'button';
+                button.type = 'button';
                 button.class = 'btn btn-default center-block centered trovaNegozio';
-                button.value= 'Visualizza dettagli'
-                google.maps.event.addDomListener(button,'click', function(){
-                    $scope.goToDetails(x);})
+                button.value = 'Visualizza dettagli'
+                google.maps.event.addDomListener(button, 'click', function () {
+                    $scope.goToDetails(x);
+                })
                 var m = [
                     /*"<h4>" + x.name + "</h4>" +
                      "<h5>" + x.address + "</h5>" +
@@ -424,11 +346,11 @@ angular.module('routerApp')
             });
         }
 
-        function sortByDistance(){
+        function sortByDistance() {
 
         }
 
-        function getDistanceBetweenMarkers(a, b){
+        function getDistanceBetweenMarkers(a, b) {
             return google.maps.geometry.spherical.computeDistanceBetween(a.position, b.position);
         }
 

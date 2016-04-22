@@ -1,63 +1,54 @@
-
-<section class="primarySection" id="loginSection">
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12 centered centered-top">
-            <img src="images/logo.svg">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12 centered">
-            <form class="form-horizontal" id="loginBox" method="post">
-                <div class="row">
-                    <span class="col-xs-12 center-block" id="alertHumanError" style="display:none">
-                        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> 
-                        <span style="color:black;">E-mail o Password errata</span>
-                        </span>
-                </div>
-                <div class="form-group">
-                    <div class="col-xs-10 col-xs-offset-1">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="E-mail" ng-model="email">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-xs-10 col-xs-offset-1">
-                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password" ng-model="password">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-xs-10 col-xs-offset-1">
-                        <button type="submit" class="btn btn-default" id="submitButtonLogin" ng-click="login()">Accedi</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-   <div class="container-fluid">
+<section class="primarySection"
+    id="loginSection">
+     <div class="container-fluid">
         <div class="row">
+            <div class="col-xs-12 centered centered-top">
+                <img src="images/logo.svg" style="width:200px;"/>
+            </div>
+        </div>
 
-        <svg version="1.1" id="loader" xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            x="0px" y="0px" viewBox="0 0 100 100"
-            enable-background="new 0 0 100 100"
-            xml:space="preserve" style="width: 100px;
-            height: 100px; margin-left:46%; display:none"
-            class="col-xs-12 center-block">
-            <circle fill="none" stroke="#fff"
-                stroke-width="6" stroke-miterlimit="15"
-                stroke-dasharray="14.2472,14.2472"
-                cx="50" cy="50" r="47">
-                <animateTransform
-                    attributeName="transform"
-                    attributeType="XML"
-                    type="rotate"
-                    dur="5s"
-                    from="0 50 50"
-                    to="360 50 50"
-                    repeatCount="indefinite" />
-            </circle>
-        </svg>
-    </div>
-         </div>
-</div>
+        <div class="row">
+            <div class="col-lg-12 col-xs-12">
+
+                <form id="loginBox" method="post">
+                    <div class="row">
+                        <span
+                            class="col-lg-12 col-xs-12 centered"
+                            id="alertHumanError"
+                            style="display:none;">
+                                E-mail o Password errata
+                        </span>
+                    </div>
+
+                    <div class="loginField">
+
+                        <input
+                            type="email"
+                            class="col-lg-12 col-xs-12 loginInput"
+                            placeholder="E-mail"
+                            name="email"
+                            ng-model="email"/>
+
+                    </div>
+
+                    <div class="loginField">
+                        
+                            <input
+                                type="password"
+                                class="col-lg-12 col-xs-12 loginInput"
+                                placeholder="Password"
+                                name="password"
+                                ng-model="password"/>
+                        
+                    </div>
+
+                    <div class="loginField">
+
+                            <button type="submit" class="col-lg-4 col-lg-offset-4 col-xs-12 btn btn-default" id="submitButtonLogin" ng-click="login()">
+                                Accedi</button>
+                        
+                    </div>
+                </form>
+            </div>
+        </div>
 </section>

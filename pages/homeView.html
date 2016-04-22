@@ -1,77 +1,154 @@
-
-
-    <div class="container-fluid no_padding" id="homeSection">
-        <div class="row">
-            <div class="col-xs-12 centered centered-top logo">
-                <img src="images/logo.svg" id="logoHome">
-            </div>
+<div class="container-fluid no_padding" id="homeSection">
+    <div class="row">
+        <div class="col-xs-12 centered centered-top logo">
+            <img src="images/logo.svg" id="logoHome">
         </div>
+    </div>
 
-        <nav class="row">
-                <span class="col-xs-4 navBarSpan" id="mappa">
-                    <span class="preLinkNavBar" style="display:none;">- </span>
-                    MAPPA MONDIALE
-                    <span class="preLinkNavBar" style="display:none;"> -</span>
-                </span>
-                <span class="col-xs-4 navBarSpan" id="negozi">
-                    <span class="preLinkNavBar" style="display:none;">- </span>
-                    NEGOZI
-                    <span class="preLinkNavBar" style="display:none;"> -</span>
-                </span>
-                <span class="col-xs-4 navBarSpan" ng-click="logout()">
-                    <span class="preLinkNavBar" style="display:none;">- </span>
-                    LOGOUT
-                    <span class="preLinkNavBar" style="display:none;"> -</span>
-                </span>
-            </nav>
+    <div class="row">
+        <div class="col-xs-12 logout">
+            <i class="fa fa-sign-out" aria-hidden="true" ng-click="logout()"></i>
+        </div>
+    </div>
 
-         <div class="row" id="gmap01" style="display:none;"> <!-- DIV DELLA MAPPA PER LA GEOLOCALIZZAZIONE -->
-             <div class="row">
-              <p class="col-xs-12">Jesse's nel mondo !</p>
+    <nav class="row">
 
+        <span class="col-xs-12 col-lg-4 navBarSpan" id="negozi">
+
+            <div class="divNavBar">
+                <i class="fa fa-shopping-bag hvr-wobble-vertical" aria-hidden="true"></i>
+                <br/>
+                <span>Store</span>
+                <button class="btn trovaNegozio buttonNearNavSpan" ng-click="orderByDistant()">Order by distant</button>
             </div>
-             <div class="row">
-                 <div class="col-xs-12">
-                <button class="btn btn-default center-block trovaNegozio" ng-click="findNearestStore()">Trova il negozio piu vicino a me</button>
-             </div>
-             </div>
-             <div class="row">
-                 <p class="map">
-                    <div class="col-xs-11" id="map"></div>
-                 </p>
-            </div>
-         </div>
-        <div class="row divNegozi" style="display:none;"> <!-- DIV NEGOZI NEL MONDO -->
-            <div class="col-xs-12">
-                <p>Scopri i dettagli di ogni negozio !</p>
-                </div>
-             <div class="col-xs-6">
-                <img src="images/showroom.jpg" class="center-block imgStore"/>
-                 </div>
-            <div class="col-xs-6">
-                <img src="http://jesse.it/wp-content/uploads/2015/11/chelsea-tavolini-jesse-1.jpg" class="center-block imgStore"/>
-                 </div>
+            <div class="row divNegozi" style="display: normal;">
+                <!-- DIV NEGOZI NEL MONDO -->
+
                 <div class="row">
-                    <div class="col-xs-2">
-                        </div>
-                        <div class="col-xs-3 leftStores">
-                            <span ng-repeat="store in stores1" ng-click="goToDetails(store)">
-                                <i class="fa fa-angle-double-right preSpanStoreLink" aria-hidden="true" style="display:none"></i>
-                            {{getState(store)}} ~ <b>{{store.name}}</b><br />
-                            </span>
-                        </div>
-                        <div class="col-xs-3 middleStores">
-                            <span ng-repeat="store in stores2" ng-click="goToDetails(store)">
-                                <i class="fa fa-angle-double-right preSpanStoreLink" aria-hidden="true" style="display:none"></i>
-                                {{getState(store)}} ~ <b>{{store.name}}</b><br />
-                            </span><br />
-                        </div>
-                    <div class="col-xs-3 rightStores">
-                           <span ng-repeat="store in stores3" ng-click="goToDetails(store)">
-                               <i class="fa fa-angle-double-right preSpanStoreLink" aria-hidden="true" style="display:none"></i>
-                               {{getState(store)}} ~ <b>{{store.name}}</b><br />
-                           </span>
-                        </div>
+
+                    <div class="col-xs-7 col-xs-offset-5 col-lg-5 col-lg-offset-1">
+                        <span
+                            ng-repeat="store in stores1"
+                            class="spanStores"
+                            ng-click="getThisStore(store)">{{getState(store)}}
+                            <br/>
+                        </span>
+                    </div>
+
+                    <div class="col-xs-7 col-xs-offset-5 col-lg-5 col-lg-offset-1">
+                        <span
+                            ng-repeat="store in stores2"
+                            class="spanStores"
+                            ng-click="getThisStore(store)">{{getState(store)}}
+                            <br/>
+                        </span>
+                    </div>
+
                 </div>
             </div>
-        </div>
+        </span>
+
+        <span class="col-xs-12 col-lg-4 navBarSpan" id="mappa">
+            <div class="divNavBar">
+                <i class="fa fa-map-marker hvr-wobble-vertical" aria-hidden="true"></i>
+                <br/>
+                <span>Map</span>
+                <button
+                    class="btn trovaNegozio buttonNearNavSpan"
+                    ng-click="findNearestStore()">
+                    Find nearest</button>
+            </div>
+            <div class="row" id="gmap01" style="display: none;">
+                <!-- DIV DELLA MAPPA PER LA GEOLOCALIZZAZIONE -->
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div id="map"></div>
+                    </div>
+                </div>
+            </div>
+
+        </span>
+
+        <span class="col-xs-12 col-lg-4 navBarSpan">
+
+            <i class="fa fa-list-alt hvr-wobble-vertical" aria-hidden="true"></i>
+            <br/>
+            <span>Details</span>
+
+            <div class="row divDetail" style="display: none; cursor:default">
+                <!-- DIV DETTAGLIO NEGOZIO -->
+
+                <div class="row">
+                    <button
+                        class="btn trovaNegozio buttonNearNavSpan"
+                        ng-click="goToDetails(thisStore)">Show Image</button>
+                    <h1 class="col-xs-12 storeNameDetail" ng-cloak>{{getState(thisStore)}}'s Store
+                    </h1>
+                </div>
+                <div class="row underH1Detail">
+                    <span class="col-xs-12" ng-cloak>
+                        <b ng-cloak>{{thisStore.name}}</b>
+                        -
+                        {{thisStore.address}}
+                        <img src="{{thisStore.thumbnail}}" ng-cloak/>
+                    </span>
+                </div>
+                <div class="row">
+                    <article class="col-xs-11 col-xs-offset-1 articleDetail">
+                        {{thisStore.description}}
+                        <div class="row">
+                            <span class="col-xs-12 contactInfo">Contacts & Info</span>
+                        </div>
+                        <div class="infoElement">
+                            <div>
+                                <b>Open Date :
+                                </b>
+                                <span>{{thisStore.open_date}}</span><br/></div>
+                            <div>
+                                <b>Phone :
+                                </b>
+                                <span>{{thisStore.phone}}</span><br/></div>
+                            <div>
+                                <b>Sales Person :
+                                </b>
+                                <span>{{thisStore.sales_person.first}}
+                                    {{thisStore.sales_person.last}}</span>
+                                |
+                                <b>
+                                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                                </b>
+                                <span>{{thisStore.sales_person.email}}</span>
+                                <br/>
+                            </div>
+                            <div>
+                                <b>Tags :
+                                </b>
+                                <i ng-repeat="t in thisStore.tags">+{{t}}
+                                </i>
+                            </div>
+                            <div>
+                                <b>Products :</b>
+                                <ul>
+                                    <li ng-repeat="p in thisStore.products">{{p.name}}
+                                        <b class="priceElement">{{p.price}}$</b>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </span>
+    </nav>
+
+</div>
+</div>
+
+<!--
+    TODO LIST per Luca
+    Sulla mappa mettere l'immagine vicino al marker
+    Zoommando la pagina la mappa si sfoca un po - fixare
+    Fai le funzioni dentro i bottoni , poi lo stile lo faccio da parte
+-->
