@@ -23,7 +23,7 @@ angular.module('routerApp')
 
                         setTimeout(function () {
                             $('#homeSection').css("-webkit-transition", "all 2s ease-in-out");
-                            $('#homeSection').css("background", "white")
+                            $('#homeSection').css("background", "rgb(218, 165, 32)")
                         }, 1600);
 
                         setTimeout(function () {
