@@ -18,13 +18,13 @@ angular.module('routerApp')
                         }, 'linear');
                         setTimeout(function () {
                             $('#logoHome').css("-webkit-transition", "all 2s ease-in-out");
-                            $('#logoHome').css('width', '10%');
+                            $('#logoHome').css('width', '180px');
                         }, 1000);
 
                         setTimeout(function () {
                             $('#homeSection').css("-webkit-transition", "all 2s ease-in-out");
-                            $('#homeSection').css("background", "rgb(218, 165, 32)")
-                        }, 1600);
+                            $('#homeSection').css("background-image", "url('images/gold.svg')");
+                        }, 2800);
 
                         setTimeout(function () {
                             $('.navBarSpan').fadeIn(500);
@@ -38,10 +38,9 @@ angular.module('routerApp')
                         setTimeout(function () {
                             $("#gmap01").fadeIn(600);
                             google.maps.event.trigger(map, 'resize');
-                        }, 3200);
+                        }, 3000);
    
                     });
-        
 
         var fading = false;
 
@@ -81,7 +80,15 @@ angular.module('routerApp')
 
         //Detail Controller embbed o come cazzo si scrive, GG Raggio
 
-       $scope.getThisStore = function (storeObj) {
+        $scope.getThisStore = function (storeObj) {
+
+            $(document).ready(
+
+                  function () {// tamarrate
+                      
+                      $(".divDetail").addClass("animated zoomOut");
+                  });
+
             var id = storeObj.guid;
             StoresFactory.get($stateParams.session, id, function (err, result) {
                 if (err) return console.log("Errore cosa? ", err);
@@ -90,8 +97,14 @@ angular.module('routerApp')
 
                 $(document).ready(
 
-                   function () {
-                       $(".divDetail").fadeIn(500);
+                   function () {// tamarrate
+                       setTimeout(function () {
+                           $(".divDetail").removeClass("animated zoomOut");
+                           $(".divDetail").fadeIn().addClass("animated zoomIn");
+                          
+
+                       }, 10);
+                       
                    });
 
             })
@@ -309,15 +322,24 @@ angular.module('routerApp')
             var array = [];
             $scope.stores.forEach(function (x) {
                 var content = document.createElement('div');
-                var button;
-                content.innerHTML = "<h4>" + x.name + "</h4>" +
-                                    "<h5>" + x.address + "</h5>";
-                button = content.appendChild(document.createElement('input'));
+                content.innerHTML = "<h4 style='color:black'>" + x.name + "</h4>" +
+                                    "<h5 style='color:rgb(48,48,48)'>" + x.address + "</h5>" +
+                //"<img src='"+x.featured_image+"' />";
+                "<button class='buttonStoreImage' onclick='cristo()'>Store Image</button>";
+                /*button = content.appendChild(document.createElement('input'));
                 button.type = 'button';
-                button.class = 'btn btn-default center-block centered trovaNegozio';
-                button.value = 'Visualizza dettagli'
-                google.maps.event.addDomListener(button, 'click', function () {
-                    $scope.goToDetails(x);
+                button.class = 'buttonNearNavSpan';
+                button.value = 'Store Image';*/
+                google.maps.event.addDomListener(content, 'click', function () {
+                    //$scope.goToDetails(x);
+                 $(document).ready(
+
+                 function () { // img show
+
+                     $("#map").fadeOut(200);
+                     $("#imgStore").attr("src", "url('" + x.featured_image + "')");
+                     $("#imgStore").fadeIn(800);
+                 });
                 })
                 var m = [
                     /*"<h4>" + x.name + "</h4>" +

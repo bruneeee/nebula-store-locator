@@ -16,26 +16,26 @@
         <span class="col-xs-12 col-lg-4 navBarSpan" id="negozi">
 
             <div class="divNavBar">
-                <i class="fa fa-shopping-bag hvr-wobble-vertical" aria-hidden="true"></i>
+                <i class="fa fa-shopping-bag" aria-hidden="true"></i>
                 <br/>
                 <span>Store</span>
-                <button class="btn trovaNegozio buttonNearNavSpan" ng-click="orderByDistant()">Order by distant</button>
+                <button class="buttonNearNavSpan" ng-click="orderByDistant()">Order by distant</button>
             </div>
             <div class="row divNegozi" style="display: normal;">
                 <!-- DIV NEGOZI NEL MONDO -->
 
                 <div class="row">
 
-                    <div class="col-xs-7 col-xs-offset-5 col-lg-5 col-lg-offset-1">
+                    <div class="col-xs-5 col-xs-offset-1 col-lg-5 col-lg-offset-1">
                         <span
                             ng-repeat="store in stores1"
                             class="spanStores"
-                            ng-click="getThisStore(store)">{{getState(store)}}
+                            ng-click="getThisStore(store)">{{getState(store)}} 
                             <br/>
                         </span>
                     </div>
 
-                    <div class="col-xs-7 col-xs-offset-5 col-lg-5 col-lg-offset-1">
+                    <div class="col-xs-5 col-xs-offset-1 col-lg-5 col-lg-offset-1">
                         <span
                             ng-repeat="store in stores2"
                             class="spanStores"
@@ -50,11 +50,11 @@
 
         <span class="col-xs-12 col-lg-4 navBarSpan" id="mappa">
             <div class="divNavBar">
-                <i class="fa fa-map-marker hvr-wobble-vertical" aria-hidden="true"></i>
+                <i class="fa fa-map-marker" aria-hidden="true"></i>
                 <br/>
                 <span>Map</span>
                 <button
-                    class="btn trovaNegozio buttonNearNavSpan"
+                    class="buttonNearNavSpan"
                     ng-click="findNearestStore()">
                     Find nearest</button>
             </div>
@@ -64,6 +64,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <div id="map"></div>
+                        <img src="" id="imgStore" style="display:none;" />
                     </div>
                 </div>
             </div>
@@ -71,12 +72,12 @@
         </span>
 
         <span class="col-xs-12 col-lg-4 navBarSpan">
-
-            <i class="fa fa-list-alt hvr-wobble-vertical" aria-hidden="true"></i>
+            <div class="divNavBar">
+            <i class="fa fa-list-alt" aria-hidden="true"></i>
             <br/>
             <span>Details</span>
-
-            <div class="row divDetail" style="display: none; cursor:default">
+                </div>
+            <div class="row divDetail" style="display: none; cursor:default;">
                 <!-- DIV DETTAGLIO NEGOZIO -->
 
                 <div class="row">
@@ -128,7 +129,7 @@
                                 <span class="headerInfoElement">Products :</span>
                                 <ul>
                                     <li ng-repeat="p in thisStore.products">{{p.name}}
-                                        <b class="priceElement">{{p.price}}$</b>
+                                        <span class="priceElement">{{p.price}}$</span>
                                     </li>
                                 </ul>
                             </div>

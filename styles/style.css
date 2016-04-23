@@ -1,6 +1,7 @@
 
 body {
     font-family: 'Open Sans', sans-serif;
+    overflow-x: hidden;
 }
 
 #homeSection {
@@ -94,17 +95,21 @@ input:-webkit-autofill:active {
     font-size: 15pt;
 }
 
-.logo {
+.logout {
+    -webkit-transition: all 0.5s ease-in-out;
+    font-size: 20pt;
+    margin-top: -6%;
+    margin-left: 80%;
     cursor: pointer;
+    color: black;
+    opacity: 0.8;
 }
 
-.logout {
-    font-size: 25pt;
-    text-align: right;
-    margin-top: -5%;
-    margin-right: 25%;
-    cursor: pointer;
-}
+    .logout:hover {
+        -webkit-transition: all 0.5s ease-in-out;
+        opacity: 1;
+        font-size: 25pt;
+    }
 
 #logoHome {
     width: 50%;
@@ -112,8 +117,8 @@ input:-webkit-autofill:active {
 }
 
 nav {
-    background:url('../images/bkg.svg') no-repeat;
-    background-size:cover;
+    background: url('../images/bkg.svg') no-repeat;
+    background-size: cover;
     color: rgb(238,232,170);
     margin-top: 2%;
     min-height: 80vh;
@@ -125,33 +130,33 @@ nav {
     font-family: Abel;
     text-align: center;
     display: none;
-    cursor: pointer;
     transform: translate(0,0%);
 }
 
 .spanStores {
-    padding-left:10px;
-    font-size:15pt;
+    padding-left: 10px;
+    font-size: 15pt;
+    cursor: pointer;
 }
 
-.spanStores:hover {
-    font-weight: bold;
-    color:rgb(218, 165, 32);
-    border-left:solid 1px rgb(218, 165, 32);
-}
+    .spanStores:hover {
+        font-weight: bold;
+        color: rgb(218, 165, 32);
+        border-left: solid 1px rgb(218, 165, 32);
+    }
 
 .navBarSpan i {
     -webkit-transition: all 0.5s ease-in-out;
     font-size: 80pt;
     margin-top: 1%;
     transform: translate(0,+0%);
-    color:rgb(218, 165, 32);
+    color: rgb(218, 165, 32);
 }
 
-.divNegozi, #gmap01, .divDetail {
+.divNegozi, .divDetail, #gmap01 {
     color: rgb(238,232,170);
     font-size: 18pt;
-    letter-spacing:1px;
+    letter-spacing: 1px;
     font-family: Open Sans Condensed;
     text-align: left;
     margin-top: 2%;
@@ -164,30 +169,48 @@ p {
     font-size: 50pt;
 }
 
-#description{
-    font-size:14pt;   
-    font-family:Abel;
+#description {
+    font-size: 14pt;
+    font-family: Marvel;
 }
 
 .headerInfoElement {
-    color:rgb(218, 165, 32);
+    color: rgb(218, 165, 32);
 }
 
-.trovaNegozio {
-    background: black;
-    color: rgba(218, 165, 32,0.8);
-    border-color: transparent;
-}
+/*.headerInfoElement + span { to get nearest element
+    
+}*/
 
-    .trovaNegozio:active, .trovaNegozio:visited, .trovaNegozio:focus {
-        background: black;
-        color: rgba(218, 165, 32,0.8);
-        border-color: transparent;
-    }
-
-.buttonNearNavSpan {
+.buttonNearNavSpan, .buttonNearNavSpan:visited, .buttonNearNavSpan:focus {
     position: absolute;
     margin-left: 5%;
+    display: inline-block;
+    padding: 6px 12px;
+    top: 5%;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-family: Abel;
+    color: rgba(218, 165, 32,0.9);
+    background-color: black;
+    outline: 0;
+}
+
+.buttonStoreImage, .buttonStoreImage:visited, .buttonStoreImage:focus {
     display: inline-block;
     padding: 6px 12px;
     font-size: 14px;
@@ -206,14 +229,17 @@ p {
     background-image: none;
     border: 1px solid transparent;
     border-radius: 4px;
+    font-family: Abel;
+    color: rgba(218, 165, 32,0.9);
+    background-color: black;
+    outline: 0;
 }
 
-.buttonNearNavSpan:hover {
-    color:black;
-    background-color: rgba(218, 165, 32,0.8);
-    border-color: transparent;
-}
-
+    .buttonNearNavSpan:hover, .buttonStoreImage:hover {
+        color: black;
+        background-color: rgba(218, 165, 32,0.9);
+        border-color: black;
+    }
 
 .no_padding {
     padding: 0 !important;
@@ -229,19 +255,19 @@ p {
 
 #map {
     border: double 1px black;
-    min-height: 58vh;
-    width: 100%;
-    margin-left: 2%;
+    min-height: 50vh;
+    width:100%;
+    left:3%;
 }
 
 .storeNameDetail {
-    text-align:center;
-    margin-top:-1%;
+    text-align: center;
+    margin-top: -1%;
 }
 
 .underH1Detail {
-    text-align:center;
-    font-size:12pt;
+    text-align: center;
+    font-size: 12pt;
 }
 
 hr {
@@ -258,17 +284,17 @@ ul {
 }
 
 .articleDetail {
-    font-family:Ubuntu;
+    font-family: Ubuntu;
 }
 
-.articleDetail .infoElement {
-    font-size: 13pt;
-    margin-top: 1%;
-}
+    .articleDetail .infoElement {
+        font-size: 13pt;
+        margin-top: 1%;
+    }
 
-.articleDetail i {
-    font-size: 13pt;
-}
+    .articleDetail i {
+        font-size: 13pt;
+    }
 
 /*.infoElement div:nth-child(even) {
     background: rgb(238,232,170);
