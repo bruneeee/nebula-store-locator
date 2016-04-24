@@ -24,6 +24,7 @@ angular.module('routerApp')
                         setTimeout(function () {
                             $('#homeSection').css("-webkit-transition", "all 2s ease-in-out");
                             $('#homeSection').css("background-image", "url('images/gold.svg')");
+                            $('#homeSection').css("background-size", "cover");
                         }, 2800);
 
                         setTimeout(function () {
@@ -138,12 +139,12 @@ angular.module('routerApp')
             //$scope.getThisStore(x);
             var m = getMarkerFromStore(x.name);
             map.panTo(m.position);
-            google.maps.event.trigger(m, 'click');
+            google.maps.event.trigger(m, 'click');       
         }
 
-        $scope.sort = function(){
+        $scope.sort = function () {
             sortByDistance(stores.slice(0));
-        }
+            }
 
         function fillArrays(data) {
             data = data.sort(function (a, b) {
@@ -284,8 +285,6 @@ angular.module('routerApp')
 
         function getStoreFromMarker(name){
             for (var i = 0; i < stores.length; i++) {
-                console.log(stores[i].name + " " + name);
-                console.log(stores[i].name.localeCompare(name));
                 if (stores[i].name.localeCompare(name) == 0) return stores[i];
             }
             return null;
@@ -308,24 +307,27 @@ angular.module('routerApp')
                 content.innerHTML = "<h4 style='color:black'>" + x.name + "</h4>" +
                                     "<h5 style='color:rgb(48,48,48)'>" + x.address + "</h5>" +
                 //"<img src='"+x.featured_image+"' />";
-                "<button class='buttonStoreImage' onclick='cristo()'>Store Image</button>";
-                /*button = content.appendChild(document.createElement('input'));
-                button.type = 'button';
-                button.class = 'buttonNearNavSpan';
-                button.value = 'Store Image';*/
+                "<button class='buttonStoreImage' data-toggle='modal' data-target='#myModal'>Store Image</button>" +
+                "<div class='modal fade' id='myModal' role='dialog'><div class='modal-dialog'>" +
+                "<div class='modal-body'><img src='" + x.featured_image + "' /></div>" +
+                "<div class='modal-footer'><button type='button' class='btn btn-default' data-dismiss='modal'>Close</button></div>" +
+                "</div></div>";
+                var id = x.guid;
+                StoresFactory.get($stateParams.session, id, function (err, result) {
+                    if (err) return console.log("Errore cosa? ", err);
+                    $scope.currentStore = result;
+                    var img = $scope.currentStore.featured_image;  // store image show
+                
                 google.maps.event.addDomListener(content, 'click', function () {
-                    //$scope.goToDetails(x);
-                 $(document).ready(
-                 function () { // img show
-                     $("#map").fadeOut(200);
-                     $("#imgStore").attr("src", "url('" + x.featured_image + "')");
-                     $("#imgStore").fadeIn(800);
-                 });
+                    var content2 = document.createElement('div');
+                    content.innerHTML = "<img src='"+ img +"' />";
+                    /*content2.innerHTML = "<div class='modal fade' id='myModal' role='dialog'><div class='modal-dialog'>" +
+                    "<div class='modal-body'><img src='" + x.featured_image + "' /></div>" +
+                    "<div class='modal-footer'><button type='button' class='btn btn-default' data-dismiss='modal'>Close</button></div>" +
+                    "</div></div>";*/
                 })
-                var m = [
-                    /*"<h4>" + x.name + "</h4>" +
-                     "<h5>" + x.address + "</h5>" +
-                     '<button class="btn btn-default center-block trovaNegozio" onclick="cristo(\'' + x.name + '\')">Visualizza dettagli</button>'*/
+                })
+                var m = [       
                     content
                 ];
                 array.push(m);
@@ -347,10 +349,8 @@ angular.module('routerApp')
         }
 
         function sortByDistance(data){
-            console.log(data);
+            
             data = data.sort(function (a, b) {
-                console.log((getMarkerFromStore(a.name)));
-                console.log(centerMarker);
                 var distance1 = getDistanceBetweenMarkersPositions(
                     new google.maps.LatLng(parseFloat(a.latitude), parseFloat(a.longitude)),
                     centerMarker.position);

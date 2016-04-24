@@ -9,10 +9,6 @@ body {
     height: 100vh;
 }
 
-#detailSection {
-    background: white;
-}
-
 .primarySection. #homeSection, #detailSection {
     width: 100%;
 }
@@ -76,13 +72,6 @@ input:-webkit-autofill:active {
     margin-top: 5%;
 }
 
-.footer {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-}
-
 #returnHomeLogin {
     cursor: pointer;
 }
@@ -98,8 +87,8 @@ input:-webkit-autofill:active {
 .logout {
     -webkit-transition: all 0.5s ease-in-out;
     font-size: 20pt;
-    margin-top: -6%;
-    margin-left: 80%;
+    margin-top: -11%;
+    margin-left: 85%;
     cursor: pointer;
     color: black;
     opacity: 0.8;
@@ -116,7 +105,7 @@ input:-webkit-autofill:active {
     opacity: 0;
 }
 
-nav {
+section {
     background: url('../images/bkg.svg') no-repeat;
     background-size: cover;
     color: rgb(238,232,170);
@@ -256,8 +245,9 @@ p {
 #map {
     border: double 1px black;
     min-height: 50vh;
-    width:100%;
-    left:3%;
+    width: 108%;
+    right: 0;
+    left: 0;
 }
 
 .storeNameDetail {
