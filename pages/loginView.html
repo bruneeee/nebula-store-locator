@@ -1,13 +1,12 @@
-<section class="primarySection"
-    id="loginSection">
-     <div class="container-fluid">
+
+     <div class="container-fluid" id="loginSection">
         <div class="row">
             <div class="col-xs-12 centered centered-top">
-                <img src="images/logo.svg" style="width:200px;"/>
+                <img src="images/logo.svg" style="width:150px;"/>
             </div>
         </div>
 
-        <div class="row">
+        <div class="row loginField">
             <div class="col-lg-12 col-xs-12">
 
                 <form id="loginBox" method="post">
@@ -16,11 +15,12 @@
                             class="col-lg-12 col-xs-12 centered"
                             id="alertHumanError"
                             style="display:none;">
-                                E-mail o Password errata
+                               <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> E-mail o password errata
+                            
                         </span>
                     </div>
 
-                    <div class="loginField">
+                    <div>
 
                         <input
                             type="email"
@@ -31,7 +31,7 @@
 
                     </div>
 
-                    <div class="loginField">
+                    <div>
                         
                             <input
                                 type="password"
@@ -42,13 +42,14 @@
                         
                     </div>
 
-                    <div class="loginField">
+                    <div>
 
                             <button type="submit" class="col-lg-4 col-lg-offset-4 col-xs-12 btn btn-default" id="submitButtonLogin" ng-click="login()">
                                 Accedi</button>
-                        
+                        <img src="../images/loader.gif" />
                     </div>
                 </form>
             </div>
         </div>
-</section>
+     </div>
+
