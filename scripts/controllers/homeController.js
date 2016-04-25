@@ -92,6 +92,8 @@ angular.module('routerApp')
             StoresFactory.get($stateParams.session, id, function (err, result) {
                 if (err) return console.log("Errore cosa? ", err);
                 $scope.currentStore = result;
+                $scope.currentStore.distance = getDistanceBetweenMarkersPositions(getMarkerFromStore($scope.currentStore.name).position, centerMarker.position) / 1000;
+                console.log($scope.currentStore.distance);
                 $(document).ready(
                    function () {// tamarrate
                        setTimeout(function () {
@@ -133,7 +135,7 @@ angular.module('routerApp')
 
         //$scope.stores = $scope.getStores();
 
-        $scope.sortMode = 2; //0 niente, 1 alfabetico (dei nomi?), 2 per stato alfabetico, 3 per distanza dall' utente
+        $scope.sortMode = 1; //0 niente, 1 alfabetico (dei nomi?), 2 per stato alfabetico, 3 per distanza dall' utente
 
         $scope.clickStore = function(x){
             //$scope.getThisStore(x);
@@ -304,6 +306,7 @@ angular.module('routerApp')
             var array = [];
             stores.forEach(function (x) {
                 var content = document.createElement('div');
+
                 content.innerHTML = "<h4 style='color:black'>" + x.name + "</h4>" +
                                     "<h5 style='color:rgb(48,48,48)'>" + x.address + "</h5>" +
                 //"<img src='"+x.featured_image+"' />";
@@ -349,7 +352,6 @@ angular.module('routerApp')
         }
 
         function sortByDistance(data){
-            
             data = data.sort(function (a, b) {
                 var distance1 = getDistanceBetweenMarkersPositions(
                     new google.maps.LatLng(parseFloat(a.latitude), parseFloat(a.longitude)),
