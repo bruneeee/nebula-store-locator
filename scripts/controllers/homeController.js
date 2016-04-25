@@ -92,7 +92,7 @@ angular.module('routerApp')
             StoresFactory.get($stateParams.session, id, function (err, result) {
                 if (err) return console.log("Errore cosa? ", err);
                 $scope.currentStore = result;
-                $scope.currentStore.distance = getDistanceBetweenMarkersPositions(getMarkerFromStore($scope.currentStore.name).position, centerMarker.position) / 1000;
+                $scope.currentStore.distance = (getDistanceBetweenMarkersPositions(getMarkerFromStore($scope.currentStore.name).position, centerMarker.position) / 1000).toFixed(0);
                 console.log($scope.currentStore.distance);
                 $(document).ready(
                    function () {// tamarrate
@@ -323,7 +323,7 @@ angular.module('routerApp')
                 
                 google.maps.event.addDomListener(content, 'click', function () {
                     var content2 = document.createElement('div');
-                    content.innerHTML = "<img src='"+ img +"' />";
+                    content.innerHTML = "<img src='"+ img +"' style='width:180px; height:150px' />";
                     /*content2.innerHTML = "<div class='modal fade' id='myModal' role='dialog'><div class='modal-dialog'>" +
                     "<div class='modal-body'><img src='" + x.featured_image + "' /></div>" +
                     "<div class='modal-footer'><button type='button' class='btn btn-default' data-dismiss='modal'>Close</button></div>" +

@@ -30,7 +30,7 @@
                         <span
                             ng-repeat="store in stores1"
                             class="spanStores"
-                            ng-click="clickStore(store)">{{getState(store)}}
+                            ng-click="clickStore(store)">{{store.name}}
                             <br/>
                         </span>
                     </div>
@@ -39,7 +39,7 @@
                         <span
                             ng-repeat="store in stores2"
                             class="spanStores"
-                            ng-click="clickStore(store)">{{getState(store)}}
+                            ng-click="clickStore(store)">{{store.name}}
                             <br/>
                         </span>
                     </div>
@@ -88,7 +88,8 @@
                     <span class="col-xs-12">
                         <span class="headerInfoElement">{{currentStore.name}}</span>
                         -
-                        {{currentStore.address}}
+                        {{currentStore.address}} <br />
+                        <span class="headerInfoElement">{{currentStore.distance}}</span> km from me
                     </span>
                 </div>
                 <div class="row">
