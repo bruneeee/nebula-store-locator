@@ -15,8 +15,8 @@ storeLocator.constant("RequestURL", {
 });
 
 storeLocator.constant("Icons",{
-    userIcon: "../assets/images/userpos.png",
-    storeIcon: "../assets/images/pin.png"
+    userIcon: "assets/images/userpos.png",
+    storeIcon: "assets/images/pin.png"
 });
 
 storeLocator.config(function($stateProvider, $urlRouterProvider) {
