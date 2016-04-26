@@ -15,8 +15,8 @@ storeLocator.constant("RequestURL", {
 });
 
 storeLocator.constant("Icons",{
-    userIcon: "https://webdesign.danols.com/static/template/images/icons/light/pin_map_icon&48.png",
-    storeIcon: "http://findicons.com/files/icons/2232/wireframe_mono/48/pin_map.png"
+    userIcon: "../assets/images/userpos.png",
+    storeIcon: "../assets/images/pin.png"
 });
 
 storeLocator.config(function($stateProvider, $urlRouterProvider) {
