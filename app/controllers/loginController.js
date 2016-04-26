@@ -7,12 +7,12 @@ storeLocator.controller("loginController", function($scope, $state, sessionManag
                     password:   $scope.password
                 },
                 function(result) {
-                    if(result) {
+                    if(!result.errorCode) {
                         sessionManager.putCookie(result.session, result.session_ttl);
                         $state.go('home');
                     }
-                    else {
-
+                    else{
+                        console.log(result.errorCode);
                     }
                 })
         }

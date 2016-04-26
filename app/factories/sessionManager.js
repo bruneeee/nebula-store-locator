@@ -16,11 +16,11 @@ storeLocator.factory("sessionManager", function($http, $cookies, RequestURL) {
                 password: _password
             })
             .success(function (result) {
-                if (result.success == false) {
-                    completionHandler(undefined);
+                if (result.success == true) {
+                    completionHandler(result.data);
                 }
                 else {
-                    completionHandler(result.data)
+                    completionHandler(result)
                 }
             })
             .error(function () {
