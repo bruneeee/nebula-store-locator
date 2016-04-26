@@ -37,7 +37,7 @@ storeLocator.config(function($stateProvider, $urlRouterProvider) {
         }
       })
       .state('login', {
-        url: '/login',
+        url: '/login/:id',
         templateUrl: 'view/loginView.html',
         controller: 'loginController'
       })
@@ -54,7 +54,7 @@ storeLocator.run(function($rootScope, $state, sessionManager) {
         if(sessionManager.getCookie()) {
             sessionManager.verify(function(result) {
                 if(!result) {
-                    $state.go('login');
+                    $state.go('login', {id: 'session_expired'});
                 }
             });
         }

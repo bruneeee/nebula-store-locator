@@ -1,4 +1,6 @@
-storeLocator.controller("loginController", function($scope, $state, sessionManager) {
+storeLocator.controller("loginController", function($scope, $state, $stateParams, sessionManager) {
+
+    $scope.expiredSession = $stateParams.id;
 
     if(!sessionManager.getCookie()) {
         $scope.submit = function() {
