@@ -1,4 +1,4 @@
-storeLocator.controller("mapController", function($scope,$state, storesService,localizationManager) {
+storeLocator.controller("mapController", function($scope,$state, storesService,localizationManager,Icons) {
     var myLat = 45.9626;
     var myLng = 12.6563;
 
@@ -20,7 +20,8 @@ storeLocator.controller("mapController", function($scope,$state, storesService,l
         var myPos = new google.maps.LatLng(myLat,myLng);
 
         map.setCenter(myPos);
-        addMarker(myPos,"Tu sei qui!!!");
+        console.log()
+        addMarker(myPos,"Tu sei qui!!!","",Icons.userIcon);
 
     });
 
@@ -30,18 +31,20 @@ storeLocator.controller("mapController", function($scope,$state, storesService,l
                 $scope.pins = data;
                     $scope.pins.forEach(function(store){
                     var storePos = new google.maps.LatLng(store.latitude,store.longitude);
-                    addMarker(storePos,store.name,store.guid);
+                    addMarker(storePos,store.name,store.guid,Icons.storeIcon);
                 });
             }
         }
     );
 
-    function addMarker(pos,title,guid){
+    function addMarker(pos,title,guid, icon){
+
         var marker = new google.maps.Marker({
             position: pos,
             map: map,
             title: title,
-            guid:guid
+            guid: guid,
+            icon: icon
         });
         google.maps.event.addListener(marker, 'click', function() {
             if(this.guid.length > 1)

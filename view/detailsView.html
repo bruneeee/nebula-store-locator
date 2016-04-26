@@ -13,7 +13,7 @@
         </p>
         <p class="col-xs-12">
             <span class="glyphicon glyphicon-earphone"></span>
-            {{store.phone}}
+            <a href="tel:{{store.phone}}">{{store.phone}}</a>
         </p>
         <p class="col-xs-12">
             <span class="glyphicon glyphicon-pushpin"></span>
@@ -32,36 +32,10 @@
         </p>
         <p class="col-xs-12">
             <span class="glyphicon glyphicon-envelope"></span>
-            {{store.sales_person.email}}
+            <a href="mailto:{{store.sales_person.email}}">{{store.sales_person.email}}</a>
         </p>
         <h2 class="col-xs-12">
             <b>Products</b>
         </h2>
     </div>
 </div>
-
-<!-- <div>Dettagli store:
-    <img src="{{store.featuredimage}}">
-
-    <div>NOME: {{store.name}} </div>
-    <div>PHONE: {{store.phone}} </div>
-    <div>ADDRESS: {{store.address}} </div>
-    <div>DESC: {{store.description}} </div>
-    <div>ACTIVE: {{store.isActive}} </div>
-    <div>OPEN DATE: {{store.open_date}} </div>
-
-</div>
-<br>
-<div>Dettagli salesMan:
-    <div>{{store.sales_person.first}} {{store.sales_person.last}}</div>
-    <div>{{store.sales_person.email}} </div>
-
-</div>
-<br>
-<div>PRODUCTS
-    <div ng-repeat="product in store.products">
-        <div>NAME:{{product.name}}</div>
-        <div>AVAIBLE: {{product.isAvailable}}</div>
-        <div>PRICE: {{product.price}}</div>
-    </div>
-</div> -->
