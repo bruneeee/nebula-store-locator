@@ -11,7 +11,12 @@
                 <input name="password" type="password" placeholder="Password" required ng-model="password"/>
             </div>
             <div class="col-xs-12">
-                <input type="submit"/>
+                <input type="submit" value="LOGIN"/>
+            </div>
+            <div class="col-xs-12 error" ng-show="accessDenied">
+                <p>
+                    <span class="glyphicon glyphicon-exclamation-sign"></span> {{errorMsg}}
+                </p>
             </div>
         </form>
     </div>

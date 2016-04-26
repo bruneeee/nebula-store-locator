@@ -12,7 +12,11 @@ storeLocator.controller("loginController", function($scope, $state, sessionManag
                         $state.go('home');
                     }
                     else{
-                        console.log(result.errorCode);
+                        $scope.accessDenied = true;
+                        if(result.errorCode == 200 || result.errorCode == 401) {
+                            $scope.errorMsg = "Autenticazione fallita, controlla le credenziali"
+                        }
+
                     }
                 })
         }
