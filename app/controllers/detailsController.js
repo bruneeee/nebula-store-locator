@@ -5,7 +5,6 @@ storeLocator.controller("detailsController", function($scope,$stateParams, store
         function(data){
             if(data){
                 $scope.store = data;
-                console.log(data);
             }
 
         }
