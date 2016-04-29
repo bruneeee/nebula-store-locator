@@ -1,5 +1,5 @@
 storeLocator.controller("storesController", function($rootScope, $scope, storesService,localizationManager) {
-
+    
     var myLat ;
     var myLng ;
     $scope.distances = [];

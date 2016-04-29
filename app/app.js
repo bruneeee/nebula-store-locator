@@ -20,7 +20,7 @@ storeLocator.constant("Icons",{
 });
 
 storeLocator.config(function($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('/home');
+  $urlRouterProvider.otherwise('/login/', {});
 
       $stateProvider
       .state('home', {
