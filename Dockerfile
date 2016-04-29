@@ -19,8 +19,6 @@ ENV APACHE_PID_FILE /var/run/apache2.pid
 
 EXPOSE 80
 
-ADD . /var/www/store-locator
-
 ADD apache-config.conf /etc/apache2/sites-enabled/000-default.conf
 
 CMD /usr/sbin/apache2ctl -D FOREGROUND

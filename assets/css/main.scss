@@ -7,6 +7,10 @@ body {
   background: url('../images/pattern.jpg');
   .container-fluid {
     header {
+      top: -1px;
+      z-index: 3;
+      position: fixed;
+      width: 100%;
       background-color: $dark-background-color;
       box-shadow: 0 0 15px 0 rgba(50, 50, 50, 0.2);
       overflow: hidden;
@@ -45,6 +49,8 @@ body {
       }
     }
     section {
+      z-index: 2;
+      margin-top: 100px;
       div {
 
       }
