@@ -36,14 +36,13 @@
       background-color: $light-background-color;
       border-left: 5px solid transparent;
       height: 80px;
+      border-top: 1px solid #EEE;
 
       .info {
         position: relative;
         display: inline-block;
         padding: 20px;
         left: 0;
-        width: 100%;
-        border-top: 1px solid #EEE;
 
         transition: left ease-out 0.3s;
       }

@@ -61,14 +61,13 @@
       background-color: #ffffff;
       border-left: 5px solid transparent;
       height: 80px;
+      border-top: 1px solid #EEE;
       transition: border-color ease-out 0.15s; }
       .home .stores .card .info {
         position: relative;
         display: inline-block;
         padding: 20px;
         left: 0;
-        width: 100%;
-        border-top: 1px solid #EEE;
         transition: left ease-out 0.3s; }
       .home .stores .card .discover {
         position: absolute;
@@ -102,9 +101,9 @@
   overflow: hidden;
   box-shadow: 0 0 20px 0 rgba(50, 50, 50, 0.1); }
   .details div {
-    max-height: 800px;
+    /*max-height: 800px;
     overflow-y: auto;
-    overflow-x: hidden; }
+    overflow-x: hidden;*/ }
     .details div.featured-image {
       padding: 0; }
       .details div.featured-image img {
