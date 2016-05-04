@@ -3,19 +3,12 @@
   .login form {
     border-radius: 5px;
     background-color: #ffffff;
-    border-bottom: 5px solid #ffdf32;
     box-shadow: 0 5px 20px 0 rgba(50, 50, 50, 0.1);
     position: relative;
     text-align: center;
     width: 350px;
     margin: 50px auto;
     padding: 25px; }
-    @media screen and (max-width: 991px) {
-      .login form {
-        width: 100vw;
-        height: 100vh;
-        margin: 0;
-        border-radius: 0; } }
     .login form h1 {
       padding-bottom: 25px;
       text-align: center; }
@@ -35,6 +28,21 @@
         text-transform: uppercase; }
     .login form div.error {
       color: #f00; }
+    @media screen and (max-width: 991px) {
+      .login form {
+        width: 100vw;
+        height: calc(100vh - 100px);
+        margin: 0;
+        border-radius: 0; }
+        .login form h1 {
+          padding-bottom: 50px; }
+        .login form div input {
+          padding: 20px;
+          height: auto;
+          width: 80%; } }
+  @media screen and (max-width: 991px) and (orientation: landscape) {
+    .login form {
+      min-height: 100vhs; } }
 
 .home {
   padding: 0;
