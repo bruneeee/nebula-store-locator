@@ -49,11 +49,21 @@ body {
     }
     section {
       z-index: 2;
-      margin-top: 100px;
+      margin-top: 99px;
       div {
 
       }
     }
+  }
+}
+
+.loader {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  img {
+    margin-top: calc(25vh - 64px);
   }
 }
 

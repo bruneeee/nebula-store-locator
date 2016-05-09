@@ -3,6 +3,7 @@ storeLocator.controller("storesController", function($rootScope, $scope, storesS
     var myLat ;
     var myLng ;
     $scope.distances = [];
+    $scope.loaded = false;
 
     localizationManager.getPosition(function(data){
         if(data){
@@ -20,6 +21,7 @@ storeLocator.controller("storesController", function($rootScope, $scope, storesS
     storesService.getAll(
         function(data){
             $scope.stores = data;
+            $scope.loaded = true;
             setDistances();
         }
     );

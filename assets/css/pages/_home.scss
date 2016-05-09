@@ -11,11 +11,14 @@
       flex-direction: row;
       .map, .stores {
         max-height: none !important;
+        box-shadow: none !important;
       }
     }
   }
 
   .map {
+
+    background-color: #dedede;
 
     @include mdMedia{
       max-height: calc(50vh - 50px);
