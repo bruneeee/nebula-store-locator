@@ -20,7 +20,6 @@ storeLocator.controller("mapController", function($scope, $state, storesService,
         var myPos = new google.maps.LatLng(myLat,myLng);
 
         map.setCenter(myPos);
-        console.log()
         addMarker(myPos,"Tu sei qui!!!","",Icons.userIcon);
 
     });
