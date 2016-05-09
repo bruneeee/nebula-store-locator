@@ -14,3 +14,9 @@ $accent-font-color:         #ffffff;
     @content;
   }
 }
+
+@mixin landscape {
+  @media (orientation: landscape) {
+    @content;
+  }
+}
