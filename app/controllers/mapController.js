@@ -34,7 +34,7 @@ storeLocator.controller("mapController", function($scope, $state, storesService,
                 });
             }
             else{
-                $state.go('login', {id: 'session_expired'});
+                $state.go('login', {id: 'external_error'});
             }
         }
     );

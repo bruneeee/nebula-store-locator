@@ -13,7 +13,6 @@ storeLocator.controller("storesController", function($rootScope, $scope, $state,
         else{
             myLat = 0;
             myLng = 0;
-            console.log("No localizzazione, gg");
         }
 
     });
@@ -26,7 +25,7 @@ storeLocator.controller("storesController", function($rootScope, $scope, $state,
                 setDistances();
             }
             else{
-                $state.go('login', {id: 'session_expired'});
+                $state.go('login', {id: 'external_error'});
             }
         }
     );

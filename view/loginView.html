@@ -18,8 +18,8 @@
                     <span class="glyphicon glyphicon-exclamation-sign"></span> {{errorMsg}}
                 </p>
             </div>
-            <div class="col-xs-12 error" ng-show="expiredSession">
-                <span class="glyphicon glyphicon-exclamation-sign"></span> Sessione scaduta
+            <div class="col-xs-12 error" ng-show="forcedLogoutId">
+                <span class="glyphicon glyphicon-exclamation-sign"></span> {{forcedLogoutMessage}}
             </div>
         </form>
     </div>
