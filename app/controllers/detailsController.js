@@ -6,6 +6,9 @@ storeLocator.controller("detailsController", function($scope,$stateParams, store
             if(data){
                 $scope.store = data;
             }
+            else{
+                $state.go('login', {id: 'session_expired'});
+            }
 
         }
 );

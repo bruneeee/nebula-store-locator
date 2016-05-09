@@ -9,11 +9,15 @@ storeLocator.service('storesService', function ($http, sessionManager, RequestUR
                 method: "GET",
                 headers: {"x-bitrace-session": session}
             }).success(function (result) {
-                if (result.success == false)
+                if (result.success == false){
+                    sessionManager.removeCookie();
                     completionHandler(undefined);
+                }
                 else
                     completionHandler(result.data);
             }).error(function () {
+                sessionManager.removeCookie();
+
                 completionHandler(undefined);
             })
         }
@@ -28,6 +32,8 @@ storeLocator.service('storesService', function ($http, sessionManager, RequestUR
             })
                 .success(function (result) {
                     if (result.success == false) {
+                        sessionManager.removeCookie();
+
                         completionHandler(undefined);
                     }
                     else {
@@ -35,6 +41,8 @@ storeLocator.service('storesService', function ($http, sessionManager, RequestUR
                     }
                 })
                 .error(function () {
+                    sessionManager.removeCookie();
+
                     completionHandler(undefined);
                 })
         }

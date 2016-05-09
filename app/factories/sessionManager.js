@@ -51,6 +51,7 @@ storeLocator.factory("sessionManager", function($http, $cookies, RequestURL) {
                         }
                     })
                     .error(function () {
+                        this.removeCookie();
                         completionHandler(undefined);
                     })
             }

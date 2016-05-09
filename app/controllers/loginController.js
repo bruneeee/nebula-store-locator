@@ -9,7 +9,10 @@ storeLocator.controller("loginController", function($scope, $state, $stateParams
                     password:   $scope.password
                 },
                 function(result) {
-                    if(!result.errorCode) {
+                    if(!result){
+                        $state.go('login', {id: 'session_expired'});
+                    }
+                    else if(!result.errorCode) {
                         sessionManager.putCookie(result.session, result.session_ttl);
                         $state.go('home');
                     }

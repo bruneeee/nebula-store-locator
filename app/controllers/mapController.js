@@ -1,4 +1,4 @@
-storeLocator.controller("mapController", function($scope,$state, storesService,localizationManager,Icons) {
+storeLocator.controller("mapController", function($scope, $state, storesService, localizationManager, Icons) {
     var myLat = 45.9626;
     var myLng = 12.6563;
 
@@ -33,6 +33,9 @@ storeLocator.controller("mapController", function($scope,$state, storesService,l
                     var storePos = new google.maps.LatLng(store.latitude,store.longitude);
                     addMarker(storePos,store.name,store.guid,Icons.storeIcon);
                 });
+            }
+            else{
+                $state.go('login', {id: 'session_expired'});
             }
         }
     );
