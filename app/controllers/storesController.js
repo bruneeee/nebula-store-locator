@@ -1,8 +1,9 @@
-storeLocator.controller("storesController", function($rootScope, $scope, $state, storesService,localizationManager) {
+storeLocator.controller("storesController", function($rootScope, $scope, storesService,localizationManager) {
     
     var myLat ;
     var myLng ;
     $scope.distances = [];
+    $scope.loaded = false;
 
     localizationManager.getPosition(function(data){
         if(data){
@@ -19,15 +20,10 @@ storeLocator.controller("storesController", function($rootScope, $scope, $state,
 
     storesService.getAll(
         function(data){
-            if(data){
-                $scope.stores = data;
-                setDistances();
-            }
-            else{
-                $state.go('login', {id: 'session_expired'});
-            }
+            $scope.stores = data;
+            $scope.loaded = true;
+            setDistances();
         }
-    
     );
 
     function setDistances(){

@@ -8,5 +8,7 @@
             <div ng-if="store.distance">{{store.distance}} km</div>
         </div>
     </div>
-
+    <div class="loader ng-hide" ng-show="!loaded">
+        <img src="assets/images/loader.svg"/>
+    </div>
 </div>
