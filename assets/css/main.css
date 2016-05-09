@@ -50,6 +50,12 @@
   @media screen and (max-width: 991px) {
     .home {
       flex-direction: column-reverse; } }
+  @media screen and (max-width: 991px) and (orientation: landscape) {
+    .home {
+      flex-direction: row; }
+      .home .map, .home .stores {
+        max-height: none !important; } }
+
   .home .map {
     height: calc(100vh - 100px); }
     @media screen and (max-width: 991px) {
@@ -164,7 +170,6 @@ body {
   color: #202020;
   background: url("../images/pattern.jpg"); }
   body .container-fluid header {
-    top: -1px;
     z-index: 3;
     position: fixed;
     width: 100%;

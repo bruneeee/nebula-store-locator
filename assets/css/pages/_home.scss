@@ -7,6 +7,12 @@
 
   @include mdMedia{
     flex-direction: column-reverse;
+    @include landscape {
+      flex-direction: row;
+      .map, .stores {
+        max-height: none !important;
+      }
+    }
   }
 
   .map {
