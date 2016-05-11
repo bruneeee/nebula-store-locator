@@ -1,5 +1,6 @@
 <div id="stores" class="row stores">
-    <div class="col-xs-12 card" ng-repeat="store in stores | orderObjectBy:'distance':false" tabindex="{{$index}}" ng-click="focus(store.latitude,store.longitude)">
+    <input ng-model="search" placeholder="cerca...">
+    <div class="col-xs-12 card" ng-repeat="store in stores | filter : search | orderObjectBy:'distance':false  " tabindex="{{$index}}" ng-click="focus(store.latitude,store.longitude)">
         <div class="discover" ui-sref="details({id: store.guid})">
             DISCOVER
         </div>
